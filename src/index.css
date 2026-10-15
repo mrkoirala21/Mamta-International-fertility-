@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-brand-pink: #E48AA0;
+    --color-brand-pink-dark: #C96D83;
+    --color-brand-pink-light: #FCEEF1;
+    --color-trust-blue: #1D3B58;
+    --color-trust-blue-dark: #122538;
+    --color-trust-blue-light: #2B5A88;
+    --color-surface-warm: #F9FAFC;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: #1D3B58;
+    background-color: #FFFFFF;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom scrollbar and subtle animations */
+::selection {
+  background-color: #FCEEF1;
+  color: #C96D83;
+}

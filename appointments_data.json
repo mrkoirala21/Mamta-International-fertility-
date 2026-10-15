@@ -1,0 +1,40 @@
+[
+  {
+    "id": "apt-001",
+    "referenceCode": "MIFC-CHW-1042",
+    "doctorId": "dr-mamata",
+    "doctorName": "Dr. Mamata Sharma",
+    "branchId": "chitwan",
+    "branchName": "Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan",
+    "date": "2026-10-15",
+    "timeSlot": "10:00 AM",
+    "consultationType": "in-person",
+    "patientName": "Aayusha Koirala",
+    "patientPhone": "+977-9855088798",
+    "patientEmail": "aayusha.k@example.com",
+    "treatmentType": "IVF Consultation",
+    "notes": "Initial evaluation for secondary infertility.",
+    "previousIvf": false,
+    "status": "confirmed",
+    "createdAt": "2026-10-12T09:00:00Z"
+  },
+  {
+    "id": "apt-002",
+    "referenceCode": "MIFC-CHW-2091",
+    "doctorId": "dr-suresh",
+    "doctorName": "Dr. Suresh Thapa",
+    "branchId": "chitwan",
+    "branchName": "Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan",
+    "date": "2026-10-16",
+    "timeSlot": "02:00 PM",
+    "consultationType": "in-person",
+    "patientName": "Rabin Shrestha",
+    "patientPhone": "+977-9855088798",
+    "patientEmail": "rabin.s@example.com",
+    "treatmentType": "Male Infertility & Andrology",
+    "notes": "Second opinion on semen analysis parameters.",
+    "previousIvf": true,
+    "status": "confirmed",
+    "createdAt": "2026-10-13T08:30:00Z"
+  }
+]
