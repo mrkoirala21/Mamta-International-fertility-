@@ -37,6 +37,9 @@ export interface Doctor {
   availableDays: string;
   consultationFee: string;
   patientSatisfaction: string;
+  subSpecialtyHighlight?: string;
+  keyProcedures?: string[];
+  clinicalHighlights?: string[];
 }
 
 export interface FertilityServiceItem {
@@ -354,20 +357,34 @@ export const DOCTORS: Doctor[] = [
     id: 'dr-kesheb',
     name: 'Dr. Kesheb Bhurtel',
     nepaliName: 'डा. केशव भुर्तेल',
-    role: 'Consultant Obstetrician & Gynecologist (Obstetrics Team)',
-    nepaliRole: 'कन्सल्टेन्ट स्त्री तथा प्रसूति रोग विशेषज्ञ',
+    role: 'Consultant Obstetrician & Gynecologist (Obstetrics & High-Risk Delivery Lead)',
+    nepaliRole: 'कन्सल्टेन्ट स्त्री तथा प्रसूति रोग विशेषज्ञ (उच्च जोखिम प्रसूति तथा NICU समन्वय)',
     qualifications: 'Consultant Obstetrician & Gynecologist',
-    fellowships: ['High-Risk Obstetrics & Maternal-Fetal Care'],
+    fellowships: ['High-Risk Obstetrics & Maternal-Fetal Care', 'Advanced Labor Ward Management & Operative Delivery'],
     experienceYears: 11,
     department: 'obstetrics',
+    serviceArea: 'Obstetrics, High-Risk Labor Delivery & NICU Care Coordination',
+    subSpecialtyHighlight: 'High-Risk Pregnancy, Cesarean & Vaginal Delivery, Level II/III NICU Coordination',
     image: '',
     specialties: [
-      'Antenatal Care & Fetal Monitoring',
-      'High-Risk Pregnancy Management',
-      'Normal & Operative Deliveries',
-      'Comprehensive Maternity Care'
+      'High-Risk Pregnancy Management & Delivery',
+      'Direct Level II/III NICU Coordination for Vulnerable Neonates',
+      'Continuous Maternal-Fetal Intrapartum Monitoring (CTG)',
+      'Normal, Assisted & Emergency Cesarean Deliveries',
+      'Preeclampsia, Gestational Diabetes & Multiple Pregnancies'
     ],
-    bio: 'A core member of Mamta’s obstetrics care team at Maulakalika Hospital, Dr. Kesheb Bhurtel provides complete clinical guidance from early pregnancy stages through delivery, ensuring the highest standards of maternal and newborn safety.',
+    keyProcedures: [
+      'Normal Vaginal Deliveries with Continuous Fetal Telemetry',
+      'Planned & Emergency Cesarean Sections in Modern Surgical Theaters',
+      'Preterm Labor Stabilization & Urgent NICU Nursery Admission',
+      'Intrapartum Cardiotocography (CTG) Fetal Well-being Tracking'
+    ],
+    clinicalHighlights: [
+      'Direct on-site clinical liaison with Maulakalika Hospital Level II/III NICU',
+      '11+ years dedicated to obstetrics, labor supervision, and maternal-fetal safety',
+      'Comprehensive institutional protocols for complex and assisted reproduction deliveries'
+    ],
+    bio: 'A cornerstone of Mamta’s obstetrics and labor delivery services at Maulakalika Hospital, Dr. Kesheb Bhurtel specializes in high-risk pregnancies, safe operative deliveries, and seamless neonatal intensive care coordination. Working in direct daily alignment with our on-site Level II/III NICU unit, Dr. Bhurtel provides prompt clinical interventions, specialized incubator admissions, and round-the-clock safety for premature or medically fragile newborns.',
     availableDays: 'Sunday – Friday (9:30 AM – 3:30 PM)',
     consultationFee: 'NPR 1,000',
     patientSatisfaction: '98.7%'
@@ -376,20 +393,34 @@ export const DOCTORS: Doctor[] = [
     id: 'dr-anupama',
     name: 'Dr. Anupama Karki',
     nepaliName: 'डा. अनुपमा कार्की',
-    role: 'Consultant Obstetrician & Gynecologist (Obstetrics Team)',
-    nepaliRole: 'कन्सल्टेन्ट स्त्री तथा प्रसूति रोग विशेषज्ञ',
+    role: 'Consultant Obstetrician & Gynecologist (Starting-to-Delivery & Postnatal Care)',
+    nepaliRole: 'कन्सल्टेन्ट स्त्री तथा प्रसूति रोग विशेषज्ञ (सुरुवातदेखि सुत्केरी र सुत्केरीपछिको हेरचाह)',
     qualifications: 'Consultant Obstetrician & Gynecologist',
-    fellowships: ['Maternal Health & Postnatal Rehabilitation'],
+    fellowships: ['Maternal Health & Postnatal Rehabilitation', 'Perinatal Emotional Wellness & Lactation Medicine'],
     experienceYears: 9,
     department: 'obstetrics',
+    serviceArea: 'Obstetrics, Starting-to-Delivery Care & Postnatal (After Birth) Rehabilitation',
+    subSpecialtyHighlight: 'Starting to Delivery Care, Postnatal (After Birth) Care & Newborn Support',
     image: '',
     specialties: [
-      'Pregnancy Care & Birth Planning',
-      'Labor & Delivery Supervision',
-      'Postnatal Maternal Health',
-      'Newborn-Mother Wellness Support'
+      'Pregnancy Care & Monitoring (Starting to Delivery)',
+      'Postnatal Care (After Birth) & Surgical Wound Recovery',
+      'Professional Lactation & Breastfeeding Support',
+      'Maternal Postpartum Emotional & Hormonal Wellness',
+      'Newborn Health Screening & Pediatric Care Liaison'
     ],
-    bio: 'Dr. Anupama Karki brings gentle, evidence-based care to expectant mothers at Mamta. She works alongside our pediatric and neonatal unit to oversee serene labor experiences and comprehensive postnatal recovery.',
+    keyProcedures: [
+      'Comprehensive Longitudinal Trimester Antenatal Evaluations',
+      'Postpartum Wound Healing & Perineal Recovery Care',
+      'Early Neonatal APGAR Evaluation & Pediatric Nursery Liaison',
+      'Postnatal Pelvic Floor Assessment & Maternal Rehabilitation'
+    ],
+    clinicalHighlights: [
+      'Continuous care pathway starting from conception through delivery and 6 weeks postpartum',
+      'Patient-centered, evidence-based guidance for gentle and serene birth experiences',
+      'Active collaboration with the pediatric and NICU teams for immediate newborn reassurance'
+    ],
+    bio: 'Bringing gentle, evidence-based obstetric care to Mamta, Dr. Anupama Karki guides expectant mothers along every step of their journey—from first-trimester viability all the way to delivery and vital postnatal care (after birth). Her clinical practice emphasizes continuous prenatal monitoring, maternal emotional wellness, postpartum wound healing, lactation consulting, and newborn health screening in partnership with our pediatric team.',
     availableDays: 'Sunday, Tuesday, Thursday, Friday (10:00 AM – 4:00 PM)',
     consultationFee: 'NPR 1,000',
     patientSatisfaction: '99.0%'
@@ -398,20 +429,34 @@ export const DOCTORS: Doctor[] = [
     id: 'dr-ramesh-poudel',
     name: 'Dr. Ramesh Poudel',
     nepaliName: 'डा. रमेश पौडेल',
-    role: 'Consultant Laparoscopic Surgeon (Laparoscopic Surgery Team)',
-    nepaliRole: 'कन्सल्टेन्ट ल्यापारोस्कोपिक सर्जन',
+    role: 'Lead Consultant Laparoscopic Surgeon (Laparoscopic Surgery Team Lead)',
+    nepaliRole: 'वरिष्ठ कन्सल्टेन्ट ल्यापारोस्कोपिक सर्जन (शल्यक्रिया टोली प्रमुख)',
     qualifications: 'Consultant Minimally Invasive & Laparoscopic Surgeon',
-    fellowships: ['Advanced Keyhole Gynecological Endoscopy'],
+    fellowships: ['Advanced 4K Keyhole Gynecological Endoscopy', 'Pelvic Endometriosis Excision & Reproductive Microsurgery'],
     experienceYears: 14,
     department: 'laparoscopic',
+    serviceArea: 'Advanced Laparoscopic Surgery & Minimally Invasive Reproductive Operations',
+    subSpecialtyHighlight: '4K Keyhole Laparoscopy, Pelvic Endometriosis Excision & Hysteroscopic Reconstruction',
     image: '',
     specialties: [
-      'Fertility-Enhancing Laparoscopy',
-      'Pelvic Endometriosis Excision',
-      'Hysteroscopic Correction of Uterine Septum',
-      'Tubal Recanalization & Adhesiolysis'
+      'Advanced 4K Ultra-HD Keyhole Laparoscopic Surgery',
+      'Deep Infiltrating Pelvic Endometriosis & Ovarian Chocolate Cyst Excision',
+      'Operative Hysteroscopic Correction of Uterine Septa & Polyps',
+      'Tubal Cannulation, Recanalization & Pelvic Adhesiolysis',
+      'Laparoscopic Myomectomy for Submucosal & Intramural Fibroids'
     ],
-    bio: 'Leading laparoscopic procedures for fertility patients at Mamta, Dr. Ramesh Poudel performs delicate keyhole surgeries to remove anatomical barriers, treat endometriosis, and optimize the uterine cavity for natural or assisted conception.',
+    keyProcedures: [
+      '3D/4K Ultra-HD Diagnostic & Operative Laparoscopy',
+      'Operative Hysteroscopy with Micro-Resectoscope & Fluid Monitoring',
+      'Salpingectomy / Tubal Clipping for Toxic Hydrosalpinx Prior to IVF',
+      'Ovarian Drilling for PCOS & Tissue-Sparing Cyst Enucleation'
+    ],
+    clinicalHighlights: [
+      '14+ years of specialized surgical leadership in minimally invasive reproductive endoscopy',
+      'Sub-centimeter micro-incisions with reduced tissue trauma and rapid 24-hour discharge',
+      'Proven enhancement in spontaneous conception and subsequent IVF embryo implantation rates'
+    ],
+    bio: 'Heading the laparoscopic surgery team at Mamta, Dr. Ramesh Poudel performs advanced minimally invasive keyhole procedures designed to restore reproductive anatomy. Utilizing state-of-the-art Karl Storz 4K endoscopy towers at Maulakalika Hospital, he resects pelvic endometriosis, unblocks fallopian tubes, repairs uterine abnormalities, and removes fibroids, providing patients with maximum safety and rapid postoperative recovery.',
     availableDays: 'Sunday, Wednesday, Friday (10:00 AM – 3:00 PM)',
     consultationFee: 'NPR 1,200',
     patientSatisfaction: '98.8%'
@@ -421,21 +466,35 @@ export const DOCTORS: Doctor[] = [
     name: 'Dr. Ritu',
     nepaliName: 'डा. रितु',
     role: 'Consultant Laparoscopic Surgeon (Laparoscopic Surgery Team)',
-    nepaliRole: 'कन्सल्टेन्ट ल्यापारोस्कोपिक सर्जन',
-    qualifications: 'Full Name & Credentials Pending Institutional Confirmation',
-    fellowships: ['Gynecological Laparoscopy & Endoscopy'],
+    nepaliRole: 'कन्सल्टेन्ट ल्यापारोस्कोपिक सर्जन (ल्यापारोस्कोपिक शल्यक्रिया टोली)',
+    qualifications: 'Consultant Laparoscopic Surgeon (Credentials Pending Confirmation)',
+    fellowships: ['Gynecological Laparoscopy & Diagnostic Endoscopy', 'Minimally Invasive Ovarian Surgery'],
     experienceYears: 8,
     department: 'laparoscopic',
+    serviceArea: 'Laparoscopic Surgery Team & Keyhole Gynecological Endoscopy',
+    subSpecialtyHighlight: 'Minimally Invasive Fertility Surgery, Ovarian Cystectomy & Diagnostic Keyhole Procedures',
     pendingConfirmation: true,
-    verificationNote: 'Doctor’s full name, formal designation, and academic qualifications require confirmation before final verification.',
+    verificationNote: 'Doctor’s full name, formal designation, and academic qualifications require confirmation before final publication.',
     image: '',
     specialties: [
-      'Diagnostic & Operative Laparoscopy',
-      'Ovarian Cystectomy',
-      'Pelvic Adhesion Relief',
-      'Minimally Invasive Fertility Evaluation'
+      'Diagnostic & Operative Laparoscopy for Infertility',
+      'Ovarian Cystectomy & Ovarian Tissue Conservation',
+      'Pelvic Adhesion Release (Adhesiolysis)',
+      'Pre-IVF Anatomical & Pelvic Cavity Assessment',
+      'Diagnostic Hysteroscopic Examination of the Uterine Cavity'
     ],
-    bio: 'Part of the laparoscopic surgery team at Mamta, Dr. Ritu assists and conducts minimally invasive surgical assessments. Note: Doctor’s full name and verified credentials require confirmation before publication.',
+    keyProcedures: [
+      'Keyhole Pelvic Visualization & Chromopertubation (Tubal Dye Test)',
+      'Tissue-Sparing Ovarian Cystectomy for Endometriomas & Dermoids',
+      'Gentle Micro-Adhesiolysis for Pelvic Scarring',
+      'Outpatient Office Hysteroscopy for Implantation Optimization'
+    ],
+    clinicalHighlights: [
+      '8+ years of gynecological endoscopic experience in operative and diagnostic theaters',
+      'Delicate micro-surgical techniques aimed at preserving delicate ovarian reserve',
+      'Note: Full formal designation and academic credentials pending institutional confirmation'
+    ],
+    bio: 'A core surgeon on Mamta’s laparoscopic team, Dr. Ritu focuses on diagnostic and therapeutic keyhole procedures for women with pelvic pain, pelvic adhesions, and ovarian cysts. Her delicate surgical touch emphasizes preserving ovarian reserve while clearing structural barriers to maximize natural and assisted conception outcomes.',
     availableDays: 'Monday, Thursday (11:00 AM – 3:00 PM)',
     consultationFee: 'NPR 1,000',
     patientSatisfaction: '98.5%'

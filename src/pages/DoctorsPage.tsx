@@ -17,6 +17,10 @@ import {
   AlertCircle,
   HelpCircle,
   ArrowRight,
+  Scissors,
+  Heart,
+  Layers,
+  ShieldCheck,
 } from 'lucide-react';
 
 interface DoctorsPageProps {
@@ -31,8 +35,8 @@ export const DoctorsPage: React.FC<DoctorsPageProps> = ({ onOpenBooking, languag
     { id: 'all', label: language === 'en' ? 'All Specialists (8)' : 'सबै विशेषज्ञहरू' },
     { id: 'fertility', label: language === 'en' ? 'Fertility Care' : 'प्रजनन विशेषज्ञ' },
     { id: 'ultrasound', label: language === 'en' ? 'Ultrasound & 5D Imaging' : 'अल्ट्रासाउन्ड तथा ५D' },
-    { id: 'obstetrics', label: language === 'en' ? 'Obstetrics Team' : 'प्रसूति रोग समूह' },
-    { id: 'laparoscopic', label: language === 'en' ? 'Laparoscopic Surgery Team' : 'ल्यापारोस्कोपिक शल्यक्रिया' },
+    { id: 'obstetrics', label: language === 'en' ? 'Obstetrics & NICU Team' : 'प्रसूति तथा NICU समूह' },
+    { id: 'laparoscopic', label: language === 'en' ? 'Laparoscopic Surgery Team' : 'ल्यापारोस्कोपिक शल्यक्रिया समूह' },
     { id: 'embryology', label: language === 'en' ? 'Embryology & Andrology' : 'भ्रूण तथा पुरुष प्रजनन' },
   ];
 
@@ -204,10 +208,121 @@ export const DoctorsPage: React.FC<DoctorsPageProps> = ({ onOpenBooking, languag
                   </div>
                 )}
 
+                {/* SPECIAL HIGHLIGHT: DR. KESHEB BHURTEL (OBSTETRICS & NICU) */}
+                {doc.id === 'dr-kesheb' && (
+                  <div className="p-3.5 bg-sky-50/80 rounded-2xl border border-sky-200/80 text-xs text-sky-950 space-y-1.5">
+                    <div className="font-bold flex items-center justify-between text-sky-950">
+                      <span className="flex items-center gap-1.5">
+                        <Baby className="w-4 h-4 text-sky-600" />
+                        <span>High-Risk Obstetrics & Level II/III NICU Coordination</span>
+                      </span>
+                      <span className="text-[10px] bg-sky-100 text-sky-800 font-bold px-2 py-0.5 rounded-full">
+                        NICU Liaison
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-sky-800 leading-relaxed">
+                      Lead obstetrician managing complex and high-risk pregnancies, normal & operative deliveries, with direct on-site alignment with Maulakalika Hospital’s Level II/III Neonatal Intensive Care Unit (NICU) for vulnerable or preterm newborns.
+                    </p>
+                  </div>
+                )}
+
+                {/* SPECIAL HIGHLIGHT: DR. ANUPAMA KARKI (STARTING TO DELIVERY & POSTNATAL) */}
+                {doc.id === 'dr-anupama' && (
+                  <div className="p-3.5 bg-rose-50/70 rounded-2xl border border-rose-200/70 text-xs text-rose-950 space-y-1.5">
+                    <div className="font-bold flex items-center justify-between text-rose-950">
+                      <span className="flex items-center gap-1.5">
+                        <Heart className="w-4 h-4 text-rose-600" />
+                        <span>Care from Conception to Delivery & Postnatal (After Birth) Care</span>
+                      </span>
+                      <span className="text-[10px] bg-rose-100 text-rose-800 font-bold px-2 py-0.5 rounded-full">
+                        Starting to Delivery
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-rose-800 leading-relaxed">
+                      Comprehensive care continuum from early pregnancy monitoring through safe delivery and dedicated postnatal care (after birth)—focusing on maternal physical recovery, wound healing, lactation guidance, and nursery transition.
+                    </p>
+                  </div>
+                )}
+
+                {/* SPECIAL HIGHLIGHT: DR. RAMESH POUDEL (LEAD LAPAROSCOPIC SURGERY) */}
+                {doc.id === 'dr-ramesh-poudel' && (
+                  <div className="p-3.5 bg-emerald-50/80 rounded-2xl border border-emerald-200/80 text-xs text-emerald-950 space-y-1.5">
+                    <div className="font-bold flex items-center justify-between text-emerald-950">
+                      <span className="flex items-center gap-1.5">
+                        <Scissors className="w-4 h-4 text-emerald-600" />
+                        <span>Lead Laparoscopic Surgeon · 4K Keyhole Reproductive Surgery</span>
+                      </span>
+                      <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full">
+                        Surgical Lead
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-emerald-800 leading-relaxed">
+                      Advanced minimally invasive 4K keyhole laparoscopy and operative hysteroscopy: precision excision of pelvic endometriosis, tubal cannulation, uterine septum correction, and fibroid removal to restore natural fertility and IVF receptivity.
+                    </p>
+                  </div>
+                )}
+
+                {/* SPECIAL HIGHLIGHT: DR. RITU (LAPAROSCOPIC SURGERY TEAM) */}
+                {doc.id === 'dr-ritu' && (
+                  <div className="p-3.5 bg-teal-50/80 rounded-2xl border border-teal-200/80 text-xs text-teal-950 space-y-1.5">
+                    <div className="font-bold flex items-center justify-between text-teal-950">
+                      <span className="flex items-center gap-1.5">
+                        <Layers className="w-4 h-4 text-teal-600" />
+                        <span>Laparoscopic Surgery Team · Minimally Invasive Fertility Evaluation</span>
+                      </span>
+                      <span className="text-[10px] bg-teal-100 text-teal-800 font-bold px-2 py-0.5 rounded-full">
+                        Keyhole Surgery
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-teal-800 leading-relaxed">
+                      Diagnostic and operative keyhole procedures prioritizing tissue-sparing ovarian cystectomy, pelvic scar relief (adhesiolysis), and uterine cavity assessment prior to assisted conception cycles.
+                    </p>
+                  </div>
+                )}
+
                 {/* BIOGRAPHY */}
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                   {doc.bio}
                 </p>
+
+                {/* KEY PROCEDURES / AREAS OF EXPERTISE GRID */}
+                {doc.keyProcedures && doc.keyProcedures.length > 0 && (
+                  <div className="space-y-2 pt-2 border-t border-slate-100 text-xs">
+                    <span className="font-bold text-slate-800 flex items-center gap-1.5">
+                      <Activity className="w-3.5 h-3.5 text-[#1D3B58]" />
+                      <span>Key Clinical Procedures & Specific Expertise:</span>
+                    </span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                      {doc.keyProcedures.map((proc, i) => (
+                        <div
+                          key={i}
+                          className="flex items-start gap-1.5 text-slate-700 bg-slate-50 p-2 rounded-xl border border-slate-200/70 text-[11px] font-medium leading-snug"
+                        >
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                          <span>{proc}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* CLINICAL HIGHLIGHTS & INSTITUTIONAL SCOPE */}
+                {doc.clinicalHighlights && doc.clinicalHighlights.length > 0 && (
+                  <div className="space-y-1.5 bg-slate-50/70 p-3 rounded-2xl border border-slate-200/70 text-xs">
+                    <span className="font-bold text-slate-800 text-[11px] flex items-center gap-1">
+                      <Sparkles className="w-3.5 h-3.5 text-[#C96D83]" />
+                      <span>Institutional Clinical Highlights:</span>
+                    </span>
+                    <ul className="space-y-1">
+                      {doc.clinicalHighlights.map((hl, i) => (
+                        <li key={i} className="flex items-start gap-1.5 text-slate-600 text-[11px] leading-relaxed">
+                          <span className="text-[#C96D83] font-bold">✓</span>
+                          <span>{hl}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
                 {/* FELLOWSHIPS & CREDENTIALS */}
                 {doc.fellowships && doc.fellowships.length > 0 && (
