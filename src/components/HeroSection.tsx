@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, ShieldCheck, Heart, Award, Sparkles, PhoneCall } from 'lucide-react';
+import { IMAGES } from '../assets/images';
 
 interface HeroSectionProps {
   onOpenBooking: () => void;
@@ -110,7 +111,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBooking, languag
               {/* Main Image Container */}
               <div className="relative rounded-2xl overflow-hidden shadow-xl border-4 border-white aspect-4/3 sm:aspect-16/11">
                 <img
-                  src="/src/assets/images/hero_fertility_consultation_1791911165896.jpg"
+                  src={IMAGES.heroConsultation}
                   alt="Doctor consulting warmly with couple at Mamata International Fertility Centre"
                   className="w-full h-full object-cover object-center"
                   referrerPolicy="no-referrer"

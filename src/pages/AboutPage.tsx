@@ -14,6 +14,7 @@ import {
   Users,
 } from 'lucide-react';
 import { DOCTORS } from '../data/fertilityData';
+import { IMAGES } from '../assets/images';
 import SuccessRateStatistics from '../components/SuccessRateStatistics';
 
 interface AboutPageProps {
@@ -47,7 +48,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking,
               className="bg-[#E48AA0] hover:bg-[#D4748B] text-white px-6 py-3 rounded-xl font-bold text-sm shadow-md transition-all flex items-center gap-2 cursor-pointer"
             >
               <Calendar className="w-4 h-4" />
-              <span>Book Consultation with Dr. Mamata</span>
+              <span>Book Consultation with Dr. Anusha Tiwari</span>
             </button>
             <a
               href="https://wa.me/9779855088798"
@@ -100,7 +101,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking,
           <div className="lg:col-span-6">
             <div className="relative rounded-2xl overflow-hidden shadow-xl border-4 border-white">
               <img
-                src="/src/assets/images/doctor_mamata_portrait_1791911168054.jpg"
+                src={IMAGES.doctorPortrait}
                 alt="Dr. Anusha Tiwari"
                 className="w-full h-[450px] object-cover object-top"
               />
@@ -236,7 +237,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking,
             <div className="lg:col-span-6">
               <div className="rounded-2xl overflow-hidden shadow-lg border-2 border-white/20">
                 <img
-                  src="/src/assets/images/advanced_embryology_lab_1791911167425.jpg"
+                  src={IMAGES.advancedLab}
                   alt="Mamata Cleanroom Embryology Laboratory"
                   className="w-full h-80 object-cover"
                 />

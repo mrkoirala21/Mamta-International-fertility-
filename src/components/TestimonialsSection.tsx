@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TESTIMONIALS } from '../data/fertilityData';
+import { IMAGES } from '../assets/images';
 import { Star, Quote, CheckCircle2, Heart, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface TestimonialsSectionProps {
@@ -49,7 +50,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             {/* PARENT & BABY PHOTO */}
             <div className="lg:col-span-5 relative min-h-[300px] lg:min-h-full">
               <img
-                src="/src/assets/images/parents_with_newborn_1791911168465.jpg"
+                src={IMAGES.parentsNewborn}
                 alt="Joyful parents holding their baby born through IVF at Mamata Fertility Centre"
                 className="w-full h-full object-cover object-center"
                 referrerPolicy="no-referrer"

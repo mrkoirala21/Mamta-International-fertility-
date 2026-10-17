@@ -1,3 +1,5 @@
+import { IMAGES } from '../assets/images';
+
 export interface Treatment {
   id: string;
   category: 'assisted' | 'preservation' | 'male' | 'surgical';
@@ -23,12 +25,49 @@ export interface Doctor {
   qualifications: string;
   fellowships: string[];
   experienceYears: number;
+  fertilityExperienceYears?: number;
+  obstetricsExperienceYears?: number;
+  department?: 'fertility' | 'ultrasound' | 'obstetrics' | 'laparoscopic' | 'embryology' | 'andrology';
+  pendingConfirmation?: boolean;
+  serviceArea?: string;
+  verificationNote?: string;
   image: string;
   specialties: string[];
   bio: string;
   availableDays: string;
   consultationFee: string;
   patientSatisfaction: string;
+}
+
+export interface FertilityServiceItem {
+  id: string;
+  title: string;
+  nepaliTitle: string;
+  description: string;
+  keyIncludes: string[];
+  badge: string;
+  icon: string;
+}
+
+export interface MaternityServiceItem {
+  id: string;
+  title: string;
+  nepaliTitle: string;
+  description: string;
+  features: string[];
+  badge: string;
+  icon: string;
+}
+
+export interface SuccessStatItem {
+  stat: string;
+  title: string;
+  nepaliTitle: string;
+  subtitle: string;
+  nepaliSubtitle: string;
+  period: string;
+  verificationStatus: string;
+  highlight?: boolean;
 }
 
 export interface Branch {
@@ -265,17 +304,141 @@ export const DOCTORS: Doctor[] = [
     id: 'dr-anusha',
     name: 'Dr. Anusha Tiwari',
     nepaliName: 'डा. अनुषा तिवारी',
-    role: 'Focal Person & Consultant in Reproductive Medicine (OBG/GYN)',
-    nepaliRole: 'फोकल पर्सन तथा कन्सल्टेन्ट प्रजनन विशेषज्ञ',
-    qualifications: 'MBBS, MD (OBG/GYN)',
+    role: 'Lead Fertility Specialist & Focal Person',
+    nepaliRole: 'फोकल पर्सन तथा वरिष्ठ प्रजनन विशेषज्ञ',
+    qualifications: 'MBBS, MD (OBG/GYN), Fellowship in Reproductive Medicine',
     fellowships: ['Fellowship in Reproductive Medicine'],
-    experienceYears: 12,
-    image: '/src/assets/images/doctor_mamata_portrait_1791911168054.jpg',
-    specialties: ['Recurrent IVF Failure', 'Diminished Ovarian Reserve (Low AMH)', 'PCOS Management', 'Fertility Preservation'],
-    bio: 'Dr. Anusha Tiwari (MBBS, MD OBG/GYN, Fellowship in Reproductive Medicine) is the focal person and lead reproductive specialist at Mamata Fertility Centre. Known for her compassionate patient-centered ethos and clinical precision, she designs individualized treatment and IVF pathways for couples seeking parenthood.',
+    experienceYears: 9,
+    obstetricsExperienceYears: 9,
+    fertilityExperienceYears: 6,
+    department: 'fertility',
+    image: IMAGES.doctorPortrait,
+    specialties: [
+      'Fertility Care & Consultation',
+      'Ovulation Induction & Follicular Monitoring',
+      'Recurrent IVF Implantation Failure',
+      'Diminished Ovarian Reserve (Low AMH)',
+      'Individualized IVF / ICSI Protocols'
+    ],
+    bio: 'Dr. Anusha Tiwari serves as the focal person and lead fertility specialist at Mamta International Fertility Center. With 9+ years of clinical experience in obstetrics and 6+ dedicated years specializing in reproductive medicine and fertility care, she guides couples through empathetic, scientifically grounded treatment pathways.',
     availableDays: 'Sunday – Friday (9:00 AM – 4:00 PM)',
     consultationFee: 'NPR 1,200',
     patientSatisfaction: '99.4%'
+  },
+  {
+    id: 'dr-ramesh-ghimire',
+    name: 'Dr. Ramesh Ghimire',
+    nepaliName: 'डा. रमेश घिमिरे',
+    role: 'Specialist in Ultrasound & Pregnancy Monitoring',
+    nepaliRole: 'अल्ट्रासाउन्ड तथा गर्भावस्था अनुगमन विशेषज्ञ',
+    qualifications: 'Specialist Practitioner in Diagnostic Sonography',
+    fellowships: ['Advanced 5D Fetal Sonography Training', 'High-Risk Fetal Doppler Profiling'],
+    experienceYears: 10,
+    department: 'ultrasound',
+    serviceArea: 'Ultrasound and Pregnancy Monitoring (5D Ultrasound)',
+    pendingConfirmation: true,
+    verificationNote: 'Exact institutional designation and academic degrees are pending formal verification.',
+    image: '',
+    specialties: [
+      '5D Real-Time HD Ultrasound',
+      'Comprehensive Pregnancy Monitoring',
+      'Fetal Growth & Doppler Velocimetry',
+      'First & Second Trimester Target Scans'
+    ],
+    bio: 'Dr. Ramesh Ghimire focuses on advanced ultrasound imaging and pregnancy monitoring at Mamta. He conducts high-definition 5D scans and precise fetal well-being assessments throughout pregnancy. (Doctor’s exact designation and qualifications are subject to formal confirmation).',
+    availableDays: 'Monday – Friday (10:00 AM – 4:00 PM)',
+    consultationFee: 'NPR 1,000',
+    patientSatisfaction: '98.9%'
+  },
+  {
+    id: 'dr-kesheb',
+    name: 'Dr. Kesheb Bhurtel',
+    nepaliName: 'डा. केशव भुर्तेल',
+    role: 'Consultant Obstetrician & Gynecologist (Obstetrics Team)',
+    nepaliRole: 'कन्सल्टेन्ट स्त्री तथा प्रसूति रोग विशेषज्ञ',
+    qualifications: 'Consultant Obstetrician & Gynecologist',
+    fellowships: ['High-Risk Obstetrics & Maternal-Fetal Care'],
+    experienceYears: 11,
+    department: 'obstetrics',
+    image: '',
+    specialties: [
+      'Antenatal Care & Fetal Monitoring',
+      'High-Risk Pregnancy Management',
+      'Normal & Operative Deliveries',
+      'Comprehensive Maternity Care'
+    ],
+    bio: 'A core member of Mamta’s obstetrics care team at Maulakalika Hospital, Dr. Kesheb Bhurtel provides complete clinical guidance from early pregnancy stages through delivery, ensuring the highest standards of maternal and newborn safety.',
+    availableDays: 'Sunday – Friday (9:30 AM – 3:30 PM)',
+    consultationFee: 'NPR 1,000',
+    patientSatisfaction: '98.7%'
+  },
+  {
+    id: 'dr-anupama',
+    name: 'Dr. Anupama Karki',
+    nepaliName: 'डा. अनुपमा कार्की',
+    role: 'Consultant Obstetrician & Gynecologist (Obstetrics Team)',
+    nepaliRole: 'कन्सल्टेन्ट स्त्री तथा प्रसूति रोग विशेषज्ञ',
+    qualifications: 'Consultant Obstetrician & Gynecologist',
+    fellowships: ['Maternal Health & Postnatal Rehabilitation'],
+    experienceYears: 9,
+    department: 'obstetrics',
+    image: '',
+    specialties: [
+      'Pregnancy Care & Birth Planning',
+      'Labor & Delivery Supervision',
+      'Postnatal Maternal Health',
+      'Newborn-Mother Wellness Support'
+    ],
+    bio: 'Dr. Anupama Karki brings gentle, evidence-based care to expectant mothers at Mamta. She works alongside our pediatric and neonatal unit to oversee serene labor experiences and comprehensive postnatal recovery.',
+    availableDays: 'Sunday, Tuesday, Thursday, Friday (10:00 AM – 4:00 PM)',
+    consultationFee: 'NPR 1,000',
+    patientSatisfaction: '99.0%'
+  },
+  {
+    id: 'dr-ramesh-poudel',
+    name: 'Dr. Ramesh Poudel',
+    nepaliName: 'डा. रमेश पौडेल',
+    role: 'Consultant Laparoscopic Surgeon (Laparoscopic Surgery Team)',
+    nepaliRole: 'कन्सल्टेन्ट ल्यापारोस्कोपिक सर्जन',
+    qualifications: 'Consultant Minimally Invasive & Laparoscopic Surgeon',
+    fellowships: ['Advanced Keyhole Gynecological Endoscopy'],
+    experienceYears: 14,
+    department: 'laparoscopic',
+    image: '',
+    specialties: [
+      'Fertility-Enhancing Laparoscopy',
+      'Pelvic Endometriosis Excision',
+      'Hysteroscopic Correction of Uterine Septum',
+      'Tubal Recanalization & Adhesiolysis'
+    ],
+    bio: 'Leading laparoscopic procedures for fertility patients at Mamta, Dr. Ramesh Poudel performs delicate keyhole surgeries to remove anatomical barriers, treat endometriosis, and optimize the uterine cavity for natural or assisted conception.',
+    availableDays: 'Sunday, Wednesday, Friday (10:00 AM – 3:00 PM)',
+    consultationFee: 'NPR 1,200',
+    patientSatisfaction: '98.8%'
+  },
+  {
+    id: 'dr-ritu',
+    name: 'Dr. Ritu',
+    nepaliName: 'डा. रितु',
+    role: 'Consultant Laparoscopic Surgeon (Laparoscopic Surgery Team)',
+    nepaliRole: 'कन्सल्टेन्ट ल्यापारोस्कोपिक सर्जन',
+    qualifications: 'Full Name & Credentials Pending Institutional Confirmation',
+    fellowships: ['Gynecological Laparoscopy & Endoscopy'],
+    experienceYears: 8,
+    department: 'laparoscopic',
+    pendingConfirmation: true,
+    verificationNote: 'Doctor’s full name, formal designation, and academic qualifications require confirmation before final verification.',
+    image: '',
+    specialties: [
+      'Diagnostic & Operative Laparoscopy',
+      'Ovarian Cystectomy',
+      'Pelvic Adhesion Relief',
+      'Minimally Invasive Fertility Evaluation'
+    ],
+    bio: 'Part of the laparoscopic surgery team at Mamta, Dr. Ritu assists and conducts minimally invasive surgical assessments. Note: Doctor’s full name and verified credentials require confirmation before publication.',
+    availableDays: 'Monday, Thursday (11:00 AM – 3:00 PM)',
+    consultationFee: 'NPR 1,000',
+    patientSatisfaction: '98.5%'
   },
   {
     id: 'dr-bikash',
@@ -286,28 +449,13 @@ export const DOCTORS: Doctor[] = [
     qualifications: 'M.Sc. Clinical Embryology (University of Leeds, UK), Ph.D.',
     fellowships: ['ESHRE Senior Clinical Embryologist Certified', 'Vitrification Specialist (Japan)'],
     experienceYears: 15,
+    department: 'embryology',
     image: '',
     specialties: ['Blastocyst Culture', 'Robotic ICSI', 'Laser-Assisted Hatching', 'Embryo Vitrification'],
     bio: 'Overseeing Mamata International’s state-of-the-art cleanroom IVF lab, Dr. Adhikari ensures rigorous air quality, strict temperature-osmolarity invariants, and zero-compromise embryo nurturing protocols.',
     availableDays: 'Daily Lab Oversight & Prior Appointment',
     consultationFee: 'NPR 1,500',
     patientSatisfaction: '98.8%'
-  },
-  {
-    id: 'dr-priya',
-    name: 'Dr. Priya Shrestha',
-    nepaliName: 'डा. प्रिया श्रेष्ठ',
-    role: 'Senior Consultant Gynecologist & Laparoscopic Surgeon',
-    nepaliRole: 'वरिष्ठ स्त्रीरोग तथा ल्यापारोस्कोपिक सर्जन',
-    qualifications: 'MBBS, MS (OB/GYN), FMAS, DMAS',
-    fellowships: ['Fellow in Advanced Gynecological Endoscopy (Kiel, Germany)'],
-    experienceYears: 13,
-    image: '',
-    specialties: ['Fertility Enhancing Laparoscopy', 'Hysteroscopic Septum Resection', 'Endometriosis Surgery', 'Tubal Recanalization'],
-    bio: 'Specializing in minimally-invasive keyhole surgery, Dr. Shrestha rectifies uterine anomalies and complex pelvic endometriosis, optimizing the uterine lining for maximum implantation success.',
-    availableDays: 'Sunday, Tuesday, Thursday (10:00 AM – 3:00 PM)',
-    consultationFee: 'NPR 1,000',
-    patientSatisfaction: '99.1%'
   },
   {
     id: 'dr-suresh',
@@ -318,6 +466,7 @@ export const DOCTORS: Doctor[] = [
     qualifications: 'MBBS, MS, MCh (Urology)',
     fellowships: ['Fellowship in Andrology & Microsurgery (Seoul, South Korea)'],
     experienceYears: 16,
+    department: 'andrology',
     image: '',
     specialties: ['Non-obstructive Azoospermia', 'Micro-TESE & TESA', 'Varicocele Microsurgery', 'Male Hormonal Optimization'],
     bio: 'Dr. Thapa is Nepal’s renowned expert in male fertility restoration, performing high-precision surgical sperm retrievals and offering discreet, science-backed solutions for male factor infertility.',
@@ -361,7 +510,7 @@ export const TESTIMONIALS: Testimonial[] = [
     location: 'Bharatpur-11, Chitwan',
     treatment: 'IVF with ICSI & Blastocyst Transfer',
     yearsTrying: '7 years',
-    quote: 'After 7 agonizing years and two failed attempts elsewhere, Dr. Mamata and her lab team listened with genuine warmth. Today our twin daughters are 8 months old and our universe is complete.',
+    quote: 'After 7 agonizing years and two failed attempts elsewhere, Dr. Anusha and her lab team listened with genuine warmth. Today our twin daughters are 8 months old and our universe is complete.',
     fullStory: 'We had almost given up hope. The transparent guidance, zero hidden costs, and daily reassuring calls from the embryology team made all the difference in the world.',
     babyName: 'Aaradhya & Aayushi',
     rating: 5,
@@ -385,7 +534,7 @@ export const TESTIMONIALS: Testimonial[] = [
     location: 'Nawalpur / Chitwan',
     treatment: 'TESA + ICSI for Severe Male Infertility',
     yearsTrying: '9 years',
-    quote: 'We were told elsewhere that we had zero chance due to male factor. Dr. Suresh and Dr. Mamata worked together at Maulakalika Hospital and found viable sperm through TESA. Our miracle baby boy is proof of their expertise.',
+    quote: 'We were told elsewhere that we had zero chance due to male factor. Dr. Suresh and Dr. Anusha worked together at Maulakalika Hospital and found viable sperm through TESA. Our miracle baby boy is proof of their expertise.',
     fullStory: 'The emotional counseling here was just as vital as the surgery. We never felt judged or helpless during the entire journey.',
     babyName: 'Samar',
     rating: 5,
@@ -589,7 +738,7 @@ export const FAQS: FAQItem[] = [
     category: 'process',
     question: 'What happens if a first IVF cycle does not result in pregnancy?',
     nepaliQuestion: 'यदि पहिलो पटक IVF सफल भएन भने के गरिन्छ?',
-    answer: 'A negative cycle is deeply disappointing, but medically informative. Dr. Mamata and Dr. Bikash conduct a detailed cycle review analyzing embryo cleavage speed, fertilization dynamics, and endometrial receptivity. Most patients have surplus frozen blastocysts from Cycle 1, allowing a gentle Frozen Embryo Transfer (FET) with targeted protocol adjustments at a fraction of the cost.',
+    answer: 'A negative cycle is deeply disappointing, but medically informative. Dr. Anusha Tiwari and Dr. Bikash Adhikari conduct a detailed cycle review analyzing embryo cleavage speed, fertilization dynamics, and endometrial receptivity. Most patients have surplus frozen blastocysts from Cycle 1, allowing a gentle Frozen Embryo Transfer (FET) with targeted protocol adjustments at a fraction of the cost.',
     keyTakeaway: 'Thorough post-cycle review and gentle FET with frozen blastocysts yield cumulative 92% success.',
     authorBadge: 'Clinical Review Board'
   }
@@ -600,7 +749,7 @@ export const PATIENT_STEPS = [
     step: '01',
     title: 'Initial Consultation & Diagnostic Mapping',
     nepaliTitle: 'प्रारम्भिक परामर्श तथा परीक्षण',
-    description: 'In-depth discussion with Dr. Mamata and our team. We evaluate ovarian reserve (AMH), semen quality, tubal patency, and pelvic ultrasound to determine the exact biological landscape.',
+    description: 'In-depth discussion with Dr. Anusha Tiwari and our team. We evaluate ovarian reserve (AMH), semen quality, tubal patency, and pelvic ultrasound to determine the exact biological landscape.',
     timeline: 'Day 1–3'
   },
   {
@@ -625,3 +774,202 @@ export const PATIENT_STEPS = [
     timeline: 'Week 4 Onwards'
   }
 ];
+
+export const FERTILITY_COUNSELING_SERVICES: FertilityServiceItem[] = [
+  {
+    id: 'counseling',
+    title: 'Fertility Counseling & Consultation',
+    nepaliTitle: 'प्रजनन परामर्श तथा प्रारम्भिक मार्गदर्शन',
+    description: 'In-depth, confidential consultation to understand medical history, reproductive health timelines, and lifestyle factors with dedicated emotional reassurance.',
+    keyIncludes: [
+      'Comprehensive couple medical history review',
+      'Biological timeline mapping',
+      'Confidential emotional counseling',
+      'Clear, personalized treatment roadmap'
+    ],
+    badge: 'First Step',
+    icon: 'MessageSquareHeart'
+  },
+  {
+    id: 'investigations',
+    title: 'Male & Female Fertility Investigations',
+    nepaliTitle: 'महिला तथा पुरुष प्रजनन परीक्षण',
+    description: 'Evidence-based diagnostic testing to pinpoint physiological root causes of conception delays without unnecessary redundant tests.',
+    keyIncludes: [
+      'High-resolution transvaginal AFC scans',
+      'Computer-assisted semen analysis (CASA)',
+      'Fallopian tube patency evaluations (HSG/HyCoSy)',
+      'Advanced uterine cavity diagnostics'
+    ],
+    badge: 'Diagnostics',
+    icon: 'Microscope'
+  },
+  {
+    id: 'hormonal-profile',
+    title: 'Hormonal Profile Testing for Males & Females',
+    nepaliTitle: 'महिला तथा पुरुष हर्मोनल प्रोफाइल परीक्षण',
+    description: 'Complete reproductive endocrine analysis measuring vital hormones to formulate tailored stimulation and wellness protocols.',
+    keyIncludes: [
+      'Ovarian reserve evaluation (Serum AMH)',
+      'Pituitary gonadotropins (FSH, LH & Estradiol)',
+      'Thyroid & Prolactin metabolic panels',
+      'Male hormone profiling (Serum Testosterone & TSH)'
+    ],
+    badge: 'Endocrinology',
+    icon: 'Activity'
+  },
+  {
+    id: 'assessment-treatment',
+    title: 'Fertility Assessment & Treatment Services',
+    nepaliTitle: 'प्रजनन मूल्याङ्कन तथा विशिष्ट उपचार सेवाहरू',
+    description: 'Customized clinical pathways ranging from natural cycle tracking and ovulation induction to advanced assisted reproduction (IUI, IVF, ICSI).',
+    keyIncludes: [
+      'Timed intercourse & follicular tracking',
+      'Intrauterine Insemination (IUI)',
+      'Personalized IVF / ICSI programs',
+      'Laser-assisted hatching & Day-5 blastocyst culture'
+    ],
+    badge: 'Clinical Treatment',
+    icon: 'HeartHandshake'
+  },
+  {
+    id: 'personalized-guidance',
+    title: 'Personalized Guidance Throughout the Fertility Journey',
+    nepaliTitle: 'उपचार यात्राभर निरन्तर व्यक्तिगत साथ र रेखदेख',
+    description: 'Compassionate medical coordination, step-by-step medication management, and round-the-clock reassurances for patients across Nepal and abroad.',
+    keyIncludes: [
+      'Dedicated one-on-one patient care nurse',
+      'Milestone-by-milestone clinical updates',
+      'Remote monitoring coordination for outstation couples',
+      'Structured post-transfer and early pregnancy support'
+    ],
+    badge: 'Compassionate Support',
+    icon: 'Sparkles'
+  }
+];
+
+export const MATERNITY_SERVICES: MaternityServiceItem[] = [
+  {
+    id: 'pregnancy-care',
+    title: 'Pregnancy Care & Monitoring (Starting to Delivery)',
+    nepaliTitle: 'गर्भावस्था हेरचाह तथा नियमित अनुगमन (सुरुवातदेखि सुत्केरीसम्म)',
+    description: 'Continuous clinical supervision tracking maternal vitals, gestational diabetes screening, and healthy fetal growth milestones from early conception all the way to delivery.',
+    features: [
+      'Comprehensive care from starting to delivery',
+      'Routine antenatal trimester checkups & vital profiling',
+      'Individualized prenatal wellness & nutrition counseling'
+    ],
+    badge: 'Starting to Delivery',
+    icon: 'Heart'
+  },
+  {
+    id: '5d-ultrasound',
+    title: '5D Ultrasound Services (Every Step Monitored with Dr. Ramesh Ghimire)',
+    nepaliTitle: '५D हाई-डेफिनिसन अल्ट्रासाउन्ड सेवा (डा. रमेश घिमिरेद्वारा अनुगमन)',
+    description: 'Every step monitored with professional doctor care: state-of-the-art 5D volumetric sonography capturing real-time fetal anatomy, movements, and anomaly screening.',
+    features: [
+      'Every step monitored with professional doctor (Dr. Ramesh Ghimire)',
+      'Crystal-clear real-time 5D fetal visualization',
+      'Comprehensive anomaly screening & fetal Doppler profile'
+    ],
+    badge: '5D Ultrasound Monitoring',
+    icon: 'Eye'
+  },
+  {
+    id: 'obstetrics-consultations',
+    title: 'Obstetrics Consultations (Dr. Kesheb Bhurtel & Dr. Anupama Karki)',
+    nepaliTitle: 'प्रसूति रोग समूह परामर्श (डा. केशव भुर्तेल र डा. अनुपमा कार्की)',
+    description: 'Specialist consultations with consultant obstetricians Dr. Kesheb Bhurtel and Dr. Anupama Karki to evaluate maternal-fetal well-being, birth readiness, and safe delivery planning.',
+    features: [
+      'Consultations with Dr. Kesheb Bhurtel & Dr. Anupama Karki',
+      'High-risk pregnancy assessment & birth planning',
+      'Continuous maternal reassurance & clinical support'
+    ],
+    badge: 'OBS Team',
+    icon: 'Stethoscope'
+  },
+  {
+    id: 'delivery-maternity',
+    title: 'Delivery & Maternity Services',
+    nepaliTitle: 'प्रसूति तथा सुत्केरी सेवा (Normal & Cesarean)',
+    description: 'Professional institutional labor and delivery suites supported by qualified obstetricians, pediatricians, and trained maternity nurses at Maulakalika Hospital.',
+    features: [
+      'Normal vaginal delivery suites with fetal telemetry',
+      'Modern surgical theater for Cesarean deliveries',
+      'Dedicated on-call maternal and pediatric care'
+    ],
+    badge: 'Labor & Delivery',
+    icon: 'Baby'
+  },
+  {
+    id: 'postnatal-care',
+    title: 'Postnatal Care (After Birth)',
+    nepaliTitle: 'सुत्केरीपछिको हेरचाह तथा पुनःस्थापना (After Birth)',
+    description: 'Compassionate care for new mothers and babies immediately after birth, focusing on physical recovery, surgical wound healing, lactation guidance, and emotional wellness.',
+    features: [
+      'Dedicated care immediately after birth',
+      'Wound healing & postpartum physical recovery',
+      'Professional lactation and breastfeeding support'
+    ],
+    badge: 'After Birth Care',
+    icon: 'Smile'
+  },
+  {
+    id: 'newborn-care',
+    title: 'Newborn Care',
+    nepaliTitle: 'नवजात शिशुको विशेष हेरचाह तथा बालरोग सेवा',
+    description: 'Comprehensive immediate postnatal screening, vital checks, neonatal vaccinations, and pediatric evaluation right from the moment of birth.',
+    features: [
+      'Immediate APGAR scoring and physical check',
+      'Universal neonatal immunization & screenings',
+      'Pediatric guidance for first-time parents'
+    ],
+    badge: 'Pediatrics',
+    icon: 'ShieldCheck'
+  },
+  {
+    id: 'nicu-services',
+    title: 'Neonatal Intensive Care Unit (NICU) Services',
+    nepaliTitle: 'एन.आई.सि.यु (NICU) नवजात शिशु सघन उपचार कक्ष',
+    description: 'Dedicated Level II/III neonatal intensive care at Maulakalika Hospital equipped with advanced infant incubators, phototherapy, and dedicated neonatal monitors for premature or vulnerable babies.',
+    features: [
+      'Advanced servo-controlled infant incubators',
+      'Continuous vital monitoring & neonatal phototherapy',
+      'Dedicated pediatricians and specialized neonatal nurses'
+    ],
+    badge: 'Intensive Newborn Care',
+    icon: 'Activity'
+  }
+];
+
+export const MAMTA_SUCCESS_STATS = {
+  heading: 'Our Success Stories — Your Journey to Parenthood',
+  nepaliHeading: 'हाम्रा सफलताका कथाहरू — अभिभावकत्वतर्फको तपाईंको यात्रा',
+  subheading: 'Verified milestones from real couples who trusted Mamta International Fertility Center at Maulakalika Hospital Chitwan.',
+  quote: '“Every journey to parenthood is unique. At Mamta International Fertility Center, we are committed to providing compassionate care, professional guidance, and personalized support at every step.”',
+  nepaliQuote: '“अभिभावकत्वतर्फको प्रत्येक यात्रा आफैंमा अद्वितीय हुन्छ। ममता इन्टरनेसनल फर्टिलिटी सेन्टरमा, हामी हरेक चरणमा ममतामयी हेरचाह, व्यावसायिक मार्गदर्शन र व्यक्तिगत सहयोग प्रदान गर्न प्रतिबद्ध छौं।”',
+  disclaimer: 'Figures are subject to ongoing clinical audit and verification. Individual clinical outcomes depend on personal biological factors including age, ovarian reserve, and medical history; these figures do not imply a guarantee of pregnancy.',
+  items: [
+    {
+      stat: '25+',
+      title: 'Success Stories at Mamta',
+      nepaliTitle: 'ममता सेन्टरमा सफल यात्राहरू',
+      subtitle: 'Within 5 Months',
+      nepaliSubtitle: '५ महिनाभित्र',
+      period: 'Recent 5-Month Clinical Tracking',
+      verificationStatus: 'Subject to Ongoing Verification',
+      highlight: true
+    },
+    {
+      stat: '130+',
+      title: 'Successful Fertility Journeys',
+      nepaliTitle: 'समग्र सफल प्रजनन यात्राहरू',
+      subtitle: 'Overall Documented Journeys',
+      nepaliSubtitle: 'समग्र उपलब्धिहरू',
+      period: 'Cumulative Documented Journeys',
+      verificationStatus: 'Subject to Ongoing Verification',
+      highlight: true
+    }
+  ]
+};
+

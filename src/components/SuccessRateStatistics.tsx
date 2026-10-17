@@ -357,7 +357,7 @@ export const SuccessRateStatistics: React.FC<SuccessRateProps> = ({ onOpenBookin
               <div className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                 <span>
-                  <strong>Advanced Age Strategies:</strong> For patients over 38, Dr. Mamata utilizes personalized DuoStim protocols and laser hatching to optimize implantation despite reduced ovarian reserve.
+                  <strong>Advanced Age Strategies:</strong> For patients over 38, Dr. Anusha Tiwari utilizes personalized DuoStim protocols and laser hatching to optimize implantation despite reduced ovarian reserve.
                 </span>
               </div>
             </div>

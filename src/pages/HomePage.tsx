@@ -1,6 +1,10 @@
 import React from 'react';
 import { TREATMENTS, DOCTORS, BRANCHES, TESTIMONIALS } from '../data/fertilityData';
+import { IMAGES } from '../assets/images';
 import IVFProcessSection from '../components/IVFProcessSection';
+import FertilityCounselingSection from '../components/FertilityCounselingSection';
+import MaternityCareSection from '../components/MaternityCareSection';
+import SuccessStoriesStatsSection from '../components/SuccessStoriesStatsSection';
 import {
   ArrowRight,
   ShieldCheck,
@@ -93,7 +97,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking, l
               <div className="relative mx-auto max-w-md lg:max-w-none">
                 <div className="relative rounded-2xl overflow-hidden shadow-xl border-4 border-white aspect-4/3 sm:aspect-16/11">
                   <img
-                    src="/src/assets/images/hero_fertility_consultation_1791911165896.jpg"
+                    src={IMAGES.heroConsultation}
                     alt="Doctor consulting warmly with couple at Mamata International Fertility Centre"
                     className="w-full h-full object-cover object-center"
                     referrerPolicy="no-referrer"
@@ -208,6 +212,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking, l
         </div>
       </section>
 
+      {/* 2.5 FERTILITY COUNSELING, INVESTIGATION & TREATMENT */}
+      <FertilityCounselingSection
+        onOpenBooking={onOpenBooking}
+        onNavigate={onNavigate}
+        language={language}
+      />
+
       {/* 3. DEDICATED SERVICES SHOWCASE (EACH LEADS TO ITS OWN PAGE!) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
@@ -288,8 +299,22 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking, l
         </div>
       </section>
 
+      {/* 3.5 COMPLETE CARE FROM CONCEPTION TO DELIVERY */}
+      <MaternityCareSection
+        onOpenBooking={onOpenBooking}
+        onNavigate={onNavigate}
+        language={language}
+      />
+
       {/* 4. IVF PROCESS STEP BY STEP */}
       <IVFProcessSection
+        onOpenBooking={onOpenBooking}
+        onNavigate={onNavigate}
+        language={language}
+      />
+
+      {/* 4.5 OUR SUCCESS STORIES — YOUR JOURNEY TO PARENTHOOD */}
+      <SuccessStoriesStatsSection
         onOpenBooking={onOpenBooking}
         onNavigate={onNavigate}
         language={language}
@@ -301,20 +326,20 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking, l
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div className="space-y-2">
               <span className="text-xs font-bold text-[#E48AA0] uppercase tracking-wider">
-                Senior Fertility Faculty
+                Clinical Faculty & Medical Team
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1D3B58] tracking-tight">
-                Led by Nepal’s Foremost Specialists
+                Meet Our Doctors & Healthcare Specialists
               </h2>
               <p className="text-slate-600 text-sm max-w-xl">
-                UK, Singapore, and Germany trained reproductive endocrinologists and certified embryologists practicing at Maulakalika Hospital.
+                Led by focal person Dr. Anusha Tiwari, ultrasound expert Dr. Ramesh Ghimire, obstetrics consultants (Dr. Kesheb Bhurtel & Dr. Anupama Karki), laparoscopic surgeons (Dr. Ramesh Poudel & Dr. Ritu), Chief Embryologist Dr. Bikash Adhikari, and Consultant Andrologist Dr. Suresh Thapa.
               </p>
             </div>
             <button
               onClick={() => onNavigate('doctors')}
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#1D3B58] hover:text-[#E48AA0]"
+              className="inline-flex items-center gap-1.5 bg-[#1D3B58] hover:bg-[#2B5A88] text-white px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-xs transition-colors shrink-0 cursor-pointer"
             >
-              <span>View Full Faculty Profiles</span>
+              <span>Meet Our Doctors</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -323,35 +348,36 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking, l
             {DOCTORS.map((doc) => (
               <div
                 key={doc.id}
-                className="bg-white rounded-2xl border border-slate-200 p-5 space-y-4 hover:shadow-md transition-all flex flex-col justify-between"
+                className="bg-white rounded-2xl border border-slate-200 p-5 space-y-4 hover:border-[#E48AA0] hover:shadow-md transition-all flex flex-col justify-between group"
               >
                 <div className="space-y-3">
                   <div className="aspect-square rounded-xl bg-slate-100 overflow-hidden relative">
                     {doc.image ? (
-                      <img src={doc.image} alt={doc.name} className="w-full h-full object-cover" />
+                      <img src={doc.image} alt={doc.name} className="w-full h-full object-cover object-top" />
                     ) : (
-                      <div className="w-full h-full bg-[#1D3B58] text-white flex items-center justify-center text-xl font-bold">
-                        {doc.name.split(' ')[1]?.[0] || 'D'}
+                      <div className="w-full h-full bg-[#1D3B58] text-white flex flex-col items-center justify-center p-3 text-center">
+                        <span className="text-2xl font-bold">{doc.name.replace('Dr. ', '').split(' ')[0]}</span>
+                        <span className="text-[10px] text-slate-300 uppercase tracking-wider font-semibold mt-0.5">{doc.department || 'Specialist'}</span>
                       </div>
                     )}
-                    <span className="absolute top-2 left-2 bg-white/95 text-[11px] font-bold px-2 py-0.5 rounded text-[#1D3B58]">
+                    <span className="absolute top-2 left-2 bg-white/95 text-[11px] font-bold px-2 py-0.5 rounded text-[#1D3B58] shadow-2xs">
                       {doc.experienceYears}+ Yrs
                     </span>
                   </div>
 
                   <div>
-                    <h3 className="font-bold text-base text-[#1D3B58]">{doc.name}</h3>
+                    <h3 className="font-bold text-base text-[#1D3B58] group-hover:text-[#2B5A88] transition-colors">{doc.name}</h3>
                     <p className="text-xs font-semibold text-[#E48AA0]">{doc.role.split('&')[0]}</p>
-                    <p className="text-[11px] text-slate-500 mt-0.5">{doc.qualifications}</p>
+                    <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-1">{doc.qualifications}</p>
                   </div>
                 </div>
 
                 <div className="pt-3 border-t border-slate-100 space-y-2">
                   <button
                     onClick={() => onOpenBooking(doc.name, 'chitwan')}
-                    className="w-full bg-[#E48AA0] hover:bg-[#D4748B] text-white py-2 rounded-xl text-xs font-bold transition-colors"
+                    className="w-full bg-[#E48AA0] hover:bg-[#D4748B] text-white py-2.5 rounded-xl text-xs font-bold transition-colors cursor-pointer shadow-xs"
                   >
-                    Book with {doc.name.split(' ')[1]}
+                    Book Appointment
                   </button>
                 </div>
               </div>

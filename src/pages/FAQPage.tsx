@@ -186,7 +186,7 @@ const FAQAccordionItem: React.FC<AccordionItemProps> = ({
                   onClick={onOpenBooking}
                   className="text-xs font-bold text-[#C96D83] hover:text-[#1D3B58] inline-flex items-center gap-1 transition-colors cursor-pointer"
                 >
-                  <span>Discuss this with Dr. Mamata</span>
+                  <span>Discuss this with Dr. Anusha Tiwari</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>

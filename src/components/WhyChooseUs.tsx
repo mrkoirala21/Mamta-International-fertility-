@@ -1,5 +1,6 @@
 import React from 'react';
 import { Microscope, Banknote, Users, HeartHandshake, CheckCircle2, ShieldCheck, Sparkles } from 'lucide-react';
+import { IMAGES } from '../assets/images';
 
 interface WhyChooseUsProps {
   onOpenBooking: () => void;
@@ -159,7 +160,7 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenBooking, languag
             {/* Lab Image */}
             <div className="lg:col-span-6 relative min-h-[260px] lg:min-h-full">
               <img
-                src="/src/assets/images/advanced_embryology_lab_1791911167652.jpg"
+                src={IMAGES.advancedLab}
                 alt="State of the art cleanroom IVF and embryology laboratory at Mamata Fertility Centre"
                 className="w-full h-full object-cover object-center"
                 referrerPolicy="no-referrer"

@@ -60,8 +60,8 @@ function loadAppointments(): StoredAppointment[] {
     {
       id: 'apt-001',
       referenceCode: 'MIFC-CHW-1042',
-      doctorId: 'dr-mamata',
-      doctorName: 'Dr. Mamata Sharma',
+      doctorId: 'dr-anusha',
+      doctorName: 'Dr. Anusha Tiwari',
       branchId: 'chitwan',
       branchName: 'Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan',
       date: '2026-10-15',
@@ -285,11 +285,13 @@ Key Location & Contact Facts:
 - Additional Landline: 056-493738
 - Official WhatsApp / Direct Mobile: 9855088798
 - Email: care@mamatafertility.com
-- Medical Director: Dr. Mamata Sharma (MBBS, MD, FICOG, Fellow in Reproductive Medicine UK & Singapore, 19+ years experience, 6000+ happy families).
-- Chief Embryologist: Dr. Bikash Adhikari (M.Sc Leeds UK, ESHRE certified).
-- Specialist Laparoscopic Surgeon: Dr. Priya Shrestha.
-- Andrologist & Male Infertility: Dr. Suresh Thapa (Micro-TESE, TESA/PESA).
-- Treatments: In-Vitro Fertilization (IVF), ICSI, IUI, Blastocyst Culture (Day 5), Cryopreservation (Egg/Sperm Freezing), Male Infertility (TESA/PESA), Laparoscopy.
+- Lead Fertility Specialist & Focal Person: Dr. Anusha Tiwari (MBBS, MD OBG/GYN, Fellowship in Reproductive Medicine, 9+ years obstetrics experience, 6+ years in fertility care).
+- Ultrasound & Pregnancy Monitoring: Dr. Ramesh Ghimire (5D ultrasound, every step monitored with professional doctor care).
+- Obstetrics Team (OBS): Dr. Kesheb Bhurtel & Dr. Anupama Karki (Antenatal care from starting to delivery, postnatal care after birth).
+- Laparoscopic Surgery Team: Dr. Ramesh Poudel & Dr. Ritu (Minimally invasive reproductive surgery).
+- Chief Clinical Embryologist & Lab Director: Dr. Bikash Adhikari (M.Sc Leeds UK, ESHRE certified).
+- Andrologist & Male Infertility Specialist: Dr. Suresh Thapa (Micro-TESE, TESA/PESA).
+- Treatments: In-Vitro Fertilization (IVF), ICSI, IUI, Blastocyst Culture (Day 5), Cryopreservation (Egg/Sperm Freezing), Male Infertility (TESA/PESA), Laparoscopy, 5D Ultrasound, Complete Maternity Care, Level II/III NICU.
 - Costs & Packages:
   * Complete IVF / ICSI Blastocyst Program: NPR 2,45,000 (USD $1,850) + medication.
   * IUI Program: NPR 28,000 (USD $210).
@@ -339,9 +341,9 @@ Tone: Deeply empathetic, compassionate, professional, clear, and reassuring. Alw
   } else if (lower.includes('location') || lower.includes('branch') || lower.includes('where') || lower.includes('address') || lower.includes('कहाँ') || lower.includes('chitwan') || lower.includes('चितवन')) {
     reply = `Our premier fertility centre is located at:\n\n📍 **Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan, Nepal**\n\n• **Hotline**: 056-493798\n• **Secondary Landline**: 056-493738\n• **WhatsApp**: 9855088798\n• **Hours**: Sunday to Friday 7:30 AM – 7:30 PM (Saturday 9:00 AM – 3:00 PM)\n\nWe provide complete IVF cleanroom labs, consultations, and day-care procedure suites on-premise at Maulakalika Hospital.`;
   } else if (lower.includes('success rate') || lower.includes('chance') || lower.includes('सफलता')) {
-    reply = `Our cumulative clinical pregnancy rate reaches **up to 72%** per blastocyst transfer for women under 35, and over **84%** across two consecutive cycles. Dr. Mamata Sharma conducts individualized AMH and pelvic assessments at Maulakalika Hospital so we can choose the exact stimulation protocol that maximizes your egg quality and implantation chances.`;
+    reply = `Our cumulative clinical pregnancy rate reaches **up to 72%** per blastocyst transfer for women under 35, and over **84%** across two consecutive cycles. Dr. Anusha Tiwari conducts individualized AMH and pelvic assessments at Maulakalika Hospital so we can choose the exact stimulation protocol that maximizes your egg quality and implantation chances.`;
   } else if (lower.includes('appointment') || lower.includes('book') || lower.includes('meet') || lower.includes('doctor') || lower.includes('डाक्टर')) {
-    reply = `You can easily schedule a consultation right here on our website or by messaging our WhatsApp at **9855088798**!\n\nSpecialists available:\n1. **Dr. Mamata Sharma** (Medical Director & Senior Fertility Specialist)\n2. **Dr. Suresh Thapa** (Andrologist & Male Infertility)\n3. **Dr. Priya Shrestha** (Gynecological Endoscopic Surgeon)\n4. **Dr. Bikash Adhikari** (Chief Clinical Embryologist)\n\nLocation: Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan. Hotline: 056-493798.`;
+    reply = `You can easily schedule a consultation right here on our website or by messaging our WhatsApp at **9855088798**!\n\nSpecialists available:\n1. **Dr. Anusha Tiwari** (Lead Fertility Specialist & Focal Person — 9+ yrs OBS, 6+ yrs Fertility)\n2. **Dr. Ramesh Ghimire** (Ultrasound & 5D Pregnancy Monitoring)\n3. **Obstetrics Team**: Dr. Kesheb Bhurtel & Dr. Anupama Karki\n4. **Laparoscopic Surgery Team**: Dr. Ramesh Poudel & Dr. Ritu\n5. **Dr. Bikash Adhikari** (Chief Clinical Embryologist)\n6. **Dr. Suresh Thapa** (Andrologist & Male Infertility)\n\nLocation: Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan. Hotline: 056-493798.`;
   } else if (lower.includes('due date') || lower.includes('calculator') || lower.includes('delivery date') || lower.includes('pregnant') || lower.includes('डेलिभरी') || lower.includes('क्यालकुलेटर')) {
     reply = `You can estimate your delivery date right here using our interactive **Due Date Calculator**! You can calculate based on:\n\n• **First Day of Last Period (LMP)** (with your exact cycle length)\n• **IVF Day 5 Blastocyst Transfer Date**\n• **IVF Day 3 Embryo Transfer Date**\n• **Date of Conception or IUI**\n\nIt will also reveal your current gestational week, trimester progress bar, baby growth size milestones, and estimated dates for your 6-week viability scan and 20-week anatomy ultrasound at Maulakalika Hospital!`;
   } else if (lower.includes('male') || lower.includes('sperm') || lower.includes('azoospermia') || lower.includes('शुक्राणु') || lower.includes('पुरुष')) {

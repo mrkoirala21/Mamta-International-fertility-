@@ -213,6 +213,7 @@ export default function App() {
 
         {currentPage === 'stories' && (
           <TestimonialsPage
+            onNavigate={navigateTo}
             onOpenBooking={(doc, _br, tr) => handleOpenBooking(doc, 'chitwan', tr)}
             language={language}
           />

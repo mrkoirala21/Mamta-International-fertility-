@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { TREATMENTS, Treatment } from '../data/fertilityData';
+import FertilityCounselingSection from '../components/FertilityCounselingSection';
+import MaternityCareSection from '../components/MaternityCareSection';
 import {
   ArrowRight,
   CheckCircle2,
@@ -10,6 +12,7 @@ import {
   Layers,
   ChevronRight,
   ExternalLink,
+  Users,
 } from 'lucide-react';
 
 interface ServicesPageProps {
@@ -214,8 +217,59 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
           </div>
         </div>
       </section>
+
+      {/* 4. FERTILITY COUNSELING, INVESTIGATION & TREATMENT */}
+      <FertilityCounselingSection
+        onOpenBooking={onOpenBooking}
+        onNavigate={onNavigate}
+        language={language}
+      />
+
+      {/* 5. COMPLETE CARE FROM CONCEPTION TO DELIVERY */}
+      <MaternityCareSection
+        onOpenBooking={onOpenBooking}
+        onNavigate={onNavigate}
+        language={language}
+      />
+
+      {/* 6. NAVIGATION CTA STRIP */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-xs space-y-4 max-w-3xl mx-auto">
+          <h3 className="text-xl sm:text-2xl font-bold text-[#1D3B58]">
+            {language === 'en' ? 'Have Questions About Which Treatment is Right for You?' : 'तपाईंको लागि कुन उपचार उपयुक्त हुन्छ?'}
+          </h3>
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            {language === 'en'
+              ? 'Our specialists offer individualized diagnostic evaluations at Maulakalika Hospital Chitwan. Discuss your timeline with our fertility doctors or maternal care team.'
+              : 'हाम्रा विशेषज्ञ डाक्टरहरूसँग परामर्श गरी आफ्नो अवस्था अनुसारको स्पष्ट मार्गनिर्देशन लिनुहोस्।'}
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+            <button
+              onClick={() => onOpenBooking(undefined, 'chitwan', 'General Services Consultation')}
+              className="bg-[#E48AA0] hover:bg-[#D4748B] text-white px-6 py-3 rounded-xl font-bold text-xs sm:text-sm shadow-sm transition-all cursor-pointer flex items-center gap-2"
+            >
+              <Calendar className="w-4 h-4" />
+              <span>Book an Appointment</span>
+            </button>
+            <button
+              onClick={() => onNavigate('doctors')}
+              className="bg-[#1D3B58] hover:bg-[#2B5A88] text-white px-5 py-3 rounded-xl font-bold text-xs sm:text-sm transition-colors cursor-pointer flex items-center gap-2"
+            >
+              <Users className="w-4 h-4 text-[#E48AA0]" />
+              <span>Meet Our Doctors</span>
+            </button>
+            <button
+              onClick={() => onNavigate('contact')}
+              className="border border-slate-300 hover:border-[#1D3B58] text-slate-700 px-5 py-3 rounded-xl font-semibold text-xs sm:text-sm transition-colors cursor-pointer"
+            >
+              <span>Contact Us</span>
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
 
 export default ServicesPage;
+

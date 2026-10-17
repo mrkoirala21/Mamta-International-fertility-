@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TESTIMONIALS } from '../data/fertilityData';
+import { IMAGES } from '../assets/images';
 import {
   Star,
   Quote,
@@ -12,13 +13,17 @@ import {
   Phone,
 } from 'lucide-react';
 
+import SuccessStoriesStatsSection from '../components/SuccessStoriesStatsSection';
+
 interface TestimonialsPageProps {
   onOpenBooking: (doctorName?: string, branchId?: string, treatmentName?: string) => void;
+  onNavigate?: (page: string) => void;
   language?: 'en' | 'ne';
 }
 
 export const TestimonialsPage: React.FC<TestimonialsPageProps> = ({
   onOpenBooking,
+  onNavigate,
   language = 'en',
 }) => {
   return (
@@ -34,17 +39,24 @@ export const TestimonialsPage: React.FC<TestimonialsPageProps> = ({
             Patient Stories & Success Journeys
           </h1>
           <p className="text-base sm:text-lg text-slate-300 max-w-3xl leading-relaxed">
-            Behind every statistic is a tender story of perseverance, faith, and clinical precision. Read verified reviews from parents who trusted Mamata International Fertility Centre at Maulakalika Hospital Chitwan.
+            Behind every milestone is a tender story of perseverance, trust, and clinical excellence. Read verified reviews from parents who trusted Mamta International Fertility Center at Maulakalika Hospital Chitwan.
           </p>
         </div>
       </section>
+
+      {/* 1.5 OUR SUCCESS STORIES — YOUR JOURNEY TO PARENTHOOD */}
+      <SuccessStoriesStatsSection
+        onOpenBooking={onOpenBooking}
+        onNavigate={onNavigate}
+        language={language}
+      />
 
       {/* 2. EMOTIONAL HIGHLIGHT STORY */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm grid grid-cols-1 lg:grid-cols-12 items-center">
           <div className="lg:col-span-5 h-80 lg:h-full min-h-[320px] relative">
             <img
-              src="/src/assets/images/parents_with_newborn_1791911168465.jpg"
+              src={IMAGES.parentsNewborn}
               alt="Joyful parents with baby"
               className="w-full h-full object-cover"
             />
@@ -62,7 +74,7 @@ export const TestimonialsPage: React.FC<TestimonialsPageProps> = ({
             <Quote className="w-10 h-10 text-[#E48AA0]/40" />
 
             <h3 className="text-xl sm:text-2xl font-bold text-[#1D3B58]">
-              "After 7 years of waiting and two failed cycles elsewhere, Dr. Mamata listened with open arms."
+              "After 7 years of waiting and two failed cycles elsewhere, Dr. Anusha listened with open arms."
             </h3>
 
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
