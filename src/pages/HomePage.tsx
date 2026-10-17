@@ -54,7 +54,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking, l
               </h1>
 
               <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                World-class IVF and fertility treatments at Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan with advanced cleanroom embryology labs, transparent pricing, and deeply compassionate care.
+                World-class IVF and fertility treatments at Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan with advanced embryology labs, transparent pricing, and deeply compassionate care.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
@@ -136,17 +136,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking, l
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               <div className="space-y-1">
                 <div className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1D3B58] tabular-nums tracking-tight">
-                  Class 10,000
+                  130+
                 </div>
-                <div className="text-xs sm:text-sm font-semibold text-slate-600">Cleanroom Embryology Lab</div>
-                <div className="text-[11px] text-slate-400 font-medium">Ultra-Pure Air Filtration</div>
+                <div className="text-xs sm:text-sm font-semibold text-slate-600">Successful Journeys</div>
+                <div className="text-[11px] text-slate-400 font-medium">Parenthood Milestones</div>
               </div>
               <div className="space-y-1">
                 <div className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1D3B58] tabular-nums tracking-tight">
-                  10,000+
+                  25+
                 </div>
-                <div className="text-xs sm:text-sm font-semibold text-slate-600">Happy Families</div>
-                <div className="text-[11px] font-bold text-[#C96D83]">From everywhere</div>
+                <div className="text-xs sm:text-sm font-semibold text-slate-600">Recent Success Stories</div>
+                <div className="text-[11px] font-bold text-[#C96D83]">At Mamta in 5 Months</div>
               </div>
               <div className="space-y-1">
                 <div className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1D3B58] tabular-nums tracking-tight">
@@ -475,7 +475,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking, l
             onClick={() => onNavigate('stories')}
             className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#1D3B58] hover:text-[#E48AA0]"
           >
-            <span>Read All 10,000+ Success Stories</span>
+            <span>Read All Verified Success Stories</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

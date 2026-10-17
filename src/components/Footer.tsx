@@ -41,11 +41,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onNavigate, langu
               Nepal’s benchmark centre for advanced assisted reproduction, robotic ICSI, and compassionate parenthood care at Maulakalika Hospital Pvt. Ltd., Chitwan.
             </p>
             <div className="flex flex-wrap items-center gap-3 text-xs text-[#E48AA0] font-semibold pt-1">
-              <span>NMC Registered</span>
+              <span>NMC Registered Specialists</span>
               <span>·</span>
-              <span>Class 10,000 Cleanroom Embryology Lab</span>
+              <span>Advanced Embryology Lab</span>
               <span>·</span>
-              <span>10,000+ Happy Families (From Everywhere)</span>
+              <span>130+ Successful Journeys</span>
             </div>
           </div>
 

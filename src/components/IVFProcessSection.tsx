@@ -81,12 +81,12 @@ const IVF_STEPS: IVFStep[] = [
     nepaliOverview: 'बिरामीलाई कुनै दुखाइ नहुने गरी हल्का बेहोस बनाएर २०-३० मिनेटभित्र अल्ट्रासाउन्डको सहयोगले अण्डाहरू निकालिन्छ। सोही दिन वीर्य पनि संकलन गरिन्छ।',
     clinicalActions: [
       'Painless transvaginal ultrasound-guided follicular aspiration',
-      'Immediate handover to adjacent cleanroom embryology suite',
+      'Immediate handover to adjacent embryology suite',
       'Density-gradient washing & swim-up motility harvesting of husband’s semen sample',
       'Patient rests comfortably in day-care recovery suite for 1–2 hours before going home'
     ],
     patientExperience: 'Completely asleep under twilight sedation; no stitches, no scars, and walk out comfortably on the same day.',
-    labStandard: 'Class 10,000 cleanroom suite with HEPA VOC filtration & heated stage aspiration pumps',
+    labStandard: 'Advanced embryology suite with HEPA VOC filtration & heated stage aspiration pumps',
     iconName: 'retrieval'
   },
   {
@@ -168,7 +168,7 @@ export const IVFProcessSection: React.FC<IVFProcessSectionProps> = ({
             </h2>
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
               {language === 'en'
-                ? 'We demystify every clinical milestone into clear, transparent, and gentle stages. At Maulakalika Hospital Chitwan, you are supported by our senior faculty and advanced cleanroom embryologists every single day.'
+                ? 'We demystify every clinical milestone into clear, transparent, and gentle stages. At Maulakalika Hospital Chitwan, you are supported by our senior faculty and advanced embryologists every single day.'
                 : 'महिनावारीको पहिलो परामर्शदेखि सफल गर्भावस्था परीक्षणसम्मका ६ वटा मुख्य चरणहरूको सम्पूर्ण जानकारी। कुनै अन्योल र डर बिना पूर्ण आत्मविश्वासका साथ उपचार अघि बढाउनुहोस्।'}
             </p>
           </div>
@@ -406,7 +406,7 @@ export const IVFProcessSection: React.FC<IVFProcessSectionProps> = ({
                     Chitwan Embryology Lab
                   </span>
                   <span className="text-[11px] bg-white/20 px-2 py-0.5 rounded-full font-mono">
-                    Class 10,000
+                    Advanced Suite
                   </span>
                 </div>
                 <p className="text-xs text-slate-200 leading-relaxed">

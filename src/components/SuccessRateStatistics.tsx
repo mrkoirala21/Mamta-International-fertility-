@@ -263,14 +263,14 @@ export const SuccessRateStatistics: React.FC<SuccessRateProps> = ({ onOpenBookin
             <span className="text-3xl font-extrabold text-[#1D3B58]">65%+</span>
             <span className="text-xs font-semibold text-emerald-600">ESCO MIRI®</span>
           </div>
-          <p className="text-[11px] text-slate-500">Fertilized eggs reaching Day 5 stage in cleanroom</p>
+          <p className="text-[11px] text-slate-500">Fertilized eggs reaching Day 5 stage in advanced lab</p>
         </div>
 
         <div className="p-4 sm:p-5 bg-[#F9FAFC] rounded-2xl border border-slate-200/80 space-y-1">
-          <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Families Guided</span>
+          <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Successful Journeys</span>
           <div className="flex items-baseline gap-1.5">
-            <span className="text-3xl font-extrabold text-[#1D3B58]">10,000+</span>
-            <span className="text-xs font-semibold text-[#E48AA0]">Since 2005</span>
+            <span className="text-3xl font-extrabold text-[#1D3B58]">130+</span>
+            <span className="text-xs font-semibold text-[#E48AA0]">Verified</span>
           </div>
           <p className="text-[11px] text-slate-500">Dedicated care at Maulakalika Hospital Chitwan</p>
         </div>
@@ -518,7 +518,7 @@ export const SuccessRateStatistics: React.FC<SuccessRateProps> = ({ onOpenBookin
           <div className="w-9 h-9 rounded-xl bg-[#FCEEF1] text-[#C96D83] flex items-center justify-center font-bold text-sm">
             01
           </div>
-          <h4 className="font-bold text-sm text-[#1D3B58]">Class 10,000 Cleanroom</h4>
+          <h4 className="font-bold text-sm text-[#1D3B58]">Advanced Embryology Lab</h4>
           <p className="text-xs text-slate-600 leading-relaxed">
             Multi-room ESCO MIRI® incubators with independent gas mixtures maintain constant pH and osmolarity for zero stress on human embryos.
           </p>

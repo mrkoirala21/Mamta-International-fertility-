@@ -39,7 +39,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking,
           </h1>
 
           <p className="text-base sm:text-lg text-slate-300 max-w-3xl leading-relaxed">
-            Established at Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan, Mamata International Fertility Centre represents Nepal’s premier tertiary reproductive care facility—uniting world-trained embryologists, cutting-edge cleanroom technology, and profound emotional empathy.
+            Established at Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan, Mamata International Fertility Centre represents Nepal’s premier tertiary reproductive care facility—uniting world-trained embryologists, cutting-edge embryology laboratory technology, and profound emotional empathy.
           </p>
 
           <div className="pt-4 flex flex-wrap gap-4">
@@ -86,14 +86,14 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking,
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
-                <span className="text-2xl font-bold text-[#1D3B58] block">Class 10,000</span>
-                <span className="text-xs text-slate-600 font-semibold block">Cleanroom Embryology Lab</span>
-                <span className="text-[11px] text-slate-400 font-medium">Ultra-pure positive air pressure</span>
+                <span className="text-2xl font-bold text-[#1D3B58] block">130+</span>
+                <span className="text-xs text-slate-600 font-semibold block">Successful Journeys</span>
+                <span className="text-[11px] text-slate-400 font-medium">Parenthood milestones achieved</span>
               </div>
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
-                <span className="text-2xl font-bold text-[#1D3B58] block">10,000+</span>
-                <span className="text-xs text-slate-600 font-semibold block">Happy Families</span>
-                <span className="text-[11px] text-[#C96D83] font-bold">From everywhere</span>
+                <span className="text-2xl font-bold text-[#1D3B58] block">25+</span>
+                <span className="text-xs text-slate-600 font-semibold block">Recent Success Stories</span>
+                <span className="text-[11px] text-[#C96D83] font-bold">Within 5 months at Mamta</span>
               </div>
             </div>
           </div>
@@ -151,7 +151,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking,
                 Advanced Lab Technology
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Cleanroom Class 10,000 embryology facility with ESCO MIRI® multi-room incubators, robotic micromanipulators, and laser-assisted hatching.
+                Advanced embryology facility with ESCO MIRI® multi-room incubators, robotic micromanipulators, and laser-assisted hatching.
               </p>
             </div>
 
@@ -200,13 +200,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking,
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-6 space-y-5">
               <span className="text-xs font-bold text-[#E48AA0] uppercase tracking-wider">
-                Our Cleanroom Technology
+                Our Laboratory Technology
               </span>
               <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-                Class 10,000 Cleanroom Embryology Laboratory
+                Advanced IVF & Embryology Laboratory
               </h3>
               <p className="text-sm text-slate-200 leading-relaxed">
-                Human embryos are micro-environments sensitive to volatile organic compounds (VOCs), room light, temperature shifts, and humidity. Our lab at Maulakalika Hospital is built to stringent international cleanroom specifications:
+                Human embryos are micro-environments sensitive to volatile organic compounds (VOCs), room light, temperature shifts, and humidity. Our lab at Maulakalika Hospital is built to stringent international embryology standards:
               </p>
 
               <div className="space-y-3 text-xs sm:text-sm text-slate-200">
@@ -238,7 +238,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking,
               <div className="rounded-2xl overflow-hidden shadow-lg border-2 border-white/20">
                 <img
                   src={IMAGES.advancedLab}
-                  alt="Mamata Cleanroom Embryology Laboratory"
+                  alt="Mamata Advanced Embryology Laboratory"
                   className="w-full h-80 object-cover"
                 />
               </div>

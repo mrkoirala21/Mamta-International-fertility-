@@ -137,7 +137,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-[#1D3B58] flex flex-col antialiased selection:bg-[#FCEEF1] selection:text-[#C96D83]">
+    <div className="min-h-screen bg-white text-[#1D3B58] flex flex-col antialiased selection:bg-[#FCEEF1] selection:text-[#C96D83] overflow-x-hidden w-full max-w-full">
       {/* 1. Header with Top Announcement Bar, Logo, & Page Navigation */}
       <Header
         onOpenBooking={(doc, _br, tr) => handleOpenBooking(doc, 'chitwan', tr)}

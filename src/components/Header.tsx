@@ -73,95 +73,135 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-white shadow-xs border-b border-slate-100">
-      {/* TOP ANNOUNCEMENT BAR */}
-      <div className="bg-[#1D3B58] text-white text-xs py-2 px-4 sm:px-6 lg:px-8 border-b border-[#2A4D70]">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
-          {/* Contact details */}
-          <div className="flex items-center flex-wrap gap-3 sm:gap-5 text-slate-200">
+    <header className="sticky top-0 z-40 bg-white shadow-xs border-b border-slate-100 w-full">
+      {/* TOP ANNOUNCEMENT & CONTACT BAR */}
+      <div className="bg-[#1D3B58] text-white text-xs py-1.5 px-4 sm:px-6 lg:px-8 border-b border-[#2A4D70] w-full">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-1.5 md:gap-3">
+          {/* Row 1: Hotlines & WhatsApp */}
+          <div className="flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1 text-slate-200">
             <a
               href="tel:056493798"
               className="flex items-center gap-1.5 hover:text-white transition-colors"
               title="Call 24/7 Hotline"
             >
-              <Phone className="w-3.5 h-3.5 text-[#E48AA0]" />
+              <Phone className="w-3.5 h-3.5 text-[#E48AA0] shrink-0" />
               <span className="font-semibold tracking-wide">{t.hotline}</span>
             </a>
-            <span className="text-slate-500">|</span>
+            <span className="text-slate-500 hidden sm:inline">|</span>
             <a
               href="tel:056493738"
               className="hover:text-white transition-colors text-slate-300 hidden sm:inline"
             >
               {t.telSecondary}
             </a>
-            <span className="hidden sm:inline text-slate-500">|</span>
+            <span className="text-slate-500">|</span>
             <a
               href="https://wa.me/9779855088798"
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 font-semibold transition-colors"
             >
-              <MessageSquare className="w-3.5 h-3.5" />
+              <MessageSquare className="w-3.5 h-3.5 shrink-0" />
               <span>{t.whatsapp}</span>
             </a>
-            <span className="hidden lg:inline text-slate-500">|</span>
-            <div className="hidden lg:flex items-center gap-1.5 text-slate-300">
-              <MapPin className="w-3.5 h-3.5 text-[#E48AA0]" />
-              <span>{t.location}</span>
-            </div>
           </div>
 
-          {/* Location badge & Language toggle */}
-          <div className="flex items-center gap-3 ml-auto sm:ml-0">
-            {/* Hospital location badge */}
+          {/* Row 2: Location, Hours, & Language toggle */}
+          <div className="flex flex-wrap items-center justify-between md:justify-end gap-x-3 gap-y-1 pt-1 md:pt-0 border-t md:border-t-0 border-[#2A4D70]/60">
             <button
               onClick={() => handleNavClick('contact')}
-              className="hidden sm:flex items-center gap-1.5 bg-[#244566] hover:bg-[#2e547a] text-slate-200 hover:text-white rounded-md px-2.5 py-0.5 border border-[#335B84] text-xs transition-colors"
+              className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors text-left text-[11px] sm:text-xs cursor-pointer"
             >
-              <MapPin className="w-3 h-3 text-[#E48AA0]" />
-              <span className="font-medium">Chitwan (Maulakalika Hospital)</span>
+              <MapPin className="w-3 h-3 text-[#E48AA0] shrink-0" />
+              <span className="truncate max-w-[240px] sm:max-w-none">{t.location}</span>
             </button>
 
-            {/* Language toggle */}
-            <div className="flex items-center bg-[#244566] border border-[#335B84] rounded-md overflow-hidden text-xs">
+            <div className="flex items-center gap-2 shrink-0">
+              <span className="text-slate-500 hidden lg:inline">|</span>
+              <div className="hidden lg:flex items-center gap-1 text-slate-300 text-[11px]">
+                <Clock className="w-3 h-3 text-[#E48AA0] shrink-0" />
+                <span>{t.hours}</span>
+              </div>
+
+              {/* Language toggle */}
+              <div className="flex items-center bg-[#244566] border border-[#335B84] rounded-md overflow-hidden text-xs shrink-0">
+                <button
+                  onClick={() => onToggleLanguage('en')}
+                  className={`px-2 py-0.5 transition-colors cursor-pointer ${
+                    language === 'en'
+                      ? 'bg-[#E48AA0] text-white font-semibold'
+                      : 'text-slate-300 hover:text-white'
+                  }`}
+                >
+                  EN
+                </button>
+                <button
+                  onClick={() => onToggleLanguage('ne')}
+                  className={`px-2 py-0.5 transition-colors cursor-pointer ${
+                    language === 'ne'
+                      ? 'bg-[#E48AA0] text-white font-semibold'
+                      : 'text-slate-300 hover:text-white'
+                  }`}
+                >
+                  नेपाली
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* LINE 1: BRAND LOGO & ACTION BAR */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <div className="flex items-center justify-between gap-4">
+          {/* Brand Logo */}
+          <button
+            onClick={() => handleNavClick('home')}
+            className="flex items-center py-1 shrink-0 text-left cursor-pointer"
+          >
+            <MamataLogo size="md" />
+          </button>
+
+          {/* Quick Highlight Info Pill (Desktop Only) */}
+          <div className="hidden xl:flex items-center gap-3 text-xs text-slate-600 bg-slate-50 px-3.5 py-1.5 rounded-full border border-slate-200/80">
+            <span className="flex items-center gap-1.5 font-semibold text-[#1D3B58]">
+              <MapPin className="w-3.5 h-3.5 text-[#E48AA0]" />
+              Maulakalika Hospital, Bharatpur-11
+            </span>
+            <span className="text-slate-300">|</span>
+            <a href="tel:056493798" className="hover:text-[#E48AA0] font-medium transition-colors">
+              056-493798
+            </a>
+          </div>
+
+          {/* Right Action: Booking Button & Mobile Toggle */}
+          <div className="flex items-center gap-3 shrink-0">
+            <button
+              onClick={() => onOpenBooking()}
+              className="hidden sm:inline-flex items-center gap-2 bg-[#E48AA0] hover:bg-[#D4748B] text-white px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-sm transition-all duration-150 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+            >
+              <Calendar className="w-4 h-4" />
+              <span>{t.cta}</span>
+            </button>
+
+            {/* Mobile menu button */}
+            <div className="flex lg:hidden items-center">
               <button
-                onClick={() => onToggleLanguage('en')}
-                className={`px-2 py-0.5 transition-colors ${
-                  language === 'en'
-                    ? 'bg-[#E48AA0] text-white font-semibold'
-                    : 'text-slate-300 hover:text-white'
-                }`}
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-2 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-100 cursor-pointer"
+                aria-label="Toggle Navigation Menu"
               >
-                EN
-              </button>
-              <button
-                onClick={() => onToggleLanguage('ne')}
-                className={`px-2 py-0.5 transition-colors ${
-                  language === 'ne'
-                    ? 'bg-[#E48AA0] text-white font-semibold'
-                    : 'text-slate-300 hover:text-white'
-                }`}
-              >
-                नेपाली
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* MAIN NAVIGATION BAR */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 gap-4">
-          {/* Brand Logo */}
-          <button
-            onClick={() => handleNavClick('home')}
-            className="flex items-center py-2 shrink-0 text-left cursor-pointer"
-          >
-            <MamataLogo size="md" />
-          </button>
-
-          {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-4 xl:gap-6 text-sm font-medium text-slate-700">
+      {/* LINE 2: DEDICATED FULL-WIDTH NAVIGATION ROW (DESKTOP) */}
+      <div className="hidden lg:block border-t border-slate-100 bg-white/95 backdrop-blur-xs w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav className="flex flex-wrap items-center justify-between gap-x-3 xl:gap-x-6 gap-y-1.5 py-2 text-xs xl:text-sm font-semibold text-slate-700">
             <button
               onClick={() => handleNavClick('home')}
               className={`transition-colors py-1 cursor-pointer whitespace-nowrap ${
@@ -205,7 +245,7 @@ export const Header: React.FC<HeaderProps> = ({
               >
                 <button
                   onClick={() => handleNavClick('services')}
-                  className="w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-[#1D3B58] bg-slate-50 hover:bg-[#FCEEF1] hover:text-[#C96D83] transition-colors mb-1.5 flex items-center justify-between"
+                  className="w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-[#1D3B58] bg-slate-50 hover:bg-[#FCEEF1] hover:text-[#C96D83] transition-colors mb-1.5 flex items-center justify-between cursor-pointer"
                 >
                   <span>{t.nav.allServices}</span>
                   <span className="text-[10px] bg-[#E48AA0] text-white px-1.5 py-0.5 rounded">All 7</span>
@@ -216,7 +256,7 @@ export const Header: React.FC<HeaderProps> = ({
                     <button
                       key={tr.id}
                       onClick={() => handleNavClick('service', tr.id)}
-                      className="w-full text-left px-3 py-2 rounded-xl text-xs hover:bg-slate-50 text-slate-700 hover:text-[#1D3B58] transition-colors flex items-center justify-between"
+                      className="w-full text-left px-3 py-2 rounded-xl text-xs hover:bg-slate-50 text-slate-700 hover:text-[#1D3B58] transition-colors flex items-center justify-between cursor-pointer"
                     >
                       <span className="font-semibold">{tr.title}</span>
                       <span className="text-[10px] text-[#C96D83] font-medium bg-[#FCEEF1] px-2 py-0.5 rounded-full">
@@ -305,28 +345,6 @@ export const Header: React.FC<HeaderProps> = ({
               {t.nav.contact}
             </button>
           </nav>
-
-          {/* Primary Action Button */}
-          <div className="hidden sm:flex items-center gap-3 shrink-0">
-            <button
-              onClick={() => onOpenBooking()}
-              className="inline-flex items-center gap-2 bg-[#E48AA0] hover:bg-[#D4748B] text-white px-5 py-2.5 rounded-xl font-semibold text-sm shadow-sm transition-all duration-150 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
-            >
-              <Calendar className="w-4 h-4" />
-              <span>{t.cta}</span>
-            </button>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="flex lg:hidden items-center">
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-100 cursor-pointer"
-              aria-label="Toggle Navigation Menu"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
         </div>
       </div>
 

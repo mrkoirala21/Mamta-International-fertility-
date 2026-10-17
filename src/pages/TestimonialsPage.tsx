@@ -33,7 +33,7 @@ export const TestimonialsPage: React.FC<TestimonialsPageProps> = ({
         <div className="max-w-7xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 text-xs font-semibold bg-white/10 text-[#E48AA0] px-3.5 py-1.5 rounded-full">
             <Heart className="w-3.5 h-3.5" />
-            <span>10,000+ Happy Families From Everywhere</span>
+            <span>130+ Verified Parenthood Journeys</span>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
             Patient Stories & Success Journeys

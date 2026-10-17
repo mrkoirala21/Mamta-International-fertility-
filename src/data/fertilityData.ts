@@ -133,7 +133,7 @@ export const TREATMENTS: Treatment[] = [
     subtitle: 'Comprehensive assisted reproduction with individualized stimulation',
     badge: 'Core Program',
     summary: 'Nepal’s gold standard IVF protocol combining advanced hormonal profiling, gentle stimulation, and precision embryology.',
-    description: 'Our IVF program is tailored specifically to each couple’s reproductive biology. Eggs are carefully retrieved and fertilized with sperm in our ultra-pure cleanroom laboratory, nurtured until peak blastocyst stage before gentle embryo transfer.',
+    description: 'Our IVF program is tailored specifically to each couple’s reproductive biology. Eggs are carefully retrieved and fertilized with sperm in our ultra-pure embryology laboratory, nurtured until peak blastocyst stage before gentle embryo transfer.',
     idealFor: [
       'Blocked, damaged, or absent fallopian tubes',
       'Advanced maternal age or reduced ovarian reserve',
@@ -511,7 +511,7 @@ export const DOCTORS: Doctor[] = [
     department: 'embryology',
     image: '',
     specialties: ['Blastocyst Culture', 'Robotic ICSI', 'Laser-Assisted Hatching', 'Embryo Vitrification'],
-    bio: 'Overseeing Mamata International’s state-of-the-art cleanroom IVF lab, Dr. Adhikari ensures rigorous air quality, strict temperature-osmolarity invariants, and zero-compromise embryo nurturing protocols.',
+    bio: 'Overseeing Mamata International’s state-of-the-art IVF and embryology lab, Dr. Adhikari ensures rigorous air quality, strict temperature-osmolarity invariants, and zero-compromise embryo nurturing protocols.',
     availableDays: 'Daily Lab Oversight & Prior Appointment',
     consultationFee: 'NPR 1,500',
     patientSatisfaction: '98.8%'
@@ -548,7 +548,7 @@ export const HOSPITAL_LOCATION: Branch = {
   hours: 'Sunday – Friday: 7:30 AM – 7:30 PM',
   saturdayHours: 'Saturday: 9:00 AM – 3:00 PM (Emergency & OPD)',
   facilities: [
-    'Advanced Class 10,000 Cleanroom Embryology Lab',
+    'Advanced IVF & Embryology Laboratory',
     'Robotic ICSI & Laser-Assisted Micromanipulation',
     'Full IVF Surgical Procedure Theatres',
     'Cryopreservation & Liquid Nitrogen Bio-bank',

@@ -154,7 +154,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenBooking, languag
                   Maulakalika Hospital Pvt. Ltd., Bharatpur-11
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  Our premises in Bharatpur-11 house the full Mamata International clinical departments, andrology semen analysis suite, class 10,000 cleanroom embryology labs, high-definition 4D ultrasound rooms, and patient recovery beds.
+                  Our premises in Bharatpur-11 house the full Mamata International clinical departments, andrology semen analysis suite, advanced embryology and IVF labs, high-definition 4D ultrasound rooms, and patient recovery beds.
                 </p>
               </div>
 

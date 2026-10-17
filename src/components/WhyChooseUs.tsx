@@ -18,7 +18,7 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenBooking, languag
         {
           icon: Microscope,
           title: 'Advanced Reproductive Tech',
-          subtitle: 'Class 10,000 Cleanroom & Robotic ICSI',
+          subtitle: 'Advanced Embryology & Robotic ICSI',
           description:
             'Equipped with ESCO MIRI® multi-room time-lapse incubators, laser-assisted hatching, and Narishige motorized micromanipulators that maintain ideal physiological conditions.',
           highlights: ['Continuous time-lapse embryo imaging', 'Laser-assisted zona hatching', 'Ultra-rapid closed vitrification'],
@@ -37,7 +37,7 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenBooking, languag
           subtitle: 'UK & Singapore Trained Medical Team',
           description:
             'Led by focal person Dr. Anusha Tiwari (MBBS, MD OBG/GYN, Fellowship in Reproductive Medicine) alongside certified senior clinical embryologists with more than 15 years of dedicated laboratory mastery.',
-          highlights: ['Senior ESHRE certified embryologists', 'Full-time dedicated andrology unit', '10,000+ Happy families from everywhere'],
+          highlights: ['Senior ESHRE certified embryologists', 'Full-time dedicated andrology unit', '130+ Successful parenthood journeys'],
         },
         {
           icon: HeartHandshake,
@@ -48,7 +48,7 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenBooking, languag
           highlights: ['Dedicated patient care coordinator', 'Free couple counseling sessions', 'Discreet VIP consultation wings'],
         },
       ],
-      labBadge: 'Certified Cleanroom Laboratory',
+      labBadge: 'Certified Embryology Laboratory',
       labDesc: 'Constant laminar air flow, HEPA VOC filtration, and calibrated gas levels for maximum embryo viability.',
     },
     ne: {
@@ -60,7 +60,7 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenBooking, languag
         {
           icon: Microscope,
           title: 'अत्याधुनिक प्रजनन प्रविधि',
-          subtitle: 'क्लास १०,००० क्लिनरुम र रोबोटिक ICSI',
+          subtitle: 'अत्याधुनिक भ्रूण प्रयोगशाला र रोबोटिक ICSI',
           description:
             'ESCO MIRI® मल्टिरुम इन्क्युबेटर, लेजर-असिस्टेड ह्याचिङ तथा अत्याधुनिक माइक्रोम्यानुपुलेटरहरू जसले भ्रूणलाई आमाको गर्भजस्तै सुरक्षित वातावरण प्रदान गर्दछ।',
           highlights: ['निरन्तर टाइम-ल्याप्स भ्रूण अवलोकन', 'लेजर असिस्टेड ह्याचिङ सुविधा', 'सुरक्षित क्रायोप्रिजर्भेसन बैंक'],
@@ -79,7 +79,7 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenBooking, languag
           subtitle: 'बेलायत र सिङ्गापुरबाट तालिमप्राप्त टोली',
           description:
             'डा. अनुषा तिवारी (फोकल पर्सन, MBBS, MD OBG/GYN, फेलोसिप इन रिप्रोडक्टिभ मेडिसिन) को नेतृत्वमा वरिष्ठ स्त्रीरोग तथा निःसन्तानता विशेषज्ञ र अनुभवी क्लिनिकल एम्ब्रियोलोजिस्टहरूको निरन्तर रेखदेख।',
-          highlights: ['अन्तर्राष्ट्रिय मान्यताप्राप्त विज्ञहरू', 'समर्पित पुरुष निःसन्तानता युनिट', '१०,०००+ खुसी दम्पतीहरू (सबैतिरबाट)'],
+          highlights: ['अन्तर्राष्ट्रिय मान्यताप्राप्त विज्ञहरू', 'समर्पित पुरुष निःसन्तानता युनिट', '१३०+ सफल अभिभावकत्व यात्राहरू'],
         },
         {
           icon: HeartHandshake,
@@ -90,7 +90,7 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenBooking, languag
           highlights: ['व्यक्तिगत केयर कोअर्डिनेटर', 'निःशुल्क मनोवैज्ञानिक परामर्श', 'एकान्त तथा मर्यादित वातावरण'],
         },
       ],
-      labBadge: 'प्रमाणित क्लिनरुम ल्याब',
+      labBadge: 'प्रमाणित भ्रूण प्रयोगशाला',
       labDesc: 'हेपा फिल्टर, स्थिर तापक्रम र उच्च प्रविधिमार्फत भ्रूणको गुणस्तर संरक्षण।',
     },
   }[language];
@@ -161,7 +161,7 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenBooking, languag
             <div className="lg:col-span-6 relative min-h-[260px] lg:min-h-full">
               <img
                 src={IMAGES.advancedLab}
-                alt="State of the art cleanroom IVF and embryology laboratory at Mamata Fertility Centre"
+                alt="State of the art IVF and embryology laboratory at Mamata Fertility Centre"
                 className="w-full h-full object-cover object-center"
                 referrerPolicy="no-referrer"
               />
@@ -175,7 +175,7 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenBooking, languag
                 <span>{content.labBadge}</span>
               </div>
               <h3 className="text-xl sm:text-2xl font-bold tracking-tight">
-                Where Life Begins: Precision Cleanroom Embryology
+                Where Life Begins: Precision Embryology Laboratory
               </h3>
               <p className="text-sm text-slate-200 leading-relaxed">
                 {content.labDesc} Our multi-gas incubation matrices isolate embryos from outside air disturbances, reproducing the precise biochemistry of the human fallopian tube and uterus.

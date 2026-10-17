@@ -34,12 +34,12 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
             {language === 'en' ? 'Stories of Hope & Joy' : 'सफलता तथा खुसीका कथाहरू'}
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1D3B58] tracking-tight">
-            {language === 'en' ? '10,000+ Happy Families Blessed with New Life' : '१०,०००+ खुसी दम्पतीहरू (सबैतिरबाट)'}
+            {language === 'en' ? '130+ Parenthood Journeys Blessed with New Life' : '१३०+ दम्पतीहरू अभिभावक बन्न सफल'}
           </h2>
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
             {language === 'en'
               ? 'Behind every clinical statistic is a tender journey of patience, scientific precision, and enduring love — welcoming families from everywhere across Nepal and beyond.'
-              : 'हाम्रो सफलताको वास्तविक मापदण्ड ती देश-विदेश सबैतिरबाट आएका हजारौं दम्पतीहरूको मुहारमा छाएको खुसी हो।'}
+              : 'हाम्रो सफलताको वास्तविक मापदण्ड ती देश-विदेश सबैतिरबाट आएका दम्पतीहरूको मुहारमा छाएको खुसी हो।'}
           </p>
         </div>
 
