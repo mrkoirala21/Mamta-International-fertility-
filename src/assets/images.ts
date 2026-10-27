@@ -1,6 +1,6 @@
 // Centralized image assets bundled directly through Vite
-import doctorPortraitImg from './images/doctor_portrait.jpg';
-import doctorAnushaImg from './images/regenerated_image_1792988267359.png';
+import doctorPortraitImg from './images/regenerated_image_1793088619931.png';
+import doctorAnushaImg from './images/regenerated_image_1793088619931.png';
 import doctorRameshImg from './images/doctor_ramesh_ghimire.jpg';
 import heroConsultationImg from './images/hero_fertility_consultation.jpg';
 import advancedLabImg from './images/advanced_embryology_lab.jpg';
