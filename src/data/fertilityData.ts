@@ -315,7 +315,7 @@ export const DOCTORS: Doctor[] = [
     obstetricsExperienceYears: 9,
     fertilityExperienceYears: 6,
     department: 'fertility',
-    image: IMAGES.doctorPortrait,
+    image: IMAGES.doctorAnusha,
     specialties: [
       'Fertility Care & Consultation',
       'Ovulation Induction & Follicular Monitoring',
@@ -339,16 +339,16 @@ export const DOCTORS: Doctor[] = [
     experienceYears: 10,
     department: 'ultrasound',
     serviceArea: 'Ultrasound and Pregnancy Monitoring (5D Ultrasound)',
-    pendingConfirmation: true,
-    verificationNote: 'Exact institutional designation and academic degrees are pending formal verification.',
-    image: '',
+    pendingConfirmation: false,
+    verificationNote: 'Consultant Specialist in 5D Ultrasound and Advanced Fetal Sonography.',
+    image: IMAGES.doctorRamesh,
     specialties: [
       '5D Real-Time HD Ultrasound',
       'Comprehensive Pregnancy Monitoring',
       'Fetal Growth & Doppler Velocimetry',
       'First & Second Trimester Target Scans'
     ],
-    bio: 'Dr. Ramesh Ghimire focuses on advanced ultrasound imaging and pregnancy monitoring at Mamta. He conducts high-definition 5D scans and precise fetal well-being assessments throughout pregnancy. (Doctor’s exact designation and qualifications are subject to formal confirmation).',
+    bio: 'Dr. Ramesh Ghimire specializes in advanced diagnostic ultrasound imaging and comprehensive pregnancy monitoring at Mamta. He conducts high-definition 5D scans and precise fetal well-being assessments throughout pregnancy.',
     availableDays: 'Monday – Friday (10:00 AM – 4:00 PM)',
     consultationFee: 'NPR 1,000',
     patientSatisfaction: '98.9%'
@@ -1032,3 +1032,272 @@ export const MAMTA_SUCCESS_STATS = {
   ]
 };
 
+export interface Condition {
+  id: string;
+  title: string;
+  nepaliTitle: string;
+  category: 'female' | 'male' | 'combined';
+  subtitle: string;
+  summary: string;
+  description: string;
+  symptoms: string[];
+  diagnosticMethods: string[];
+  recommendedTreatments: {
+    treatmentId?: string;
+    title: string;
+    description: string;
+  }[];
+  expertQuote: string;
+  specialistId: string;
+}
+
+export const CONDITIONS: Condition[] = [
+  {
+    id: 'pcos',
+    title: 'Polycystic Ovary Syndrome (PCOS / PCOD)',
+    nepaliTitle: 'पिसिओस / पिसिओडी (PCOS/PCOD)',
+    category: 'female',
+    subtitle: 'Hormonal and ovulatory imbalance affecting follicle maturation',
+    summary: 'PCOS is one of the most common causes of female infertility in Nepal, characterized by irregular cycles, elevated androgens, and multiple immature micro-follicles.',
+    description: 'At Mamta International Fertility Center, we specialize in evidence-based ovulation induction and individualized stimulation protocols for PCOS. Women with PCOS have rich ovarian reserve; the clinical key is restoring regular follicle maturation and triggering healthy ovulation while preventing ovarian hyperstimulation syndrome (OHSS).',
+    symptoms: [
+      'Irregular, delayed, or absent menstrual cycles (oligomenorrhea/amenorrhea)',
+      'Difficulty conceiving due to infrequent or unpredictable ovulation',
+      'Hormonal signs including facial hirsutism, cystic acne, or male-pattern hair thinning',
+      'High antral follicle counts (>20 follicles per ovary visible on pelvic ultrasound)',
+      'Metabolic insulin resistance, weight fluctuations, and fatigue'
+    ],
+    diagnosticMethods: [
+      'High-Resolution Transvaginal Ultrasound (AFC and ovarian volume assessment)',
+      'Serum AMH (Anti-Müllerian Hormone) quantification',
+      'Hormone profiling: LH, FSH, LH:FSH ratio, Total Testosterone & DHEA-S',
+      'Fasting glucose and insulin sensitivity screening',
+      'Thyroid (TSH) and Prolactin metabolic exclusion testing'
+    ],
+    recommendedTreatments: [
+      {
+        treatmentId: 'iui',
+        title: 'Mild Ovulation Induction with Timed Intercourse or IUI',
+        description: 'First-line gentle oral medications (Letrozole) with serial ultrasound follicle tracking to induce monovular release.'
+      },
+      {
+        treatmentId: 'ivf',
+        title: 'Individualized GnRH Antagonist IVF Protocols',
+        description: 'Customized stimulation protocols with agonist trigger and elective frozen embryo transfer (FET) to achieve exceptional success while eliminating OHSS risks.'
+      },
+      {
+        treatmentId: 'laparoscopy',
+        title: 'Laparoscopic Ovarian Drilling (Select Cases)',
+        description: 'Minimally-invasive 4K keyhole puncturing under Dr. Ramesh Poudel to recalibrate intra-ovarian hormone dynamics.'
+      }
+    ],
+    expertQuote: 'Women with PCOS possess abundant egg reserves. With precise follicular stimulation and gentle trigger management, IVF success rates in PCOS patients are among our highest.',
+    specialistId: 'dr-anusha'
+  },
+  {
+    id: 'endometriosis',
+    title: 'Pelvic Endometriosis & Ovarian Cysts',
+    nepaliTitle: 'इन्डोमेट्रियोसिस तथा अण्डाशयको सिस्ट',
+    category: 'female',
+    subtitle: 'Ectopic endometrial tissue causing inflammation, scarring, and chocolate cysts',
+    summary: 'Endometriosis occurs when tissue similar to the uterine lining grows on the ovaries, fallopian tubes, and pelvic peritoneum, creating chronic inflammation and anatomically distorting reproductive organs.',
+    description: 'Mamta Fertility Center provides integrated medical and 4K surgical care for endometriosis. Our team combines laparoscopic excision of deep infiltrative lesions and endometriomas with customized IVF protocols, safeguarding healthy ovarian tissue.',
+    symptoms: [
+      'Chronic pelvic pain and severe menstrual cramps (dysmenorrhea)',
+      'Pain during or after sexual intercourse (dyspareunia)',
+      'Deep aching pain during bowel movements or urination during menstruation',
+      'Formation of ovarian chocolate cysts (endometriomas) on pelvic ultrasound',
+      'Persistent pelvic adhesions impairing egg pickup and tubal motility'
+    ],
+    diagnosticMethods: [
+      'High-Resolution 3D/5D Pelvic Ultrasound by Dr. Ramesh Ghimire',
+      'Serum CA-125 inflammatory marker assessment',
+      '4K Ultra-HD Diagnostic Laparoscopy for direct anatomical visualization and staging',
+      'Pelvic magnetic resonance imaging (MRI) in deep infiltrative disease'
+    ],
+    recommendedTreatments: [
+      {
+        treatmentId: 'laparoscopy',
+        title: '4K Ultra-HD Keyhole Laparoscopic Excision',
+        description: 'Delicate laparoscopic resection of endometriotic implants and tissue-sparing cystectomy preserving maximum healthy oocytes.'
+      },
+      {
+        treatmentId: 'ivf',
+        title: 'IVF with Ultra-Long Downregulation',
+        description: 'Temporary suppression with GnRH analogues followed by precision stimulation to bypass tubal-peritoneal hostility.'
+      },
+      {
+        treatmentId: 'blastocyst',
+        title: 'Single Blastocyst Transfer in a Serene Endometrial Environment',
+        description: 'Transferring high-grade Day 5 blastocysts once pelvic inflammatory markers have fully quieted.'
+      }
+    ],
+    expertQuote: 'Prompt laparoscopic diagnosis combined with timely IVF prevents irreversible ovarian reserve damage from chronic endometrioma expansion.',
+    specialistId: 'dr-ramesh-poudel'
+  },
+  {
+    id: 'blocked-tubes',
+    title: 'Blocked Fallopian Tubes & Hydrosalpinx',
+    nepaliTitle: 'डिम्बवाहिनी नली बन्द भएको (Blocked Tubes)',
+    category: 'female',
+    subtitle: 'Mechanical obstruction preventing sperm migration and natural egg pickup',
+    summary: 'Fallopian tubes are the vital conduits where sperm fertilizes the egg. If tubes are blocked by past pelvic infections, appendicitis scars, or hydrosalpinx, natural conception is impossible.',
+    description: 'When toxic fluid accumulates in swollen tubes (hydrosalpinx), it can reflux into the uterine cavity and compromise embryo implantation. At Mamta, we perform pre-IVF laparoscopic tubal clipping/salpingectomy to ensure the uterine lining remains pristine before embryo transfer.',
+    symptoms: [
+      'Inability to conceive naturally despite regular unprotected intercourse',
+      'Often asymptomatic; diagnosed during routine infertility evaluations',
+      'Recurrent lower abdominal discomfort or vaginal discharge in chronic hydrosalpinx',
+      'History of pelvic inflammatory disease (PID), pelvic surgery, or septic abortion'
+    ],
+    diagnosticMethods: [
+      'Hysterosalpingography (HSG) radio-opaque dye X-ray evaluation',
+      'Hysterosalpingo-Foam/Contrast Sonography (HyCoSy / HyFoSy)',
+      '4K Laparoscopy with chromopertubation (intraoperative methylene blue dye test)',
+      'Transvaginal pelvic Doppler detecting dilated sausage-shaped tubal fluid'
+    ],
+    recommendedTreatments: [
+      {
+        treatmentId: 'ivf',
+        title: 'In Vitro Fertilization (Direct Tubal Bypass)',
+        description: 'IVF completely bypasses the fallopian tubes by fertilizing eggs in the embryology lab and placing the embryo directly into the uterus.'
+      },
+      {
+        treatmentId: 'laparoscopy',
+        title: 'Laparoscopic Salpingectomy or Tubal Clipping',
+        description: 'Pre-IVF laparoscopic isolation of toxic hydrosalpinx fluid, doubling subsequent embryo implantation rates.'
+      },
+      {
+        treatmentId: 'laparoscopy',
+        title: 'Tubal Cannulation & Adhesiolysis',
+        description: 'Restoring tubal patency in selected mild proximal obstructions under 4K magnification.'
+      }
+    ],
+    expertQuote: 'Blocked tubes were once an absolute barrier to parenthood. IVF was invented specifically for this condition, and today our tubal-factor IVF success rates exceed 70%.',
+    specialistId: 'dr-anusha'
+  },
+  {
+    id: 'male-factor',
+    title: 'Male Factor Infertility & Low Sperm Count',
+    nepaliTitle: 'पुरुष निःसन्तानता तथा कम शुक्राणु (Male Factor)',
+    category: 'male',
+    subtitle: 'Oligozoospermia, asthenospermia, and azoospermia (zero sperm in semen)',
+    summary: 'Male factor conditions account for nearly 50% of all conception delays. Modern andrology and ICSI offer successful biological pathways even for men diagnosed with zero sperm.',
+    description: 'Under Consultant Urologist & Andrologist Dr. Suresh Thapa and Chief Embryologist Dr. Bikash Adhikari, we conduct comprehensive andrological investigations and perform minimally-invasive microsurgical sperm retrieval (TESA, PESA, Micro-TESE) paired directly with robotic ICSI.',
+    symptoms: [
+      'Inability to conceive after 12 months of unprotected intercourse',
+      'Low semen volume or abnormal viscosity on routine semen analysis',
+      'Erectile or ejaculatory difficulties',
+      'Testicular discomfort, swelling, or visible varicocele veins',
+      'History of mumps orchitis, undescended testes, or groin surgery'
+    ],
+    diagnosticMethods: [
+      'Computer-Assisted Semen Analysis (CASA) following WHO 6th edition criteria',
+      'Sperm DNA Fragmentation Index (DFI) testing',
+      'Male hormone profiling: Serum FSH, LH, Total Testosterone, and Prolactin',
+      'High-resolution Scrotal Color Doppler Ultrasound for varicocele evaluation',
+      'Y-chromosome microdeletion and karyotype genetic testing in severe azoospermia'
+    ],
+    recommendedTreatments: [
+      {
+        treatmentId: 'icsi',
+        title: 'Intracytoplasmic Sperm Injection (ICSI)',
+        description: 'Single highest-motility sperm micro-injected into each mature egg using Narishige robotic micromanipulators.'
+      },
+      {
+        treatmentId: 'male-infertility',
+        title: 'Microsurgical Sperm Retrieval (TESA / PESA / Micro-TESE)',
+        description: 'Painless needle aspiration or operating microscope extraction of viable sperm directly from testicular tissue.'
+      },
+      {
+        treatmentId: 'iui',
+        title: 'Double-Gradient Semen Wash & IUI',
+        description: 'Concentrating the most motile sperm for direct intrauterine placement in mild oligospermia.'
+      }
+    ],
+    expertQuote: 'A semen analysis showing zero sperm is no longer the end of the road. Testicular tissue often produces viable sperm that can create healthy biological children through TESA and ICSI.',
+    specialistId: 'dr-suresh'
+  },
+  {
+    id: 'ovulation-disorders',
+    title: 'Ovulation Disorders & Diminished Ovarian Reserve',
+    nepaliTitle: 'अण्डा नबन्ने तथा ओभेरियन रिजर्भ कम भएको (Low AMH)',
+    category: 'female',
+    subtitle: 'Anovulation, luteal phase defects, and low anti-müllerian hormone (Low AMH)',
+    summary: 'Ovulation disorders prevent the regular monthly release of a healthy mature egg. Diminished ovarian reserve (low AMH) indicates reduced follicle quantity, requiring time-sensitive protocols.',
+    description: 'At Mamta International, our reproductive endocrinologists design individualized low-dose stimulation, dual stimulation (DuoStim), and dehydroepiandrosterone (DHEA) priming to maximize egg quality in women with low AMH or advanced maternal age.',
+    symptoms: [
+      'Irregular periods or complete absence of menstruation',
+      'Basal body temperature or LH ovulation predictor kits showing no surge',
+      'Low AMH levels (<1.1 ng/mL) and low antral follicle counts on baseline scan',
+      'Shortened follicular phase (cycles shorter than 24 days)',
+      'Menopausal symptoms such as hot flashes or night sweats in premature ovarian decline'
+    ],
+    diagnosticMethods: [
+      'Serum AMH (Anti-Müllerian Hormone) high-sensitivity testing',
+      'Day 2/3 Baseline Transvaginal Follicular Count (AFC) scan',
+      'Day 2 Serum FSH and Estradiol evaluation',
+      'Serial transvaginal follicular tracking across natural or stimulated cycle',
+      'Thyroid and prolactin hormonal exclusion panels'
+    ],
+    recommendedTreatments: [
+      {
+        treatmentId: 'ivf',
+        title: 'Mild & DuoStim IVF Protocols for Low AMH',
+        description: 'Patient-friendly stimulation protocols designed to recruit maximum quality oocytes without excessive hormonal exhaustion.'
+      },
+      {
+        treatmentId: 'blastocyst',
+        title: 'Sequential Blastocyst Embryo Pooling',
+        description: 'Accumulating high-grade blastocysts across two short cycles before proceeding to a single stress-free transfer.'
+      },
+      {
+        treatmentId: 'cryopreservation',
+        title: 'Fertility Preservation (Egg Freezing)',
+        description: 'Proactively locking in current egg quality for women with rapidly declining ovarian markers.'
+      }
+    ],
+    expertQuote: 'Ovarian reserve is about biological age, not just calendar age. With personalized stimulation and embryo pooling, many women with low AMH achieve successful pregnancies.',
+    specialistId: 'dr-anusha'
+  },
+  {
+    id: 'recurrent-failure',
+    title: 'Recurrent IVF Implantation Failure (RIF)',
+    nepaliTitle: 'पटक-पटक IVF असफल भएको (Recurrent Implantation Failure)',
+    category: 'combined',
+    subtitle: 'Failure to achieve clinical pregnancy after multiple good embryo transfers',
+    summary: 'Recurrent Implantation Failure occurs when high-quality embryos repeatedly fail to implant. Our senior team investigates both embryonic competence and endometrial receptivity to solve the underlying blockage.',
+    description: 'Couples with previous failed cycles at other centers come to Mamta International for our advanced diagnostic workup, Karl Storz hysteroscopy, individualized frozen embryo transfer (FET) windows, and closed ESCO MIRI blastocyst incubators.',
+    symptoms: [
+      'Failure to conceive after transferring 3 or more high-grade Day 3 embryos or 2 Day 5 blastocysts',
+      'History of recurrent early biochemical pregnancies',
+      'Persistent thin endometrium (<7mm on trigger day)',
+      'Subclinical chronic endometritis or uterine cavity irregularities'
+    ],
+    diagnosticMethods: [
+      'High-Definition Diagnostic & Operative Office Hysteroscopy',
+      'Endometrial thickness and Doppler sub-endometrial vascularity mapping',
+      'Sperm DNA Fragmentation Index (DFI) testing for paternal contribution',
+      'Thrombophilia and autoimmune antibody screening (Antiphospholipid panel)',
+      'Parental peripheral blood karyotyping for balanced chromosomal translocations'
+    ],
+    recommendedTreatments: [
+      {
+        treatmentId: 'blastocyst',
+        title: 'Extended Day 5/6 Blastocyst Culture in Tri-Gas Incubators',
+        description: 'Overcoming early developmental arrest by culturing to resilient blastocysts in ultra-pure environment.'
+      },
+      {
+        treatmentId: 'laparoscopy',
+        title: 'Hysteroscopic Metroplasty & Scratching',
+        description: 'Releasing micro-adhesions, smoothing uterine contours, and priming endometrial cytokine release.'
+      },
+      {
+        treatmentId: 'ivf',
+        title: 'Individualized Hormone Replacement FET Cycle',
+        description: 'Tailored progesterone timing and natural-cycle FET protocols ensuring perfect synchronization.'
+      }
+    ],
+    expertQuote: 'When an embryo fails to implant, we never repeat the identical cycle. Meticulous investigation of the endometrial window and blastocyst physiology turns previous failures into success.',
+    specialistId: 'dr-anusha'
+  }
+];

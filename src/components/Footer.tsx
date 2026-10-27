@@ -4,7 +4,7 @@ import { Phone, Mail, MapPin, CheckCircle2, ArrowRight, MessageSquare, ShieldChe
 
 interface FooterProps {
   onOpenBooking: () => void;
-  onNavigate?: (page: string, param?: string) => void;
+  onNavigate?: (path: string) => void;
   language?: 'en' | 'ne';
 }
 
@@ -19,11 +19,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onNavigate, langu
     setNewsletterEmail('');
   };
 
-  const handleLink = (page: string, param?: string) => {
+  const handleLink = (path: string) => {
     if (onNavigate) {
-      onNavigate(page, param);
+      onNavigate(path);
     } else {
-      window.location.hash = param ? `#/${page}/${param}` : `#/${page}`;
+      window.location.hash = `#${path}`;
     }
   };
 
@@ -34,7 +34,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onNavigate, langu
         {/* TOP ROW: BRAND & NEWSLETTER */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-12 border-b border-white/10 items-center">
           <div className="lg:col-span-6 space-y-3">
-            <div className="cursor-pointer" onClick={() => handleLink('home')}>
+            <div className="cursor-pointer" onClick={() => handleLink('/')}>
               <MamataLogo variant="white" size="lg" />
             </div>
             <p className="text-slate-300 text-xs sm:text-sm max-w-md mt-2 leading-relaxed">
@@ -127,23 +127,23 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onNavigate, langu
             </div>
           </div>
 
-          {/* Col 2: Treatments Single-Service Pages */}
+          {/* Col 2: Treatments & Conditions Dedicated Pages */}
           <div className="space-y-3">
             <h5 className="font-bold text-white text-sm uppercase tracking-wider">
-              Dedicated Service Pages
+              Treatments & Conditions
             </h5>
             <ul className="space-y-2 text-xs">
               <li>
                 <button
-                  onClick={() => handleLink('service', 'ivf')}
+                  onClick={() => handleLink('/treatments/ivf')}
                   className="hover:text-white transition-colors cursor-pointer text-left"
                 >
-                  In-Vitro Fertilization (IVF) Page
+                  In-Vitro Fertilization (IVF)
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => handleLink('service', 'icsi')}
+                  onClick={() => handleLink('/treatments/icsi')}
                   className="hover:text-white transition-colors cursor-pointer text-left"
                 >
                   Intracytoplasmic Sperm Injection (ICSI)
@@ -151,7 +151,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onNavigate, langu
               </li>
               <li>
                 <button
-                  onClick={() => handleLink('service', 'blastocyst')}
+                  onClick={() => handleLink('/treatments/blastocyst')}
                   className="hover:text-white transition-colors cursor-pointer text-left"
                 >
                   Day 5 Blastocyst Culture & Transfer
@@ -159,7 +159,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onNavigate, langu
               </li>
               <li>
                 <button
-                  onClick={() => handleLink('service', 'iui')}
+                  onClick={() => handleLink('/treatments/iui')}
                   className="hover:text-white transition-colors cursor-pointer text-left"
                 >
                   Intrauterine Insemination (IUI)
@@ -167,85 +167,93 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onNavigate, langu
               </li>
               <li>
                 <button
-                  onClick={() => handleLink('service', 'cryopreservation')}
+                  onClick={() => handleLink('/treatments/egg-freezing')}
                   className="hover:text-white transition-colors cursor-pointer text-left"
                 >
-                  Egg & Sperm Vitrification (Freezing)
+                  Egg & Embryo Vitrification
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => handleLink('service', 'male-infertility')}
+                  onClick={() => handleLink('/conditions/pcos')}
                   className="hover:text-white transition-colors cursor-pointer text-left"
                 >
-                  Male Infertility & TESA / PESA
+                  PCOS / PCOD Management
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => handleLink('service', 'laparoscopy')}
+                  onClick={() => handleLink('/conditions/endometriosis')}
                   className="hover:text-white transition-colors cursor-pointer text-left"
                 >
-                  Fertility Enhancing Laparoscopy
+                  Endometriosis & Fertility
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleLink('/conditions/male-factor')}
+                  className="hover:text-white transition-colors cursor-pointer text-left"
+                >
+                  Male Factor Infertility & TESA
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Col 3: Dedicated Website Pages */}
+          {/* Col 3: Dedicated Healthcare Wings & Patient Resources */}
           <div className="space-y-3">
             <h5 className="font-bold text-white text-sm uppercase tracking-wider">
-              Website Pages
+              Specialized Hubs & Resources
             </h5>
             <ul className="space-y-2 text-xs">
               <li>
-                <button onClick={() => handleLink('home')} className="hover:text-white transition-colors cursor-pointer">
-                  Home Overview
+                <button onClick={() => handleLink('/about')} className="hover:text-white transition-colors cursor-pointer">
+                  About Clinic & History
                 </button>
               </li>
               <li>
-                <button onClick={() => handleLink('about')} className="hover:text-white transition-colors cursor-pointer">
-                  About Us & Lab Technology
+                <button onClick={() => handleLink('/fertility-treatments')} className="hover:text-white transition-colors cursor-pointer">
+                  Fertility Treatments Hub
                 </button>
               </li>
               <li>
-                <button onClick={() => handleLink('services')} className="hover:text-white transition-colors cursor-pointer">
-                  All Treatments Directory
+                <button onClick={() => handleLink('/conditions')} className="hover:text-white transition-colors cursor-pointer">
+                  Infertility Conditions Directory
                 </button>
               </li>
               <li>
-                <button onClick={() => handleLink('doctors')} className="hover:text-white transition-colors cursor-pointer">
-                  Doctors & Specialists Profiles
+                <button onClick={() => handleLink('/pregnancy-care')} className="hover:text-white transition-colors cursor-pointer">
+                  Pregnancy & Maternity Care (5D Scans & NICU)
                 </button>
               </li>
               <li>
-                <button onClick={() => handleLink('pricing')} className="hover:text-white transition-colors cursor-pointer">
-                  Treatment Packages & Clinical Plans
+                <button onClick={() => handleLink('/diagnostics')} className="hover:text-white transition-colors cursor-pointer">
+                  Diagnostics & Hormone Testing
                 </button>
               </li>
               <li>
-                <button onClick={() => handleLink('calculator')} className="hover:text-white transition-colors cursor-pointer">
-                  Pregnancy Due Date Calculator
+                <button onClick={() => handleLink('/doctors')} className="hover:text-white transition-colors cursor-pointer">
+                  Specialists & Doctors Directory
                 </button>
               </li>
               <li>
-                <button onClick={() => handleLink('journey')} className="hover:text-white transition-colors cursor-pointer">
-                  Step-by-Step Patient Journey
+                <button onClick={() => handleLink('/facilities')} className="hover:text-white transition-colors cursor-pointer">
+                  Facilities & Cleanroom Tech
                 </button>
               </li>
               <li>
-                <button onClick={() => handleLink('stories')} className="hover:text-white transition-colors cursor-pointer">
-                  Patient Success Stories
+                <button onClick={() => handleLink('/pricing')} className="hover:text-white transition-colors cursor-pointer">
+                  Transparent Treatment Packages
                 </button>
               </li>
               <li>
-                <button onClick={() => handleLink('faq')} className="hover:text-white transition-colors cursor-pointer">
-                  Fertility FAQ Guide
+                <button onClick={() => handleLink('/calculator')} className="hover:text-white transition-colors cursor-pointer">
+                  Pregnancy Due Date Tool
                 </button>
               </li>
               <li>
-                <button onClick={() => handleLink('contact')} className="hover:text-white transition-colors cursor-pointer">
-                  Contact & Location (Chitwan)
+                <button onClick={() => handleLink('/contact')} className="hover:text-white transition-colors cursor-pointer">
+                  Contact & Appointments (Chitwan)
                 </button>
               </li>
             </ul>

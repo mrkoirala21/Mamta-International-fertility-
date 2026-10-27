@@ -8,7 +8,8 @@ import { GoogleGenAI } from '@google/genai';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
+// Environment constraint: Dev server must run on port 3000
+const PORT = 3000;
 const isProduction = process.env.NODE_ENV === 'production';
 
 app.use(express.json());
@@ -366,6 +367,20 @@ async function startServer() {
       appType: 'spa',
     });
     app.use(vite.middlewares);
+
+    // Development SPA index.html fallback for multi-page routing
+    app.use('*', async (req: Request, res: Response, next) => {
+      const url = req.originalUrl;
+      try {
+        const indexPath = path.resolve(process.cwd(), 'index.html');
+        let template = fs.readFileSync(indexPath, 'utf-8');
+        template = await vite.transformIndexHtml(url, template);
+        res.status(200).set({ 'Content-Type': 'text/html' }).end(template);
+      } catch (e: any) {
+        vite.ssrFixStacktrace(e);
+        next(e);
+      }
+    });
   } else {
     // Production mode: serve built assets from dist
     const distPath = path.resolve(process.cwd(), 'dist');

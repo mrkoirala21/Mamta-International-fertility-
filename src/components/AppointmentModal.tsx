@@ -309,9 +309,25 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
                     </option>
                   ))}
                 </select>
-                <p className="text-[11px] text-slate-500 mt-1">
-                  Availability: {currentDoctorObj?.availableDays}
-                </p>
+                {currentDoctorObj?.image ? (
+                  <div className="flex items-center gap-3 mt-2 p-2 bg-slate-50 border border-slate-200/80 rounded-xl">
+                    <img
+                      src={currentDoctorObj.image}
+                      alt={currentDoctorObj.name}
+                      referrerPolicy="no-referrer"
+                      className="w-10 h-10 rounded-lg object-cover object-top border border-slate-200"
+                    />
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs font-bold text-[#1D3B58] truncate">{currentDoctorObj.name}</p>
+                      <p className="text-[11px] text-[#E48AA0] font-medium truncate">{currentDoctorObj.role.split('&')[0]}</p>
+                      <p className="text-[10px] text-slate-500 truncate">Available: {currentDoctorObj.availableDays}</p>
+                    </div>
+                  </div>
+                ) : (
+                  <p className="text-[11px] text-slate-500 mt-1">
+                    Availability: {currentDoctorObj?.availableDays}
+                  </p>
+                )}
               </div>
 
               <div>

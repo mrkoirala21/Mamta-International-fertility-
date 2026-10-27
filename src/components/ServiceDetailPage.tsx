@@ -321,6 +321,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
                     <img
                       src={relevantDoctor.image}
                       alt={relevantDoctor.name}
+                      referrerPolicy="no-referrer"
                       className="w-full h-full object-cover"
                     />
                   ) : (
