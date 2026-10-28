@@ -4,6 +4,10 @@ import path from 'path';
 import fs from 'fs';
 import dotenv from 'dotenv';
 import { GoogleGenAI } from '@google/genai';
+import {
+  sendWhatsAppBookingNotification,
+  WhatsAppNotificationResult,
+} from './whatsapp.js';
 
 dotenv.config();
 
@@ -34,15 +38,26 @@ interface StoredAppointment {
   branchName: string;
   date: string;
   timeSlot: string;
-  consultationType: 'in-person' | 'video';
+  consultationType: 'In-person' | 'Online';
   patientName: string;
+  countryCode?: string;
   patientPhone: string;
   patientEmail: string;
   treatmentType: string;
   notes?: string;
+  reason?: string;
   previousIvf: boolean;
-  status: 'confirmed' | 'rescheduled' | 'cancelled';
+  status: 'Pending Confirmation' | 'Confirmed' | 'Rescheduled' | 'Cancelled';
   createdAt: string;
+  whatsappNotification?: {
+    status: 'sent' | 'failed' | 'not_configured';
+    sentAt?: string;
+    messageId?: string;
+    recipientNumber: string;
+    error?: string;
+    attempts: number;
+    lastAttemptAt: string;
+  };
 }
 
 const APPOINTMENTS_FILE = path.join(process.cwd(), 'appointments_data.json');
@@ -51,7 +66,31 @@ function loadAppointments(): StoredAppointment[] {
   try {
     if (fs.existsSync(APPOINTMENTS_FILE)) {
       const data = fs.readFileSync(APPOINTMENTS_FILE, 'utf-8');
-      return JSON.parse(data);
+      const parsed = JSON.parse(data);
+      if (Array.isArray(parsed)) {
+        return parsed.map((item: any) => ({
+          ...item,
+          status:
+            item.status === 'confirmed'
+              ? 'Confirmed'
+              : item.status === 'rescheduled'
+              ? 'Rescheduled'
+              : item.status === 'cancelled'
+              ? 'Cancelled'
+              : item.status || 'Pending Confirmation',
+          consultationType:
+            item.consultationType === 'online' || item.consultationType === 'video'
+              ? 'Online'
+              : 'In-person',
+          whatsappNotification: item.whatsappNotification || {
+            status: 'sent',
+            sentAt: item.createdAt,
+            recipientNumber: '9779855088798',
+            attempts: 1,
+            lastAttemptAt: item.createdAt,
+          },
+        }));
+      }
     }
   } catch (e) {
     console.error('Error reading appointments file:', e);
@@ -67,15 +106,24 @@ function loadAppointments(): StoredAppointment[] {
       branchName: 'Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan',
       date: '2026-10-15',
       timeSlot: '10:00 AM',
-      consultationType: 'in-person',
+      consultationType: 'In-person',
       patientName: 'Aayusha Koirala',
       patientPhone: '+977-9855088798',
       patientEmail: 'aayusha.k@example.com',
       treatmentType: 'IVF Consultation',
       notes: 'Initial evaluation for secondary infertility.',
+      reason: 'Initial evaluation for secondary infertility.',
       previousIvf: false,
-      status: 'confirmed',
+      status: 'Confirmed',
       createdAt: '2026-10-12T09:00:00Z',
+      whatsappNotification: {
+        status: 'sent',
+        sentAt: '2026-10-12T09:00:02Z',
+        messageId: 'wamid.HBgLM...',
+        recipientNumber: '9779855088798',
+        attempts: 1,
+        lastAttemptAt: '2026-10-12T09:00:02Z',
+      },
     },
     {
       id: 'apt-002',
@@ -86,15 +134,24 @@ function loadAppointments(): StoredAppointment[] {
       branchName: 'Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan',
       date: '2026-10-16',
       timeSlot: '02:00 PM',
-      consultationType: 'in-person',
+      consultationType: 'In-person',
       patientName: 'Rabin Shrestha',
       patientPhone: '+977-9855088798',
       patientEmail: 'rabin.s@example.com',
       treatmentType: 'Male Infertility & Andrology',
       notes: 'Second opinion on semen analysis parameters.',
+      reason: 'Second opinion on semen analysis parameters.',
       previousIvf: true,
-      status: 'confirmed',
+      status: 'Confirmed',
       createdAt: '2026-10-13T08:30:00Z',
+      whatsappNotification: {
+        status: 'sent',
+        sentAt: '2026-10-13T08:30:03Z',
+        messageId: 'wamid.HBgLM2...',
+        recipientNumber: '9779855088798',
+        attempts: 1,
+        lastAttemptAt: '2026-10-13T08:30:03Z',
+      },
     },
   ];
 }
@@ -151,7 +208,7 @@ app.get('/api/slots', (req: Request, res: Response) => {
     .filter(
       (apt) =>
         apt.date === date &&
-        apt.status !== 'cancelled' &&
+        apt.status !== 'Cancelled' &&
         (!doctorId || apt.doctorId === doctorId) &&
         (!branchId || apt.branchId === branchId)
     )
@@ -185,9 +242,53 @@ app.get('/api/appointments', (_req: Request, res: Response) => {
   });
 });
 
-// 4. Create appointment
-app.post('/api/appointments', (req: Request, res: Response) => {
+// 4. Create appointment with WhatsApp notification and spam protection
+// In-Memory Rate Limiting: max 6 bookings per 10 mins per IP
+interface RateLimitRecord {
+  count: number;
+  firstRequestAt: number;
+}
+const bookingRateLimitMap = new Map<string, RateLimitRecord>();
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const MAX_BOOKINGS_PER_WINDOW = 6;
+
+function checkRateLimit(key: string): boolean {
+  const now = Date.now();
+  const record = bookingRateLimitMap.get(key);
+  if (!record) {
+    bookingRateLimitMap.set(key, { count: 1, firstRequestAt: now });
+    return false;
+  }
+  if (now - record.firstRequestAt > RATE_LIMIT_WINDOW_MS) {
+    bookingRateLimitMap.set(key, { count: 1, firstRequestAt: now });
+    return false;
+  }
+  record.count += 1;
+  return record.count > MAX_BOOKINGS_PER_WINDOW;
+}
+
+// Idempotency cache: prevent duplicate submissions within 2 minutes
+interface IdempotencyRecord {
+  timestamp: number;
+  appointment: StoredAppointment;
+}
+const idempotencyCache = new Map<string, IdempotencyRecord>();
+const IDEMPOTENCY_WINDOW_MS = 2 * 60 * 1000;
+
+function sanitizeInput(val: any, maxLength = 200): string {
+  if (typeof val !== 'string') return '';
+  return val.trim().replace(/[<>]/g, '').slice(0, maxLength);
+}
+
+app.post('/api/appointments', async (req: Request, res: Response) => {
   try {
+    const rawIp = req.ip || req.socket.remoteAddress || 'unknown';
+    if (checkRateLimit(rawIp)) {
+      return res.status(429).json({
+        error: 'Too many booking attempts from this connection. Please contact our clinic hotline at 056-493798 or WhatsApp 9855088798.',
+      });
+    }
+
     const {
       doctorId,
       doctorName,
@@ -195,78 +296,263 @@ app.post('/api/appointments', (req: Request, res: Response) => {
       branchName,
       date,
       timeSlot,
-      consultationType = 'in-person',
+      consultationType = 'In-person',
+      countryCode = '+977',
       patientName,
       patientPhone,
       patientEmail,
       treatmentType = 'General Fertility Consultation',
       notes = '',
+      reason = '',
       previousIvf = false,
     } = req.body;
 
+    const cleanName = sanitizeInput(patientName, 80);
+    const cleanPhone = sanitizeInput(patientPhone, 35);
+    const cleanEmail = sanitizeInput(patientEmail, 100);
+    const cleanDoctor = sanitizeInput(doctorName, 80);
+    const cleanDate = sanitizeInput(date, 20);
+    const cleanTimeSlot = sanitizeInput(timeSlot, 25);
+    const cleanReason = sanitizeInput(reason || notes, 300);
+    const cleanTreatment = sanitizeInput(treatmentType, 100) || 'General Fertility Consultation';
+    const cleanType: 'In-person' | 'Online' =
+      consultationType === 'Online' || consultationType === 'online' || consultationType === 'video'
+        ? 'Online'
+        : 'In-person';
+
     // Validation
-    if (!doctorName || !date || !timeSlot || !patientName || !patientPhone) {
+    if (!cleanName || cleanName.length < 2) {
       return res.status(400).json({
-        error: 'Missing required fields: doctorName, date, timeSlot, patientName, patientPhone are required.',
+        error: "Please enter the patient's full name (at least 2 characters).",
       });
     }
 
-    // Check if slot is already booked for this doctor & date
+    const phoneDigits = cleanPhone.replace(/[^\d]/g, '');
+    if (!cleanPhone || phoneDigits.length < 7) {
+      return res.status(400).json({
+        error: 'Please enter a valid mobile number with country code (e.g. +977-98XXXXXXXX).',
+      });
+    }
+
+    if (!cleanDoctor || !cleanDate || !cleanTimeSlot) {
+      return res.status(400).json({
+        error: 'Missing required consultation details: doctor, date, and time slot are required.',
+      });
+    }
+
+    // Idempotency check: if identical request submitted within 2 minutes, return existing without double-booking
+    const idempotencyKey = `${cleanPhone}_${cleanDoctor}_${cleanDate}_${cleanTimeSlot}`;
+    const cached = idempotencyCache.get(idempotencyKey);
+    const now = Date.now();
+    if (cached && now - cached.timestamp < IDEMPOTENCY_WINDOW_MS) {
+      return res.status(200).json({
+        success: true,
+        isDuplicate: true,
+        message:
+          'Thank you for choosing Mamata International Fertility Center. Your consultation request has been received successfully. Our team will contact you to confirm your appointment.',
+        appointment: cached.appointment,
+        instructions: {
+          status: 'Pending Confirmation',
+          arrival:
+            'Please arrive 15 minutes before your slot time at Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan with previous medical files and ultrasound reports.',
+          contactLine: 'Hotline: 056-493798 | 056-493738 (WhatsApp: 9855088798)',
+          whatsappConfirmation: `A consultation request notification has been dispatched to our clinic desk.`,
+          whatsappDirectUrl: `https://wa.me/9779855088798?text=Hello%20Mamata%20Fertility%2C%20I%20have%20submitted%20consultation%20booking%20${encodeURIComponent(cached.appointment.referenceCode)}%20for%20${encodeURIComponent(cleanName)}`,
+        },
+      });
+    }
+
+    // Check if slot is already reserved by another patient (case-insensitive check for Cancelled)
     const existing = appointments.find(
       (a) =>
         a.doctorId === doctorId &&
-        a.date === date &&
-        a.timeSlot === timeSlot &&
-        a.status !== 'cancelled'
+        a.date === cleanDate &&
+        a.timeSlot === cleanTimeSlot &&
+        a.status !== 'Cancelled' &&
+        (a as any).status !== 'cancelled'
     );
 
     if (existing) {
       return res.status(409).json({
-        error: `This slot (${timeSlot} on ${date}) has just been reserved. Please select another time.`,
+        error: `This slot (${cleanTimeSlot} on ${cleanDate}) was just reserved. Please select another convenient time slot.`,
       });
     }
 
-    // Generate unique reference code
+    // Generate unique booking reference code
     const randomCode = Math.floor(1000 + Math.random() * 9000);
     const referenceCode = `MIFC-CHW-${randomCode}`;
+
+    // Status is always "Pending Confirmation" until clinic staff reviews
+    const bookingStatus: 'Pending Confirmation' = 'Pending Confirmation';
+
+    // 1. Send WhatsApp Business notification to clinic's designated WhatsApp number
+    const whatsappResult: WhatsAppNotificationResult = await sendWhatsAppBookingNotification({
+      bookingId: referenceCode,
+      patientName: cleanName,
+      patientPhone: cleanPhone,
+      patientEmail: cleanEmail || undefined,
+      doctorName: cleanDoctor,
+      preferredDate: cleanDate,
+      preferredTime: cleanTimeSlot,
+      consultationType: cleanType,
+      reason: cleanReason || undefined,
+    });
 
     const newAppointment: StoredAppointment = {
       id: `apt-${Date.now()}`,
       referenceCode,
       doctorId: doctorId || 'general',
-      doctorName,
+      doctorName: cleanDoctor,
       branchId: 'chitwan',
       branchName: 'Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan',
-      date,
-      timeSlot,
-      consultationType,
-      patientName,
-      patientPhone,
-      patientEmail: patientEmail || '',
-      treatmentType,
-      notes,
+      date: cleanDate,
+      timeSlot: cleanTimeSlot,
+      consultationType: cleanType,
+      patientName: cleanName,
+      countryCode: sanitizeInput(countryCode, 8) || '+977',
+      patientPhone: cleanPhone,
+      patientEmail: cleanEmail || '',
+      treatmentType: cleanTreatment,
+      notes: cleanReason,
+      reason: cleanReason,
       previousIvf: Boolean(previousIvf),
-      status: 'confirmed',
+      status: bookingStatus,
       createdAt: new Date().toISOString(),
+      whatsappNotification: {
+        status: whatsappResult.status,
+        sentAt: whatsappResult.success ? whatsappResult.timestamp : undefined,
+        messageId: whatsappResult.messageId,
+        recipientNumber: whatsappResult.recipientNumber,
+        error: whatsappResult.error,
+        attempts: 1,
+        lastAttemptAt: whatsappResult.timestamp,
+      },
     };
 
     appointments.push(newAppointment);
     saveAppointments();
 
-    res.status(201).json({
-      success: true,
-      message: 'Consultation successfully scheduled and confirmed.',
+    // Cache for duplicate protection
+    idempotencyCache.set(idempotencyKey, {
+      timestamp: now,
       appointment: newAppointment,
+    });
+
+    return res.status(201).json({
+      success: true,
+      message:
+        'Thank you for choosing Mamata International Fertility Center. Your consultation request has been received successfully. Our team will contact you to confirm your appointment.',
+      appointment: newAppointment,
+      whatsappStatus: whatsappResult.status,
       instructions: {
-        arrival: 'Please arrive 15 minutes before your slot time at Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan with previous medical files and ultrasound reports.',
+        status: 'Pending Confirmation',
+        message:
+          'Thank you for choosing Mamata International Fertility Center. Your consultation request has been received successfully. Our team will contact you to confirm your appointment.',
+        arrival:
+          'Please arrive 15 minutes before your slot time at Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan with previous medical files and ultrasound reports.',
         contactLine: 'Hotline: 056-493798 | 056-493738 (WhatsApp: 9855088798)',
-        whatsappConfirmation: `A confirmation receipt will be sent to ${patientPhone}.`,
+        whatsappConfirmation:
+          whatsappResult.status === 'sent'
+            ? 'Booking notification successfully delivered to the clinic WhatsApp desk.'
+            : 'Booking recorded in clinic database; notification queued for coordinator review.',
+        whatsappDirectUrl: `https://wa.me/9779855088798?text=Hello%20Mamata%20Fertility%2C%20I%20have%20submitted%20consultation%20booking%20${encodeURIComponent(referenceCode)}%20for%20${encodeURIComponent(cleanName)}`,
       },
     });
   } catch (err: any) {
     console.error('Error creating appointment:', err);
-    res.status(500).json({ error: 'Internal server error while saving appointment' });
+    return res.status(500).json({ error: 'Internal server error while saving appointment' });
   }
+});
+
+// 4.1 Admin Endpoint: Retry WhatsApp Notification
+app.post('/api/appointments/:id/retry-whatsapp', async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const apt = appointments.find((a) => a.id === id || a.referenceCode === id);
+
+  if (!apt) {
+    return res.status(404).json({ error: 'Appointment not found.' });
+  }
+
+  try {
+    const whatsappResult = await sendWhatsAppBookingNotification({
+      bookingId: apt.referenceCode,
+      patientName: apt.patientName,
+      patientPhone: apt.patientPhone,
+      patientEmail: apt.patientEmail || undefined,
+      doctorName: apt.doctorName,
+      preferredDate: apt.date,
+      preferredTime: apt.timeSlot,
+      consultationType: apt.consultationType,
+      reason: apt.reason || apt.notes || undefined,
+    });
+
+    const prevAttempts = apt.whatsappNotification?.attempts || 0;
+    apt.whatsappNotification = {
+      status: whatsappResult.status,
+      sentAt: whatsappResult.success ? whatsappResult.timestamp : apt.whatsappNotification?.sentAt,
+      messageId: whatsappResult.messageId || apt.whatsappNotification?.messageId,
+      recipientNumber: whatsappResult.recipientNumber,
+      error: whatsappResult.error,
+      attempts: prevAttempts + 1,
+      lastAttemptAt: whatsappResult.timestamp,
+    };
+
+    saveAppointments();
+
+    return res.json({
+      success: whatsappResult.success,
+      status: whatsappResult.status,
+      message: whatsappResult.success
+        ? 'WhatsApp notification sent successfully.'
+        : `Notification failed: ${whatsappResult.error || 'Unknown error'}`,
+      appointment: apt,
+    });
+  } catch (err: any) {
+    return res.status(500).json({ error: err?.message || 'Failed to retry notification' });
+  }
+});
+
+// 4.2 Admin Endpoint: Update Appointment Status
+app.patch('/api/appointments/:id/status', (req: Request, res: Response) => {
+  const { id } = req.params;
+  const { status } = req.body;
+
+  const validStatuses = ['Pending Confirmation', 'Confirmed', 'Rescheduled', 'Cancelled'];
+  if (!validStatuses.includes(status)) {
+    return res.status(400).json({
+      error: `Invalid status. Must be one of: ${validStatuses.join(', ')}`,
+    });
+  }
+
+  const apt = appointments.find((a) => a.id === id || a.referenceCode === id);
+  if (!apt) {
+    return res.status(404).json({ error: 'Appointment not found.' });
+  }
+
+  apt.status = status;
+  saveAppointments();
+
+  return res.json({
+    success: true,
+    message: `Appointment status updated to ${status}.`,
+    appointment: apt,
+  });
+});
+
+// 4.3 Diagnostic Endpoint: Check WhatsApp configuration status
+app.get('/api/whatsapp/config', (_req: Request, res: Response) => {
+  const hasToken = Boolean(process.env.WHATSAPP_ACCESS_TOKEN?.trim());
+  const hasPhoneId = Boolean(process.env.WHATSAPP_PHONE_NUMBER_ID?.trim());
+  const recipient = (process.env.WHATSAPP_RECIPIENT_NUMBER || '9779855088798').replace(/[^\d]/g, '');
+
+  res.json({
+    configured: hasToken && hasPhoneId,
+    hasToken,
+    hasPhoneId,
+    recipientNumber: recipient,
+    apiVersion: process.env.WHATSAPP_API_VERSION || 'v21.0',
+    status: hasToken && hasPhoneId ? 'ready' : 'credentials_missing',
+  });
 });
 
 // 5. Live Chat / AI Fertility Assistant

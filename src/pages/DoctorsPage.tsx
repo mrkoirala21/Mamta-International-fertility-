@@ -32,20 +32,24 @@ interface DoctorsPageProps {
 export const DoctorsPage: React.FC<DoctorsPageProps> = ({ onOpenBooking, onNavigate, language = 'en' }) => {
   const [activeDepartment, setActiveDepartment] = useState<string>('all');
 
+  // Filter clinical medical specialists (excluding embryology & andrology lab sections)
+  const clinicalDoctors = DOCTORS.filter(
+    (doc) => doc.department !== 'embryology' && doc.department !== 'andrology'
+  );
+
   const departments = [
-    { id: 'all', label: language === 'en' ? 'All Specialists (8)' : 'सबै विशेषज्ञहरू' },
+    {
+      id: 'all',
+      label: language === 'en' ? `All Specialists (${clinicalDoctors.length})` : `सबै विशेषज्ञहरू (${clinicalDoctors.length})`,
+    },
     { id: 'fertility', label: language === 'en' ? 'Fertility Care' : 'प्रजनन विशेषज्ञ' },
     { id: 'ultrasound', label: language === 'en' ? 'Ultrasound & 5D Imaging' : 'अल्ट्रासाउन्ड तथा ५D' },
     { id: 'obstetrics', label: language === 'en' ? 'Obstetrics & NICU Team' : 'प्रसूति तथा NICU समूह' },
     { id: 'laparoscopic', label: language === 'en' ? 'Laparoscopic Surgery Team' : 'ल्यापारोस्कोपिक शल्यक्रिया समूह' },
-    { id: 'embryology', label: language === 'en' ? 'Embryology & Andrology' : 'भ्रूण तथा पुरुष प्रजनन' },
   ];
 
-  const filteredDoctors = DOCTORS.filter((doc) => {
+  const filteredDoctors = clinicalDoctors.filter((doc) => {
     if (activeDepartment === 'all') return true;
-    if (activeDepartment === 'embryology') {
-      return doc.department === 'embryology' || doc.department === 'andrology';
-    }
     return doc.department === activeDepartment;
   });
 
@@ -418,7 +422,7 @@ export const DoctorsPage: React.FC<DoctorsPageProps> = ({ onOpenBooking, onNavig
               Collaborative Care from Conception Through Delivery
             </h3>
             <p className="text-sm text-slate-300 leading-relaxed">
-              At Mamta International Fertility Center, patient care is truly multidisciplinary. Dr. Anusha Tiwari (Fertility Lead), Dr. Ramesh Ghimire (Ultrasound & 5D Monitoring), our Obstetrics Team (Dr. Kesheb Bhurtel & Dr. Anupama Karki), our Laparoscopic Surgeons (Dr. Ramesh Poudel & Dr. Ritu), Chief Embryologist Dr. Bikash Adhikari, and Consultant Andrologist Dr. Suresh Thapa work in unified clinical coordination at Maulakalika Hospital.
+              At Mamta International Fertility Center, patient care is truly multidisciplinary. Dr. Anusha Tiwari (Fertility Lead), Dr. Ramesh Ghimire (Ultrasound & 5D Monitoring), our Obstetrics Team (Dr. Kesheb Bhurtel & Dr. Anupama Karki), and our Laparoscopic Surgery Team (Dr. Ramesh Poudel & Dr. Ritu) work in unified clinical coordination at Maulakalika Hospital.
             </p>
           </div>
 

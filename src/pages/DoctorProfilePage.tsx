@@ -33,7 +33,9 @@ export const DoctorProfilePage: React.FC<DoctorProfilePageProps> = ({
   language = 'en',
 }) => {
   const doctor = DOCTORS.find((d) => d.id === doctorId) || DOCTORS[0];
-  const otherDoctors = DOCTORS.filter((d) => d.id !== doctor.id).slice(0, 3);
+  const otherDoctors = DOCTORS.filter(
+    (d) => d.id !== doctor.id && d.department !== 'embryology' && d.department !== 'andrology'
+  ).slice(0, 3);
 
   return (
     <div className="min-w-0 bg-[#F9FAFC] pb-20">

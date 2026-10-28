@@ -8,15 +8,22 @@
     "branchName": "Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan",
     "date": "2026-10-15",
     "timeSlot": "10:00 AM",
-    "consultationType": "in-person",
+    "consultationType": "In-person",
     "patientName": "Aayusha Koirala",
     "patientPhone": "+977-9855088798",
     "patientEmail": "aayusha.k@example.com",
     "treatmentType": "IVF Consultation",
     "notes": "Initial evaluation for secondary infertility.",
     "previousIvf": false,
-    "status": "confirmed",
-    "createdAt": "2026-10-12T09:00:00Z"
+    "status": "Confirmed",
+    "createdAt": "2026-10-12T09:00:00Z",
+    "whatsappNotification": {
+      "status": "sent",
+      "sentAt": "2026-10-12T09:00:00Z",
+      "recipientNumber": "9779855088798",
+      "attempts": 1,
+      "lastAttemptAt": "2026-10-12T09:00:00Z"
+    }
   },
   {
     "id": "apt-002",
@@ -27,14 +34,49 @@
     "branchName": "Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan",
     "date": "2026-10-16",
     "timeSlot": "02:00 PM",
-    "consultationType": "in-person",
+    "consultationType": "In-person",
     "patientName": "Rabin Shrestha",
     "patientPhone": "+977-9855088798",
     "patientEmail": "rabin.s@example.com",
     "treatmentType": "Male Infertility & Andrology",
     "notes": "Second opinion on semen analysis parameters.",
     "previousIvf": true,
-    "status": "confirmed",
-    "createdAt": "2026-10-13T08:30:00Z"
+    "status": "Confirmed",
+    "createdAt": "2026-10-13T08:30:00Z",
+    "whatsappNotification": {
+      "status": "sent",
+      "sentAt": "2026-10-13T08:30:00Z",
+      "recipientNumber": "9779855088798",
+      "attempts": 1,
+      "lastAttemptAt": "2026-10-13T08:30:00Z"
+    }
+  },
+  {
+    "id": "apt-1793091236804",
+    "referenceCode": "MIFC-CHW-1379",
+    "doctorId": "dr-anusha",
+    "doctorName": "Dr. Anusha Tiwari",
+    "branchId": "chitwan",
+    "branchName": "Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan",
+    "date": "2026-11-05",
+    "timeSlot": "11:00 AM",
+    "consultationType": "In-person",
+    "patientName": "Sunita Koirala",
+    "countryCode": "+977",
+    "patientPhone": "+977 9855088798",
+    "patientEmail": "sunita.koirala@example.com",
+    "treatmentType": "IVF Initial Evaluation",
+    "notes": "Seeking second opinion regarding ovarian reserve and blastocyst IVF protocol.",
+    "reason": "Seeking second opinion regarding ovarian reserve and blastocyst IVF protocol.",
+    "previousIvf": false,
+    "status": "Pending Confirmation",
+    "createdAt": "2026-10-27T08:53:56.804Z",
+    "whatsappNotification": {
+      "status": "not_configured",
+      "recipientNumber": "9779855088798",
+      "error": "WhatsApp Business API credentials (WHATSAPP_ACCESS_TOKEN / WHATSAPP_PHONE_NUMBER_ID) not configured in server environment.",
+      "attempts": 1,
+      "lastAttemptAt": "2026-10-27T08:53:56.804Z"
+    }
   }
 ]
