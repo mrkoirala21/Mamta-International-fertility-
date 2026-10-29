@@ -63,6 +63,10 @@ export const DoctorProfilePage: React.FC<DoctorProfilePageProps> = ({
                     alt={doctor.name}
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover object-top"
+                    fetchPriority="high"
+                    decoding="async"
+                    width={400}
+                    height={533}
                   />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-tr from-[#1D3B58] to-[#2B5A88] text-white flex flex-col items-center justify-center p-6 text-center">
@@ -257,6 +261,10 @@ export const DoctorProfilePage: React.FC<DoctorProfilePageProps> = ({
                       alt={doc.name}
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover object-top"
+                      loading="lazy"
+                      decoding="async"
+                      width={56}
+                      height={56}
                     />
                   ) : (
                     <div className="w-full h-full bg-[#1D3B58] text-white flex items-center justify-center font-bold text-lg">

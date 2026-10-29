@@ -1,10 +1,10 @@
-// Centralized image assets bundled directly through Vite
-import doctorPortraitImg from './images/regenerated_image_1793088619931.png';
-import doctorAnushaImg from './images/regenerated_image_1793088619931.png';
-import doctorRameshImg from './images/doctor_ramesh_ghimire.jpg';
-import heroConsultationImg from './images/hero_fertility_consultation.jpg';
-import advancedLabImg from './images/advanced_embryology_lab.jpg';
-import parentsNewbornImg from './images/parents_with_newborn.jpg';
+// Centralized optimized image assets bundled directly through Vite
+import doctorPortraitImg from './images/doctor_anusha_tiwari.webp';
+import doctorAnushaImg from './images/doctor_anusha_tiwari.webp';
+import doctorRameshImg from './images/doctor_ramesh_ghimire.webp';
+import heroConsultationImg from './images/hero_fertility_consultation.webp';
+import advancedLabImg from './images/advanced_embryology_lab.webp';
+import parentsNewbornImg from './images/parents_with_newborn.webp';
 
 export const IMAGES = {
   doctorPortrait: doctorPortraitImg,

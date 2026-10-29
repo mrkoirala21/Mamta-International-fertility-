@@ -197,6 +197,10 @@ export const TreatmentDetailPage: React.FC<TreatmentDetailPageProps> = ({
                   alt={leadDoctor.name}
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-top"
+                  loading="lazy"
+                  decoding="async"
+                  width={112}
+                  height={112}
                 />
               ) : (
                 <div className="w-full h-full bg-[#1D3B58] text-white flex items-center justify-center font-bold text-2xl">

@@ -43,6 +43,10 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = ({ onBookDoctor, la
                       alt={doc.name}
                       className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
                       referrerPolicy="no-referrer"
+                      loading="lazy"
+                      decoding="async"
+                      width={280}
+                      height={280}
                     />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-tr from-[#1D3B58] to-[#2B5A88] flex flex-col items-center justify-center text-white p-6 text-center">

@@ -164,6 +164,10 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenBooking, languag
                 alt="State of the art IVF and embryology laboratory at Mamata Fertility Centre"
                 className="w-full h-full object-cover object-center"
                 referrerPolicy="no-referrer"
+                loading="lazy"
+                decoding="async"
+                width={600}
+                height={400}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent lg:hidden" />
             </div>

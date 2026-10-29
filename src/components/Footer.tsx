@@ -242,13 +242,18 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onNavigate, langu
                 </button>
               </li>
               <li>
-                <button onClick={() => handleLink('/pricing')} className="hover:text-white transition-colors cursor-pointer">
-                  Transparent Treatment Packages
+                <button onClick={() => handleLink('/success-rates')} className="text-[#E48AA0] font-bold hover:underline transition-colors cursor-pointer">
+                  Audited Success Rates (ESHRE)
                 </button>
               </li>
               <li>
-                <button onClick={() => handleLink('/calculator')} className="hover:text-white transition-colors cursor-pointer">
-                  Pregnancy Due Date Tool
+                <button onClick={() => handleLink('/calculators')} className="hover:text-white transition-colors cursor-pointer">
+                  Fertility & Due Date Calculators
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleLink('/pricing')} className="hover:text-white transition-colors cursor-pointer">
+                  Transparent Treatment Packages
                 </button>
               </li>
               <li>

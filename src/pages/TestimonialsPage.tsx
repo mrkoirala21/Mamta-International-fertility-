@@ -59,6 +59,10 @@ export const TestimonialsPage: React.FC<TestimonialsPageProps> = ({
               src={IMAGES.parentsNewborn}
               alt="Joyful parents with baby"
               className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+              width={600}
+              height={450}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent lg:hidden" />
           </div>

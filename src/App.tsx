@@ -25,6 +25,8 @@ import DoctorProfilePage from './pages/DoctorProfilePage';
 // 3. Specialized Patient Resource Pages
 import PricingPage from './pages/PricingPage';
 import DueDateCalculatorPage from './pages/DueDateCalculatorPage';
+import CalculatorsPage from './pages/CalculatorsPage';
+import SuccessRatesPage from './pages/SuccessRatesPage';
 import PatientJourneyPage from './pages/PatientJourneyPage';
 import TestimonialsPage from './pages/TestimonialsPage';
 import FAQPage from './pages/FAQPage';
@@ -112,8 +114,18 @@ function parseLocation(): ParsedRoute {
   if (path === '/pricing' || path === '/cost' || path === '/packages') {
     return { page: 'pricing', rawPath: path };
   }
-  if (path === '/calculator' || path === '/due-date' || path === '/due-date-calculator') {
-    return { page: 'calculator', rawPath: path };
+  if (path === '/success-rates' || path === '/success' || path === '/clinical-outcomes') {
+    return { page: 'success-rates', rawPath: path };
+  }
+  if (
+    path === '/calculators' ||
+    path === '/calculator' ||
+    path === '/ovulation-calculator' ||
+    path === '/due-date' ||
+    path === '/due-date-calculator' ||
+    path === '/fertility-calculators'
+  ) {
+    return { page: 'calculators', rawPath: path };
   }
   if (path === '/journey' || path === '/ivf-process' || path === '/patient-journey') {
     return { page: 'journey', rawPath: path };
@@ -322,11 +334,20 @@ export default function App() {
           />
         )}
 
-        {/* PREGNANCY DUE DATE CALCULATOR */}
-        {route.page === 'calculator' && (
-          <DueDateCalculatorPage
+        {/* AUDITED SUCCESS RATES & CLINICAL OUTCOMES */}
+        {route.page === 'success-rates' && (
+          <SuccessRatesPage
             onOpenBooking={(doc, _br, tr) => handleOpenBooking(doc, 'chitwan', tr)}
             language={language}
+          />
+        )}
+
+        {/* INTERACTIVE FERTILITY & DUE DATE CALCULATORS */}
+        {(route.page === 'calculators' || route.page === 'calculator') && (
+          <CalculatorsPage
+            onOpenBooking={(doc, _br, tr) => handleOpenBooking(doc, 'chitwan', tr)}
+            language={language}
+            initialTab={route.rawPath.includes('due-date') || route.rawPath.includes('pregnancy') ? 'due-date' : 'ovulation'}
           />
         )}
 
@@ -387,7 +408,10 @@ export default function App() {
       />
 
       {/* 6. Real-Time Live Chat Widget (Sister Aarati Assistant with 9855088798 / 056-493798) */}
-      <LiveChatWidget />
+      <LiveChatWidget
+        onOpenBooking={(doc, br, tr) => handleOpenBooking(doc, br || 'chitwan', tr)}
+        onNavigate={navigateTo}
+      />
     </div>
   );
 }

@@ -98,6 +98,10 @@ export const MaternityHubPage: React.FC<MaternityHubPageProps> = ({
                       alt={doctorRamesh.name}
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover object-top"
+                      loading="lazy"
+                      decoding="async"
+                      width={360}
+                      height={270}
                     />
                   ) : null}
                   <span className="absolute bottom-2 left-2 bg-white/95 text-[11px] font-bold px-2 py-0.5 rounded text-[#1D3B58] shadow-xs">

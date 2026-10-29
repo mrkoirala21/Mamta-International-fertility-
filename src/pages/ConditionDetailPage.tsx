@@ -190,6 +190,10 @@ export const ConditionDetailPage: React.FC<ConditionDetailPageProps> = ({
                 alt={specialist.name}
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover object-top"
+                loading="lazy"
+                decoding="async"
+                width={96}
+                height={96}
               />
             ) : (
               <div className="w-full h-full bg-white/10 flex items-center justify-center font-bold text-2xl">

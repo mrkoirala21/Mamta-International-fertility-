@@ -103,6 +103,10 @@ export const FacilitiesPage: React.FC<FacilitiesPageProps> = ({
               alt="Advanced Embryology Lab at Mamta International"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+              width={688}
+              height={384}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1D3B58]/60 via-transparent to-transparent flex items-end p-6">
               <span className="text-white text-xs font-bold bg-[#1D3B58]/80 backdrop-blur-xs px-3 py-1.5 rounded-lg border border-white/20">

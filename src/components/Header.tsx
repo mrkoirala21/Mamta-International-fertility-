@@ -20,6 +20,7 @@ import {
   Banknote,
   HelpCircle,
   Calculator,
+  TrendingUp,
 } from 'lucide-react';
 import MamataLogo from './MamataLogo';
 import { TREATMENTS, CONDITIONS, DOCTORS } from '../data/fertilityData';
@@ -459,18 +460,25 @@ export const Header: React.FC<HeaderProps> = ({
                       <Building2 className="w-3.5 h-3.5 text-slate-400" />
                     </button>
                     <button
+                      onClick={() => handleNavClick('/success-rates')}
+                      className="w-full text-left px-3 py-1.5 rounded-xl text-xs hover:bg-[#FCEEF1] text-[#C96D83] font-bold transition-colors flex items-center justify-between cursor-pointer"
+                    >
+                      <span>Audited Success Rates</span>
+                      <TrendingUp className="w-3.5 h-3.5 text-[#E48AA0]" />
+                    </button>
+                    <button
+                      onClick={() => handleNavClick('/calculators')}
+                      className="w-full text-left px-3 py-1.5 rounded-xl text-xs hover:bg-slate-50 text-slate-700 hover:text-[#1D3B58] transition-colors flex items-center justify-between cursor-pointer"
+                    >
+                      <span>Fertility & Due Date Calculators</span>
+                      <Calculator className="w-3.5 h-3.5 text-slate-400" />
+                    </button>
+                    <button
                       onClick={() => handleNavClick('/pricing')}
                       className="w-full text-left px-3 py-1.5 rounded-xl text-xs hover:bg-slate-50 text-slate-700 hover:text-[#1D3B58] transition-colors flex items-center justify-between cursor-pointer"
                     >
                       <span>Treatment Costs & Packages</span>
                       <Banknote className="w-3.5 h-3.5 text-slate-400" />
-                    </button>
-                    <button
-                      onClick={() => handleNavClick('/calculator')}
-                      className="w-full text-left px-3 py-1.5 rounded-xl text-xs hover:bg-slate-50 text-slate-700 hover:text-[#1D3B58] transition-colors flex items-center justify-between cursor-pointer"
-                    >
-                      <span>Pregnancy Due Date Calculator</span>
-                      <Calculator className="w-3.5 h-3.5 text-slate-400" />
                     </button>
                     <button
                       onClick={() => handleNavClick('/journey')}
@@ -676,16 +684,22 @@ export const Header: React.FC<HeaderProps> = ({
                     Facilities & Cleanroom Tech
                   </button>
                   <button
+                    onClick={() => handleNavClick('/success-rates')}
+                    className="w-full text-left px-3 py-1.5 text-xs text-[#C96D83] font-bold hover:text-[#1D3B58] rounded-md hover:bg-[#FCEEF1]"
+                  >
+                    Audited Success Rates
+                  </button>
+                  <button
+                    onClick={() => handleNavClick('/calculators')}
+                    className="w-full text-left px-3 py-1.5 text-xs text-slate-600 hover:text-[#1D3B58] rounded-md hover:bg-slate-50"
+                  >
+                    Fertility & Due Date Calculators
+                  </button>
+                  <button
                     onClick={() => handleNavClick('/pricing')}
                     className="w-full text-left px-3 py-1.5 text-xs text-slate-600 hover:text-[#1D3B58] rounded-md hover:bg-slate-50"
                   >
                     Treatment Costs & Packages
-                  </button>
-                  <button
-                    onClick={() => handleNavClick('/calculator')}
-                    className="w-full text-left px-3 py-1.5 text-xs text-slate-600 hover:text-[#1D3B58] rounded-md hover:bg-slate-50"
-                  >
-                    Pregnancy Due Date Calculator
                   </button>
                   <button
                     onClick={() => handleNavClick('/journey')}

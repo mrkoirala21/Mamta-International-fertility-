@@ -11,6 +11,7 @@ import {
   Clock,
   ShieldCheck,
   Phone,
+  TrendingUp,
 } from 'lucide-react';
 
 interface PatientResourcesHubPageProps {
@@ -26,6 +27,22 @@ export const PatientResourcesHubPage: React.FC<PatientResourcesHubPageProps> = (
 }) => {
   const resourceCards = [
     {
+      title: 'Audited Success Rates & Clinical Performance',
+      nepaliTitle: 'अन्तर्राष्ट्रिय मापदण्ड अनुसारको सफलता दर',
+      path: '/success-rates',
+      icon: TrendingUp,
+      color: 'bg-indigo-50 text-indigo-700',
+      description: 'Transparent, ESHRE-audited clinical pregnancy rates categorized by maternal age brackets (<35 to 43+), treatment modality, and cumulative 3-cycle potential.'
+    },
+    {
+      title: 'Fertility & Due Date Calculators',
+      nepaliTitle: 'प्रजनन तथा गर्भावस्था क्यालकुलेटर',
+      path: '/calculators',
+      icon: Calculator,
+      color: 'bg-purple-50 text-purple-700',
+      description: 'Interactive tools including an Ovulation & Fertile Window Tracker and a Pregnancy Due Date Calculator supporting LMP, conception, and IVF Day 3/5 blastocyst dating.'
+    },
+    {
       title: 'Transparent Treatment Costs & Packages',
       nepaliTitle: 'उपचार शुल्क तथा पारदर्शी प्याकेजहरू',
       path: '/pricing',
@@ -40,14 +57,6 @@ export const PatientResourcesHubPage: React.FC<PatientResourcesHubPageProps> = (
       icon: HelpCircle,
       color: 'bg-sky-50 text-sky-700',
       description: 'Answers directly authored by our clinical panel on IVF success rates, pain-free egg retrieval, outstation stays, and blastocyst transfer.'
-    },
-    {
-      title: 'Pregnancy Due Date & Gestation Calculator',
-      nepaliTitle: 'गर्भावस्था मिति तथा डेलिभरी क्यालकुलेटर',
-      path: '/calculator',
-      icon: Calculator,
-      color: 'bg-purple-50 text-purple-700',
-      description: 'Interactive medical tool to calculate estimated due dates, trimester milestones, and gestational age via LMP, conception, or IVF transfer dates.'
     },
     {
       title: 'Step-by-Step Patient Fertility Journey',

@@ -104,6 +104,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking,
                 src={IMAGES.doctorPortrait}
                 alt="Dr. Anusha Tiwari"
                 className="w-full h-[450px] object-cover object-top"
+                loading="lazy"
+                decoding="async"
+                width={600}
+                height={450}
               />
               <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-900/90 via-slate-900/60 to-transparent p-6 text-white space-y-1">
                 <h4 className="font-bold text-lg">Dr. Anusha Tiwari</h4>
@@ -240,6 +244,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenBooking,
                   src={IMAGES.advancedLab}
                   alt="Mamata Advanced Embryology Laboratory"
                   className="w-full h-80 object-cover"
+                  loading="lazy"
+                  decoding="async"
+                  width={688}
+                  height={320}
                 />
               </div>
             </div>

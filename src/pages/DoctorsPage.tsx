@@ -123,6 +123,10 @@ export const DoctorsPage: React.FC<DoctorsPageProps> = ({ onOpenBooking, onNavig
                         alt={doc.name}
                         referrerPolicy="no-referrer"
                         className="w-full h-full object-cover object-top"
+                        loading="lazy"
+                        decoding="async"
+                        width={128}
+                        height={128}
                       />
                     ) : (
                       <div className="w-full h-full bg-gradient-to-tr from-[#1D3B58] to-[#2B5A88] text-white flex flex-col items-center justify-center p-3 text-center">

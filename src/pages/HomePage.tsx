@@ -1,6 +1,7 @@
 import React from 'react';
 import { DOCTORS, BRANCHES } from '../data/fertilityData';
 import { IMAGES } from '../assets/images';
+import TestimonialsSection from '../components/TestimonialsSection';
 import {
   ArrowRight,
   ShieldCheck,
@@ -20,6 +21,8 @@ import {
   Building2,
   Stethoscope,
   MessageSquare,
+  TrendingUp,
+  Calculator,
 } from 'lucide-react';
 
 interface HomePageProps {
@@ -115,7 +118,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking, l
       learnFacilities: 'View Complete Facilities & Technology',
       specialistsTitle: 'Clinical Leadership',
       specialistsSubtitle: 'Meet the clinical leaders directing reproductive and prenatal care at our Chitwan hospital.',
-      viewAllDoctors: 'Meet All 8 Doctors & Team Members',
+      viewAllDoctors: 'Meet All Medical Specialists',
       ctaTitle: 'Ready to Begin Your Parenthood Journey?',
       ctaSubtitle: 'Schedule a confidential clinical consultation with Dr. Anusha Tiwari and our specialized medical team at Maulakalika Hospital, Chitwan.',
       ctaButton: 'Book Free Consultation',
@@ -201,7 +204,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking, l
       learnFacilities: 'सम्पूर्ण प्रविधि तथा सुविधाहरू हेर्नुहोस्',
       specialistsTitle: 'हाम्रो चिकित्सक नेतृत्व',
       specialistsSubtitle: 'चितवनमा प्रजनन तथा प्रसूति सेवाको नेतृत्व गरिरहनुभएका प्रमुख विशेषज्ञहरू।',
-      viewAllDoctors: 'सबै ८ जना विशेषज्ञ डाक्टरहरूको विवरण',
+      viewAllDoctors: 'सबै विशेषज्ञ डाक्टरहरूको विवरण',
       ctaTitle: 'सन्तान सुखको यात्रा आजै सुरु गर्नुहोस्',
       ctaSubtitle: 'मौलकालिका अस्पताल, भरतपुर-११, चितवनमा डा. अनुषा तिवारी तथा विशेषज्ञ समूहसँग निःशुल्क परामर्श लिनुहोस्।',
       ctaButton: 'परामर्श बुक गर्नुहोस्',
@@ -277,6 +280,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking, l
                     alt="Doctor consulting warmly with couple at Mamata International Fertility Centre"
                     className="w-full h-full object-cover object-center"
                     referrerPolicy="no-referrer"
+                    width={688}
+                    height={473}
+                    fetchPriority="high"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
 
@@ -562,6 +569,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking, l
                   alt={drAnusha.name}
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-top"
+                  loading="lazy"
+                  decoding="async"
+                  width={160}
+                  height={160}
                 />
               ) : (
                 <div className="w-full h-full bg-[#1D3B58] text-white flex items-center justify-center font-bold">
@@ -604,6 +615,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking, l
                   alt={drRamesh.name}
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-top"
+                  loading="lazy"
+                  decoding="async"
+                  width={160}
+                  height={160}
                 />
               ) : (
                 <div className="w-full h-full bg-[#1D3B58] text-white flex items-center justify-center font-bold">
@@ -639,24 +654,139 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking, l
         </div>
       </section>
 
-      {/* 7. CLEAR APPOINTMENT CALL-TO-ACTION */}
+      {/* 7. PATIENT SUCCESS STORIES (CAROUSEL) */}
+      <TestimonialsSection
+        onOpenBooking={onOpenBooking}
+        onNavigate={onNavigate}
+        language={language}
+      />
+
+      {/* 7.5 INTERACTIVE PATIENT TOOLS & CLINICAL TRANSPARENCY SPOTLIGHT */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div className="space-y-1.5">
+            <span className="text-xs font-bold text-[#E48AA0] uppercase tracking-wider bg-[#FCEEF1] px-3 py-1 rounded-full inline-flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Evidence-Based Reproductive Medicine</span>
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1D3B58] tracking-tight">
+              Interactive Fertility Tools & Audited Success Rates
+            </h2>
+            <p className="text-slate-600 text-xs sm:text-sm max-w-2xl leading-relaxed">
+              Explore transparent clinical performance data verified by fetal heartbeat ultrasound, or plan with our interactive ovulation and pregnancy due date calculators.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Card 1: Success Rate Explorer */}
+          <div className="bg-[#FAFBFD] rounded-3xl border border-slate-200 p-6 sm:p-8 flex flex-col justify-between space-y-6 hover:shadow-md transition-shadow group">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-[#1D3B58] text-white flex items-center justify-center shadow-xs">
+                <TrendingUp className="w-6 h-6 text-[#E48AA0]" />
+              </div>
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xl font-bold text-[#1D3B58]">
+                    Dynamic Success Rates Explorer
+                  </h3>
+                  <span className="text-xs font-extrabold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
+                    ESHRE Audited
+                  </span>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  Interactive charts showing clinical pregnancy rates by maternal age bracket (&lt;35 to 43+), treatment modality (IVF, ICSI, Blastocyst FET, IUI), and 3-cycle cumulative potential up to 92%.
+                </p>
+              </div>
+
+              {/* Quick Key Stat Snippet */}
+              <div className="grid grid-cols-3 gap-2.5 pt-1 text-center">
+                <div className="p-3 bg-white rounded-xl border border-slate-200/80">
+                  <span className="text-lg font-black text-[#1D3B58] block">72%</span>
+                  <span className="text-[10px] text-slate-500">&lt; 35 Blastocyst</span>
+                </div>
+                <div className="p-3 bg-white rounded-xl border border-slate-200/80">
+                  <span className="text-lg font-black text-[#1D3B58] block">92%</span>
+                  <span className="text-[10px] text-slate-500">3-Cycle Potential</span>
+                </div>
+                <div className="p-3 bg-white rounded-xl border border-slate-200/80">
+                  <span className="text-lg font-black text-emerald-600 block">65%+</span>
+                  <span className="text-[10px] text-slate-500">Day 5 Conversion</span>
+                </div>
+              </div>
+            </div>
+
+            <button
+              onClick={() => onNavigate('/success-rates')}
+              className="w-full bg-[#1D3B58] hover:bg-[#2B5A88] text-white py-3 rounded-xl font-bold text-xs sm:text-sm transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-xs group-hover:bg-[#244566]"
+            >
+              <span>Explore Success Rates Dashboard</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+
+          {/* Card 2: Interactive Calculators */}
+          <div className="bg-[#FAFBFD] rounded-3xl border border-slate-200 p-6 sm:p-8 flex flex-col justify-between space-y-6 hover:shadow-md transition-shadow group">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-[#E48AA0] text-white flex items-center justify-center shadow-xs">
+                <Calculator className="w-6 h-6 text-white" />
+              </div>
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xl font-bold text-[#1D3B58]">
+                    Interactive Fertility Calculators
+                  </h3>
+                  <span className="text-xs font-extrabold text-[#C96D83] bg-[#FCEEF1] border border-[#F5C2CD] px-2.5 py-0.5 rounded-full">
+                    Ovulation & Due Date
+                  </span>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  Calculate your peak fertile days, luteal phase timing, or determine your exact pregnancy due date and ultrasound schedule following natural conception or Day 5 IVF blastocyst transfer.
+                </p>
+              </div>
+
+              {/* Quick Feature Chips */}
+              <div className="space-y-2 pt-1 text-xs">
+                <div className="flex items-center gap-2 bg-white p-2.5 rounded-xl border border-slate-200/80 text-slate-700">
+                  <CheckCircle2 className="w-4 h-4 text-[#E48AA0] shrink-0" />
+                  <span><strong>Ovulation Tracker:</strong> 5-day fertile window, LH surge, & 3-month forecast</span>
+                </div>
+                <div className="flex items-center gap-2 bg-white p-2.5 rounded-xl border border-slate-200/80 text-slate-700">
+                  <CheckCircle2 className="w-4 h-4 text-[#E48AA0] shrink-0" />
+                  <span><strong>IVF Due Date Calculator:</strong> Day 3 / Day 5 blastocyst transfer dating</span>
+                </div>
+              </div>
+            </div>
+
+            <button
+              onClick={() => onNavigate('/calculators')}
+              className="w-full bg-[#E48AA0] hover:bg-[#D4748B] text-white py-3 rounded-xl font-bold text-xs sm:text-sm transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-xs"
+            >
+              <span>Launch Fertility Calculators</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. CLEAR APPOINTMENT CALL-TO-ACTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-r from-[#1D3B58] via-[#244566] to-[#2B5A88] text-white rounded-3xl p-8 sm:p-12 shadow-lg">
-          <div className="max-w-3xl space-y-4">
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#E48AA0] bg-white/10 px-3 py-1 rounded-full">
-              <Calendar className="w-4 h-4" />
+        <div className="bg-gradient-to-r from-[#1D3B58] via-[#244566] to-[#2B5A88] text-white rounded-2xl p-6 sm:p-7 shadow-md">
+          <div className="max-w-2xl space-y-2.5">
+            <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-[#E48AA0] bg-white/10 px-2.5 py-0.5 rounded-full">
+              <Calendar className="w-3.5 h-3.5" />
               <span>Begin With Confidence</span>
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight">
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
               {t.ctaTitle}
             </h2>
-            <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
+            <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">
               {t.ctaSubtitle}
             </p>
-            <div className="pt-2 flex flex-wrap gap-4">
+            <div className="pt-1.5 flex flex-wrap gap-3">
               <button
                 onClick={() => onOpenBooking(undefined, 'chitwan')}
-                className="bg-[#E48AA0] hover:bg-[#D4748B] text-white px-7 py-3.5 rounded-xl font-bold text-sm shadow-md transition-all cursor-pointer flex items-center gap-2"
+                className="bg-[#E48AA0] hover:bg-[#D4748B] text-white px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-sm transition-all cursor-pointer flex items-center gap-2"
               >
                 <Calendar className="w-4 h-4" />
                 <span>{t.ctaButton}</span>
@@ -664,7 +794,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking, l
               </button>
               <button
                 onClick={() => onNavigate('/contact')}
-                className="border border-white/40 hover:border-white text-white px-6 py-3.5 rounded-xl font-semibold text-sm transition-colors cursor-pointer"
+                className="border border-white/40 hover:border-white text-white px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition-colors cursor-pointer"
               >
                 Contact & Hospital Details
               </button>
@@ -673,7 +803,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking, l
         </div>
       </section>
 
-      {/* 8. CHITWAN HOSPITAL CONTACT & INQUIRIES STRIP */}
+      {/* 9. CHITWAN HOSPITAL CONTACT & INQUIRIES STRIP */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
         <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">

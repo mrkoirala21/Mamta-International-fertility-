@@ -323,6 +323,10 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
                       alt={relevantDoctor.name}
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                      width={80}
+                      height={80}
                     />
                   ) : (
                     <div className="w-full h-full bg-[#1D3B58] text-white flex items-center justify-center font-bold text-xl">

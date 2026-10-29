@@ -115,6 +115,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBooking, languag
                   alt="Doctor consulting warmly with couple at Mamata International Fertility Centre"
                   className="w-full h-full object-cover object-center"
                   referrerPolicy="no-referrer"
+                  fetchPriority="high"
+                  decoding="async"
+                  width={688}
+                  height={473}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
 
