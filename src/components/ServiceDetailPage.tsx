@@ -38,14 +38,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
   const primaryBranch = BRANCHES[0]; // Maulakalika Hospital Chitwan
 
   // Doctor recommended for this treatment
-  const relevantDoctor =
-    treatment.id === 'male-infertility'
-      ? DOCTORS.find((d) => d.id === 'dr-suresh') || DOCTORS[0]
-      : treatment.id === 'laparoscopy'
-      ? DOCTORS.find((d) => d.id === 'dr-priya') || DOCTORS[0]
-      : treatment.id === 'blastocyst' || treatment.id === 'icsi'
-      ? DOCTORS.find((d) => d.id === 'dr-bikash') || DOCTORS[0]
-      : DOCTORS[0]; // Dr. Anusha Tiwari
+  const relevantDoctor = DOCTORS.find((d) => d.id === 'dr-anusha') || DOCTORS[0];
 
   // Package pricing details specific to this treatment
   const pricingInfo = {

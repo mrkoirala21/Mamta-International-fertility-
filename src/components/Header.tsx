@@ -21,8 +21,10 @@ import {
   HelpCircle,
   Calculator,
   TrendingUp,
+  Search,
 } from 'lucide-react';
 import MamataLogo from './MamataLogo';
+import { HeaderSearchBar } from './HeaderSearchBar';
 import { TREATMENTS, CONDITIONS, DOCTORS } from '../data/fertilityData';
 
 interface HeaderProps {
@@ -41,6 +43,7 @@ export const Header: React.FC<HeaderProps> = ({
   onToggleLanguage,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   // Mobile accordion state
@@ -93,6 +96,7 @@ export const Header: React.FC<HeaderProps> = ({
   const handleNavClick = (path: string) => {
     onNavigate(path);
     setMobileMenuOpen(false);
+    setMobileSearchOpen(false);
     setOpenDropdown(null);
   };
 
@@ -181,9 +185,9 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* 2. BRAND LOGO & DIRECT CONSULTATION BAR */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-        <div className="flex items-center justify-between gap-4">
+      {/* 2. BRAND LOGO, SEARCH BAR & DIRECT CONSULTATION BAR */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3">
+        <div className="flex items-center justify-between gap-2 sm:gap-4">
           {/* Brand Logo - Returns visitors to Homepage */}
           <button
             onClick={() => handleNavClick('/')}
@@ -193,8 +197,15 @@ export const Header: React.FC<HeaderProps> = ({
             <MamataLogo size="md" />
           </button>
 
-          {/* Quick Highlight Info (Desktop Only) */}
-          <div className="hidden xl:flex items-center gap-3 text-xs text-slate-600 bg-slate-50 px-3.5 py-1.5 rounded-full border border-slate-200/80">
+          {/* Search Bar - Center prominence for Treatments, Conditions & Doctors */}
+          <HeaderSearchBar
+            onNavigate={handleNavClick}
+            language={language}
+            className="hidden md:block flex-1 max-w-xs lg:max-w-sm xl:max-w-md mx-2"
+          />
+
+          {/* Quick Highlight Info (Large Desktop Only) */}
+          <div className="hidden 2xl:flex items-center gap-3 text-xs text-slate-600 bg-slate-50 px-3.5 py-1.5 rounded-full border border-slate-200/80 shrink-0">
             <span className="flex items-center gap-1.5 font-semibold text-[#1D3B58]">
               <MapPin className="w-3.5 h-3.5 text-[#E48AA0]" />
               Maulakalika Hospital, Bharatpur-11
@@ -205,11 +216,28 @@ export const Header: React.FC<HeaderProps> = ({
             </a>
           </div>
 
-          {/* Right Action: Booking Button & Mobile Toggle */}
-          <div className="flex items-center gap-3 shrink-0">
+          {/* Right Action: Search (Mobile), Booking Button & Mobile Toggle */}
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            {/* Mobile Search Toggle Button */}
+            <button
+              onClick={() => {
+                setMobileSearchOpen(!mobileSearchOpen);
+                if (mobileMenuOpen) setMobileMenuOpen(false);
+              }}
+              className={`md:hidden p-2 rounded-xl border transition-colors cursor-pointer ${
+                mobileSearchOpen
+                  ? 'bg-[#E48AA0] text-white border-[#E48AA0]'
+                  : 'text-slate-600 hover:text-slate-900 border-slate-200 hover:bg-slate-100'
+              }`}
+              aria-label="Search treatments, conditions, doctors"
+              title="Search"
+            >
+              <Search className="w-5 h-5" />
+            </button>
+
             <button
               onClick={() => onOpenBooking()}
-              className="hidden sm:inline-flex items-center gap-2 bg-[#E48AA0] hover:bg-[#D4748B] text-white px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-sm transition-all duration-150 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+              className="hidden sm:inline-flex items-center gap-2 bg-[#E48AA0] hover:bg-[#D4748B] text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-sm transition-all duration-150 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
             >
               <Calendar className="w-4 h-4" />
               <span>{t.cta}</span>
@@ -218,7 +246,10 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Mobile menu toggle */}
             <div className="flex lg:hidden items-center">
               <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                onClick={() => {
+                  setMobileMenuOpen(!mobileMenuOpen);
+                  if (mobileSearchOpen) setMobileSearchOpen(false);
+                }}
                 className="p-2 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-100 cursor-pointer"
                 aria-label="Toggle Navigation Menu"
               >
@@ -227,6 +258,18 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </div>
         </div>
+
+        {/* Expandable Mobile Search Drawer when mobileSearchOpen is true */}
+        {mobileSearchOpen && (
+          <div className="md:hidden mt-2 pt-2 border-t border-slate-100 pb-1 animate-in fade-in slide-in-from-top-1">
+            <HeaderSearchBar
+              onNavigate={handleNavClick}
+              language={language}
+              isMobileModal={true}
+              onCloseMobile={() => setMobileSearchOpen(false)}
+            />
+          </div>
+        )}
       </div>
 
       {/* 3. DEDICATED FULL-WIDTH MULTI-PAGE NAVIGATION (DESKTOP) */}
@@ -396,7 +439,7 @@ export const Header: React.FC<HeaderProps> = ({
                     className="w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-[#1D3B58] bg-slate-50 hover:bg-[#FCEEF1] hover:text-[#C96D83] transition-colors mb-1.5 flex items-center justify-between cursor-pointer"
                   >
                     <span>All Specialists Directory</span>
-                    <span className="text-[10px] bg-[#E48AA0] text-white px-1.5 py-0.5 rounded">All 8</span>
+                    <span className="text-[10px] bg-[#E48AA0] text-white px-1.5 py-0.5 rounded">All {DOCTORS.length}</span>
                   </button>
                   <div className="border-t border-slate-100 my-1" />
                   <div className="space-y-0.5">
@@ -523,8 +566,16 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* 4. MOBILE DRAWER WITH EXPANDABLE SUBMENUS */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 shadow-lg animate-in fade-in slide-in-from-top-2 max-h-[85vh] overflow-y-auto">
-          <div className="flex flex-col space-y-1.5 py-2 text-sm font-medium text-slate-800">
+        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 shadow-lg animate-in fade-in slide-in-from-top-2 max-h-[85vh] overflow-y-auto">
+          {/* Mobile Navigation Drawer Quick Search */}
+          <div className="pb-3 border-b border-slate-100 mb-2">
+            <HeaderSearchBar
+              onNavigate={handleNavClick}
+              language={language}
+            />
+          </div>
+
+          <div className="flex flex-col space-y-1.5 py-1 text-sm font-medium text-slate-800">
             {/* 1. Home */}
             <button
               onClick={() => handleNavClick('/')}

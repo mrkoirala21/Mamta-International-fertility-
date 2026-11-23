@@ -40,6 +40,7 @@ export interface Doctor {
   subSpecialtyHighlight?: string;
   keyProcedures?: string[];
   clinicalHighlights?: string[];
+  hidden?: boolean;
 }
 
 export interface FertilityServiceItem {
@@ -302,7 +303,7 @@ export const TREATMENTS: Treatment[] = [
   }
 ];
 
-export const DOCTORS: Doctor[] = [
+const ALL_DOCTORS: Doctor[] = [
   {
     id: 'dr-anusha',
     name: 'Dr. Anusha Tiwari',
@@ -355,6 +356,7 @@ export const DOCTORS: Doctor[] = [
   },
   {
     id: 'dr-kesheb',
+    hidden: true,
     name: 'Dr. Kesheb Bhurtel',
     nepaliName: 'डा. केशव भुर्तेल',
     role: 'Consultant Obstetrician & Gynecologist (Obstetrics & High-Risk Delivery Lead)',
@@ -391,6 +393,7 @@ export const DOCTORS: Doctor[] = [
   },
   {
     id: 'dr-anupama',
+    hidden: true,
     name: 'Dr. Anupama Karki',
     nepaliName: 'डा. अनुपमा कार्की',
     role: 'Consultant Obstetrician & Gynecologist (Starting-to-Delivery & Postnatal Care)',
@@ -427,6 +430,7 @@ export const DOCTORS: Doctor[] = [
   },
   {
     id: 'dr-ramesh-poudel',
+    hidden: true,
     name: 'Dr. Ramesh Poudel',
     nepaliName: 'डा. रमेश पौडेल',
     role: 'Lead Consultant Laparoscopic Surgeon (Laparoscopic Surgery Team Lead)',
@@ -463,6 +467,7 @@ export const DOCTORS: Doctor[] = [
   },
   {
     id: 'dr-ritu',
+    hidden: true,
     name: 'Dr. Ritu',
     nepaliName: 'डा. रितु',
     role: 'Consultant Laparoscopic Surgeon (Laparoscopic Surgery Team)',
@@ -501,6 +506,7 @@ export const DOCTORS: Doctor[] = [
   },
   {
     id: 'dr-bikash',
+    hidden: true,
     name: 'Dr. Bikash Adhikari',
     nepaliName: 'डा. बिकास अधिकारी',
     role: 'Chief Clinical Embryologist & Lab Director',
@@ -518,6 +524,7 @@ export const DOCTORS: Doctor[] = [
   },
   {
     id: 'dr-suresh',
+    hidden: true,
     name: 'Dr. Suresh Thapa',
     nepaliName: 'डा. सुरेश थापा',
     role: 'Consultant Andrologist & Urologist',
@@ -534,6 +541,8 @@ export const DOCTORS: Doctor[] = [
     patientSatisfaction: '98.5%'
   }
 ];
+
+export const DOCTORS: Doctor[] = ALL_DOCTORS.filter((doc) => !doc.hidden);
 
 export const HOSPITAL_LOCATION: Branch = {
   id: 'chitwan',
@@ -593,7 +602,7 @@ export const TESTIMONIALS: Testimonial[] = [
     location: 'Nawalpur / Chitwan',
     treatment: 'TESA + ICSI for Severe Male Infertility',
     yearsTrying: '9 years',
-    quote: 'We were told elsewhere that we had zero chance due to male factor. Dr. Suresh and Dr. Anusha worked together at Maulakalika Hospital and found viable sperm through TESA. Our miracle baby boy is proof of their expertise.',
+    quote: 'We were told elsewhere that we had zero chance due to male factor. Dr. Anusha and our specialist team worked together at Maulakalika Hospital and found viable sperm through TESA. Our miracle baby boy is proof of their expertise.',
     fullStory: 'The emotional counseling here was just as vital as the surgery. We never felt judged or helpless during the entire journey.',
     babyName: 'Samar',
     rating: 5,
@@ -736,7 +745,7 @@ export const FAQS: FAQItem[] = [
     nepaliQuestion: 'शुक्राणु नभएको (Azoospermia) अवस्थामा पनि उपचार सम्भव छ?',
     answer: 'Yes! Through our dedicated andrology department, procedures such as TESA (Testicular Sperm Aspiration), PESA, and Micro-TESE routinely retrieve viable sperm directly from the testicular tissue even when semen analysis shows zero sperm. These retrieved sperm are immediately fertilized with your partner’s eggs using precision ICSI.',
     keyTakeaway: '85%+ surgical retrieval rate in obstructive azoospermia paired with ICSI.',
-    authorBadge: 'Dr. Suresh Thapa (Andrologist)'
+    authorBadge: 'Andrology & Male Fertility Care'
   },
   {
     id: 'faq-6',
@@ -754,7 +763,7 @@ export const FAQS: FAQItem[] = [
     nepaliQuestion: 'Day 3 र Day 5 (Blastocyst) भ्रूण प्रत्यारोपणमा के भिन्नता छ?',
     answer: 'A Day 3 embryo has 6–8 cells, while a Day 5 blastocyst has expanded into 100–150 cells with differentiated inner cell mass and trophectoderm. Blastocyst culturing in our ESCO MIRI incubators allows nature to filter out embryos with chromosomal arrest, increasing implantation rates by 20%–25% compared to Day 3 transfers.',
     keyTakeaway: 'Day 5 blastocysts provide 20–25% higher implantation rates per transfer.',
-    authorBadge: 'Dr. Bikash Adhikari (Lab Director)'
+    authorBadge: 'Embryology & IVF Laboratory'
   },
   {
     id: 'faq-8',
@@ -797,7 +806,7 @@ export const FAQS: FAQItem[] = [
     category: 'process',
     question: 'What happens if a first IVF cycle does not result in pregnancy?',
     nepaliQuestion: 'यदि पहिलो पटक IVF सफल भएन भने के गरिन्छ?',
-    answer: 'A negative cycle is deeply disappointing, but medically informative. Dr. Anusha Tiwari and Dr. Bikash Adhikari conduct a detailed cycle review analyzing embryo cleavage speed, fertilization dynamics, and endometrial receptivity. Most patients have surplus frozen blastocysts from Cycle 1, allowing a gentle Frozen Embryo Transfer (FET) with targeted protocol adjustments at a fraction of the cost.',
+    answer: 'A negative cycle is deeply disappointing, but medically informative. Dr. Anusha Tiwari and our embryology team conduct a detailed cycle review analyzing embryo cleavage speed, fertilization dynamics, and endometrial receptivity. Most patients have surplus frozen blastocysts from Cycle 1, allowing a gentle Frozen Embryo Transfer (FET) with targeted protocol adjustments at a fraction of the cost.',
     keyTakeaway: 'Thorough post-cycle review and gentle FET with frozen blastocysts yield cumulative 92% success.',
     authorBadge: 'Clinical Review Board'
   }
@@ -936,11 +945,11 @@ export const MATERNITY_SERVICES: MaternityServiceItem[] = [
   },
   {
     id: 'obstetrics-consultations',
-    title: 'Obstetrics Consultations (Dr. Kesheb Bhurtel & Dr. Anupama Karki)',
-    nepaliTitle: 'प्रसूति रोग समूह परामर्श (डा. केशव भुर्तेल र डा. अनुपमा कार्की)',
-    description: 'Specialist consultations with consultant obstetricians Dr. Kesheb Bhurtel and Dr. Anupama Karki to evaluate maternal-fetal well-being, birth readiness, and safe delivery planning.',
+    title: 'Obstetrics Consultations',
+    nepaliTitle: 'प्रसूति रोग विशेषज्ञ परामर्श',
+    description: 'Specialist consultations with our consultant obstetricians to evaluate maternal-fetal well-being, birth readiness, and safe delivery planning.',
     features: [
-      'Consultations with Dr. Kesheb Bhurtel & Dr. Anupama Karki',
+      'Dedicated specialist obstetric consultations',
       'High-risk pregnancy assessment & birth planning',
       'Continuous maternal reassurance & clinical support'
     ],
@@ -1088,7 +1097,7 @@ export const CONDITIONS: Condition[] = [
       {
         treatmentId: 'laparoscopy',
         title: 'Laparoscopic Ovarian Drilling (Select Cases)',
-        description: 'Minimally-invasive 4K keyhole puncturing under Dr. Ramesh Poudel to recalibrate intra-ovarian hormone dynamics.'
+        description: 'Minimally-invasive 4K keyhole puncturing by our laparoscopic surgery team to recalibrate intra-ovarian hormone dynamics.'
       }
     ],
     expertQuote: 'Women with PCOS possess abundant egg reserves. With precise follicular stimulation and gentle trigger management, IVF success rates in PCOS patients are among our highest.',
@@ -1133,7 +1142,7 @@ export const CONDITIONS: Condition[] = [
       }
     ],
     expertQuote: 'Prompt laparoscopic diagnosis combined with timely IVF prevents irreversible ovarian reserve damage from chronic endometrioma expansion.',
-    specialistId: 'dr-ramesh-poudel'
+    specialistId: 'dr-anusha'
   },
   {
     id: 'blocked-tubes',
@@ -1182,7 +1191,7 @@ export const CONDITIONS: Condition[] = [
     category: 'male',
     subtitle: 'Oligozoospermia, asthenospermia, and azoospermia (zero sperm in semen)',
     summary: 'Male factor conditions account for nearly 50% of all conception delays. Modern andrology and ICSI offer successful biological pathways even for men diagnosed with zero sperm.',
-    description: 'Under Consultant Urologist & Andrologist Dr. Suresh Thapa and Chief Embryologist Dr. Bikash Adhikari, we conduct comprehensive andrological investigations and perform minimally-invasive microsurgical sperm retrieval (TESA, PESA, Micro-TESE) paired directly with robotic ICSI.',
+    description: 'Our fertility and andrology specialists conduct comprehensive male factor investigations and perform minimally-invasive microsurgical sperm retrieval (TESA, PESA, Micro-TESE) paired directly with robotic ICSI.',
     symptoms: [
       'Inability to conceive after 12 months of unprotected intercourse',
       'Low semen volume or abnormal viscosity on routine semen analysis',
@@ -1215,7 +1224,7 @@ export const CONDITIONS: Condition[] = [
       }
     ],
     expertQuote: 'A semen analysis showing zero sperm is no longer the end of the road. Testicular tissue often produces viable sperm that can create healthy biological children through TESA and ICSI.',
-    specialistId: 'dr-suresh'
+    specialistId: 'dr-anusha'
   },
   {
     id: 'ovulation-disorders',

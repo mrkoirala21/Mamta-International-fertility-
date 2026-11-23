@@ -403,7 +403,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ onOpenBooking, language = 'en'
               Still Have an Unanswered Question?
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Every couple’s biological profile is unique. Dr. Anusha Tiwari and Dr. Bikash Adhikari offer personal, confidential report evaluations at Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan.
+              Every couple’s biological profile is unique. Dr. Anusha Tiwari and our clinical team offer personal, confidential report evaluations at Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan.
             </p>
           </div>
 

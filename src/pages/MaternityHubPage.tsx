@@ -27,9 +27,8 @@ export const MaternityHubPage: React.FC<MaternityHubPageProps> = ({
   onOpenBooking,
   language = 'en',
 }) => {
+  const doctorAnusha = DOCTORS.find((d) => d.id === 'dr-anusha');
   const doctorRamesh = DOCTORS.find((d) => d.id === 'dr-ramesh-ghimire');
-  const doctorKesheb = DOCTORS.find((d) => d.id === 'dr-kesheb');
-  const doctorAnupama = DOCTORS.find((d) => d.id === 'dr-anupama');
 
   return (
     <div className="min-w-0 bg-[#F9FAFC] pb-20">
@@ -86,7 +85,53 @@ export const MaternityHubPage: React.FC<MaternityHubPageProps> = ({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {/* DR. ANUSHA TIWARI */}
+          {doctorAnusha && (
+            <div className="bg-white rounded-3xl border border-slate-200/90 hover:border-[#E48AA0] p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between space-y-4">
+              <div className="space-y-4">
+                <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 relative border border-slate-200">
+                  {doctorAnusha.image ? (
+                    <img
+                      src={doctorAnusha.image}
+                      alt={doctorAnusha.name}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover object-top"
+                      loading="lazy"
+                      decoding="async"
+                      width={360}
+                      height={270}
+                    />
+                  ) : null}
+                  <span className="absolute bottom-2 left-2 bg-white/95 text-[11px] font-bold px-2 py-0.5 rounded text-[#1D3B58] shadow-xs">
+                    Lead Specialist & Focal Person
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-bold text-[#1D3B58]">{doctorAnusha.name}</h3>
+                  <p className="text-xs font-semibold text-[#E48AA0]">{doctorAnusha.role}</p>
+                  <p className="text-xs text-slate-600 mt-2 line-clamp-3">{doctorAnusha.bio}</p>
+                </div>
+              </div>
+
+              <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+                <button
+                  onClick={() => onNavigate(`/doctors/${doctorAnusha.id}`)}
+                  className="text-xs font-bold text-[#1D3B58] hover:text-[#E48AA0] cursor-pointer"
+                >
+                  View Profile
+                </button>
+                <button
+                  onClick={() => onOpenBooking(doctorAnusha.name, 'chitwan', 'Pregnancy & Fertility Care')}
+                  className="bg-[#E48AA0] hover:bg-[#D4748B] text-white px-3 py-1.5 rounded-lg text-xs font-bold transition-colors cursor-pointer"
+                >
+                  Consultation
+                </button>
+              </div>
+            </div>
+          )}
+
           {/* DR. RAMESH GHIMIRE */}
           {doctorRamesh && (
             <div className="bg-white rounded-3xl border border-slate-200/90 hover:border-[#E48AA0] p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between space-y-4">
@@ -128,74 +173,6 @@ export const MaternityHubPage: React.FC<MaternityHubPageProps> = ({
                   className="bg-[#E48AA0] hover:bg-[#D4748B] text-white px-3 py-1.5 rounded-lg text-xs font-bold transition-colors cursor-pointer"
                 >
                   Book 5D Scan
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* DR. KESHEB BHURTEL */}
-          {doctorKesheb && (
-            <div className="bg-white rounded-3xl border border-slate-200/90 hover:border-[#E48AA0] p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between space-y-4">
-              <div className="space-y-4">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-tr from-[#1D3B58] to-[#2B5A88] text-white flex flex-col items-center justify-center p-4 relative border border-slate-200">
-                  <Stethoscope className="w-10 h-10 text-[#E48AA0] mb-2 opacity-90" />
-                  <span className="text-xl font-bold">Dr. Kesheb</span>
-                  <span className="text-[10px] text-slate-300 uppercase tracking-wider font-semibold">High-Risk Obstetrics</span>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-bold text-[#1D3B58]">{doctorKesheb.name}</h3>
-                  <p className="text-xs font-semibold text-[#E48AA0]">{doctorKesheb.role.split('(')[0]}</p>
-                  <p className="text-xs text-slate-600 mt-2 line-clamp-3">{doctorKesheb.bio}</p>
-                </div>
-              </div>
-
-              <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-                <button
-                  onClick={() => onNavigate(`/doctors/${doctorKesheb.id}`)}
-                  className="text-xs font-bold text-[#1D3B58] hover:text-[#E48AA0] cursor-pointer"
-                >
-                  View Profile
-                </button>
-                <button
-                  onClick={() => onOpenBooking(doctorKesheb.name, 'chitwan', 'Obstetrics')}
-                  className="bg-[#1D3B58] hover:bg-[#2B5A88] text-white px-3 py-1.5 rounded-lg text-xs font-bold transition-colors cursor-pointer"
-                >
-                  Consultation
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* DR. ANUPAMA KARKI */}
-          {doctorAnupama && (
-            <div className="bg-white rounded-3xl border border-slate-200/90 hover:border-[#E48AA0] p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between space-y-4">
-              <div className="space-y-4">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-tr from-[#1D3B58] to-[#2B5A88] text-white flex flex-col items-center justify-center p-4 relative border border-slate-200">
-                  <Heart className="w-10 h-10 text-[#E48AA0] mb-2 opacity-90" />
-                  <span className="text-xl font-bold">Dr. Anupama</span>
-                  <span className="text-[10px] text-slate-300 uppercase tracking-wider font-semibold">Postnatal & Delivery</span>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-bold text-[#1D3B58]">{doctorAnupama.name}</h3>
-                  <p className="text-xs font-semibold text-[#E48AA0]">{doctorAnupama.role.split('(')[0]}</p>
-                  <p className="text-xs text-slate-600 mt-2 line-clamp-3">{doctorAnupama.bio}</p>
-                </div>
-              </div>
-
-              <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-                <button
-                  onClick={() => onNavigate(`/doctors/${doctorAnupama.id}`)}
-                  className="text-xs font-bold text-[#1D3B58] hover:text-[#E48AA0] cursor-pointer"
-                >
-                  View Profile
-                </button>
-                <button
-                  onClick={() => onOpenBooking(doctorAnupama.name, 'chitwan', 'Antenatal & Postnatal')}
-                  className="bg-[#1D3B58] hover:bg-[#2B5A88] text-white px-3 py-1.5 rounded-lg text-xs font-bold transition-colors cursor-pointer"
-                >
-                  Consultation
                 </button>
               </div>
             </div>

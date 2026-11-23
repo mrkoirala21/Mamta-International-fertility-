@@ -128,8 +128,8 @@ function loadAppointments(): StoredAppointment[] {
     {
       id: 'apt-002',
       referenceCode: 'MIFC-CHW-2091',
-      doctorId: 'dr-suresh',
-      doctorName: 'Dr. Suresh Thapa',
+      doctorId: 'dr-anusha',
+      doctorName: 'Dr. Anusha Tiwari',
       branchId: 'chitwan',
       branchName: 'Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan',
       date: '2026-10-16',
@@ -574,10 +574,6 @@ Key Location & Contact Facts:
 - Email: care@mamatafertility.com
 - Lead Fertility Specialist & Focal Person: Dr. Anusha Tiwari (MBBS, MD OBG/GYN, Fellowship in Reproductive Medicine, 9+ years obstetrics experience, 6+ years in fertility care).
 - Ultrasound & Pregnancy Monitoring: Dr. Ramesh Ghimire (5D ultrasound, every step monitored with professional doctor care).
-- Obstetrics Team (OBS): Dr. Kesheb Bhurtel & Dr. Anupama Karki (Antenatal care from starting to delivery, postnatal care after birth).
-- Laparoscopic Surgery Team: Dr. Ramesh Poudel & Dr. Ritu (Minimally invasive reproductive surgery).
-- Chief Clinical Embryologist & Lab Director: Dr. Bikash Adhikari (M.Sc Leeds UK, ESHRE certified).
-- Andrologist & Male Infertility Specialist: Dr. Suresh Thapa (Micro-TESE, TESA/PESA).
 - Treatments: In-Vitro Fertilization (IVF), ICSI, IUI, Blastocyst Culture (Day 5), Cryopreservation (Egg/Sperm Freezing), Male Infertility (TESA/PESA), Laparoscopy, 5D Ultrasound, Complete Maternity Care, Level II/III NICU.
 - Costs & Packages:
   * Complete IVF / ICSI Blastocyst Program: NPR 2,45,000 (USD $1,850) + medication.
@@ -630,11 +626,11 @@ Tone: Deeply empathetic, compassionate, professional, clear, and reassuring. Alw
   } else if (lower.includes('success rate') || lower.includes('chance') || lower.includes('सफलता')) {
     reply = `Our cumulative clinical pregnancy rate reaches **up to 72%** per blastocyst transfer for women under 35, and over **84%** across two consecutive cycles. Dr. Anusha Tiwari conducts individualized AMH and pelvic assessments at Maulakalika Hospital so we can choose the exact stimulation protocol that maximizes your egg quality and implantation chances.`;
   } else if (lower.includes('appointment') || lower.includes('book') || lower.includes('meet') || lower.includes('doctor') || lower.includes('डाक्टर')) {
-    reply = `You can easily schedule a consultation right here on our website or by messaging our WhatsApp at **9855088798**!\n\nSpecialists available:\n1. **Dr. Anusha Tiwari** (Lead Fertility Specialist & Focal Person — 9+ yrs OBS, 6+ yrs Fertility)\n2. **Dr. Ramesh Ghimire** (Ultrasound & 5D Pregnancy Monitoring)\n3. **Obstetrics Team**: Dr. Kesheb Bhurtel & Dr. Anupama Karki\n4. **Laparoscopic Surgery Team**: Dr. Ramesh Poudel & Dr. Ritu\n5. **Dr. Bikash Adhikari** (Chief Clinical Embryologist)\n6. **Dr. Suresh Thapa** (Andrologist & Male Infertility)\n\nLocation: Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan. Hotline: 056-493798.`;
+    reply = `You can easily schedule a consultation right here on our website or by messaging our WhatsApp at **9855088798**!\n\nSpecialists available:\n1. **Dr. Anusha Tiwari** (Lead Fertility Specialist & Focal Person — 9+ yrs OBS, 6+ yrs Fertility)\n2. **Dr. Ramesh Ghimire** (Ultrasound & 5D Pregnancy Monitoring)\n\nLocation: Maulakalika Hospital Pvt. Ltd., Bharatpur-11, Chitwan. Hotline: 056-493798.`;
   } else if (lower.includes('due date') || lower.includes('calculator') || lower.includes('delivery date') || lower.includes('pregnant') || lower.includes('डेलिभरी') || lower.includes('क्यालकुलेटर')) {
     reply = `You can estimate your delivery date right here using our interactive **Due Date Calculator**! You can calculate based on:\n\n• **First Day of Last Period (LMP)** (with your exact cycle length)\n• **IVF Day 5 Blastocyst Transfer Date**\n• **IVF Day 3 Embryo Transfer Date**\n• **Date of Conception or IUI**\n\nIt will also reveal your current gestational week, trimester progress bar, baby growth size milestones, and estimated dates for your 6-week viability scan and 20-week anatomy ultrasound at Maulakalika Hospital!`;
   } else if (lower.includes('male') || lower.includes('sperm') || lower.includes('azoospermia') || lower.includes('शुक्राणु') || lower.includes('पुरुष')) {
-    reply = `Male factor challenges account for nearly half of all conception delays, and there is immense hope today. Under **Dr. Suresh Thapa**, we provide microsurgical procedures including **TESA, PESA, and Micro-TESE** at Maulakalika Hospital, which retrieve healthy viable sperm directly from testicular tissue even when semen analysis shows zero sperm. These are immediately paired with ICSI by our embryology team.`;
+    reply = `Male factor challenges account for nearly half of all conception delays, and there is immense hope today. Our specialist team provides microsurgical procedures including **TESA, PESA, and Micro-TESE** at Maulakalika Hospital, which retrieve healthy viable sperm directly from testicular tissue even when semen analysis shows zero sperm. These are immediately paired with ICSI by our embryology team.`;
   } else if (lower.includes('pain') || lower.includes('hurt') || lower.includes('दुखाइ') || lower.includes('दुख्छ')) {
     reply = `Patient comfort is our utmost priority. The egg retrieval procedure is performed under gentle intravenous sedation (twilight sleep) by a senior anesthesiologist. You will be comfortably asleep during the 15–20 minute retrieval and will not feel any pain. Most patients relax in our recovery lounge at Maulakalika Hospital for about 2 hours and go home the same day feeling relaxed.`;
   } else {

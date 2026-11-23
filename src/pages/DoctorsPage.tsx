@@ -44,8 +44,6 @@ export const DoctorsPage: React.FC<DoctorsPageProps> = ({ onOpenBooking, onNavig
     },
     { id: 'fertility', label: language === 'en' ? 'Fertility Care' : 'प्रजनन विशेषज्ञ' },
     { id: 'ultrasound', label: language === 'en' ? 'Ultrasound & 5D Imaging' : 'अल्ट्रासाउन्ड तथा ५D' },
-    { id: 'obstetrics', label: language === 'en' ? 'Obstetrics & NICU Team' : 'प्रसूति तथा NICU समूह' },
-    { id: 'laparoscopic', label: language === 'en' ? 'Laparoscopic Surgery Team' : 'ल्यापारोस्कोपिक शल्यक्रिया समूह' },
   ];
 
   const filteredDoctors = clinicalDoctors.filter((doc) => {
@@ -426,7 +424,7 @@ export const DoctorsPage: React.FC<DoctorsPageProps> = ({ onOpenBooking, onNavig
               Collaborative Care from Conception Through Delivery
             </h3>
             <p className="text-sm text-slate-300 leading-relaxed">
-              At Mamta International Fertility Center, patient care is truly multidisciplinary. Dr. Anusha Tiwari (Fertility Lead), Dr. Ramesh Ghimire (Ultrasound & 5D Monitoring), our Obstetrics Team (Dr. Kesheb Bhurtel & Dr. Anupama Karki), and our Laparoscopic Surgery Team (Dr. Ramesh Poudel & Dr. Ritu) work in unified clinical coordination at Maulakalika Hospital.
+              At Mamta International Fertility Center, patient care is truly multidisciplinary. Dr. Anusha Tiwari (Fertility Lead) and Dr. Ramesh Ghimire (Ultrasound & 5D Monitoring) work alongside our specialized clinical, maternity, and neonatal teams in unified coordination at Maulakalika Hospital.
             </p>
           </div>
 

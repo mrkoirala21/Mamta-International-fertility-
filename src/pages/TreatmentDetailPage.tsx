@@ -31,12 +31,7 @@ export const TreatmentDetailPage: React.FC<TreatmentDetailPageProps> = ({
   const treatment = TREATMENTS.find((t) => t.id === treatmentId) || TREATMENTS[0];
 
   // Map relevant specialist
-  const leadDoctor =
-    treatment.category === 'male'
-      ? DOCTORS.find((d) => d.id === 'dr-suresh') || DOCTORS[0]
-      : treatment.category === 'surgical'
-      ? DOCTORS.find((d) => d.id === 'dr-ramesh-poudel') || DOCTORS[0]
-      : DOCTORS.find((d) => d.id === 'dr-anusha') || DOCTORS[0];
+  const leadDoctor = DOCTORS.find((d) => d.id === 'dr-anusha') || DOCTORS[0];
 
   const otherTreatments = TREATMENTS.filter((t) => t.id !== treatment.id).slice(0, 3);
 

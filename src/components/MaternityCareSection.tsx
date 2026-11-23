@@ -153,7 +153,7 @@ export const MaternityCareSection: React.FC<MaternityCareSectionProps> = ({
                   <button
                     onClick={() =>
                       onOpenBooking(
-                        srv.id === '5d-ultrasound' ? 'Dr. Ramesh Ghimire' : 'Dr. Kesheb Bhurtel',
+                        srv.id === '5d-ultrasound' ? 'Dr. Ramesh Ghimire' : 'Dr. Anusha Tiwari',
                         'chitwan',
                         srv.title
                       )
